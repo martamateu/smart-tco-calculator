@@ -367,7 +367,25 @@ export const es: Translations = {
       title: "Autora",
       name: "Marta Mateu López",
       description: "Especialista en IA e Ingeniería de Datos apasionada por aprovechar tecnología de vanguardia para resolver desafíos del mundo real en la industria de semiconductores. Con experiencia en desarrollo full-stack, aprendizaje automático e infraestructura en la nube, diseño sistemas inteligentes que conectan datos complejos con insights accionables.",
-      linkedin: "Ver Perfil de LinkedIn"
+      linkedin: "Ver Perfil de LinkedIn",
+      globalAudience: {
+        title: "Herramienta Global:",
+        description: "Esta solución está diseñada para profesionales de la industria de semiconductores, gerentes de compras, directores financieros y estrategas de cadena de suministro en todo el mundo que evalúan decisiones de abastecimiento de chips. Cubre 32 países en la UE, EE.UU., Asia-Pacífico y América Latina."
+      }
+    },
+    
+    motivation: {
+      title: "Por Qué Existe Esta Herramienta",
+      intro: "Este proyecto fue creado para abordar una brecha crítica en la industria de semiconductores:",
+      problem: "la falta de herramientas confiables y basadas en datos para calcular el TCO",
+      bcgReference: "Como se destaca en",
+      bcgLinkText: "el informe de BCG de 2023 sobre costes de fabricación de semiconductores",
+      challenges: "la industria enfrenta desafíos significativos para predecir con precisión el Coste Total de Propiedad debido a:",
+      challenge1: "Alta variabilidad en precios globales de energía (diferencia de 10x entre regiones)",
+      challenge2: "Programas de subsidios complejos (EU Chips Act, US CHIPS Act, etc.) que pueden reducir el TCO en un 25-50%",
+      challenge3: "Creciente importancia de impuestos al carbono e intensidad de carbono de la red en costes de fabricación",
+      challenge4: "Falta de fuentes de datos transparentes y en tiempo real para tomar decisiones informadas",
+      solution: "Esta herramienta combina conjuntos de datos académicos reales (Mendeley DOI: 10.17632/s54n4tyyz4.3, IEA Carbon Intensity Database), aprendizaje automático (Random Forest con más de 20,000 escenarios) y explicaciones impulsadas por RAG para proporcionar a los profesionales de la industria predicciones de TCO precisas y transparentes validadas contra benchmarks de BCG."
     },
     
     program: {

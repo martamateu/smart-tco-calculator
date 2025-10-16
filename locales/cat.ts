@@ -366,8 +366,26 @@ export const cat: Translations = {
     author: {
       title: "Autora",
       name: "Marta Mateu López",
-      description: "Especialista en IA i Enginyeria de Dades apassionada per aprofitar tecnologia d'avantguarda per resoldre reptes del món real en la indústria de semiconductors. Amb experiència en desenvolupament full-stack, aprenentatge automàtic i infraestructura al núvol, dissenyo sistemes intel·ligents que connecten dades complexes amb insights accionables.",
-      linkedin: "Veure Perfil de LinkedIn"
+      description: "Especialista en IA i Enginyeria de Dades apassionada per aprofitar tecnologia d'avantguarda per resoldre reptes del món real en la indústria de semiconductors. Amb experiència en desenvolupament full-stack, aprenentatge automàtic i infraestructura al núvol, dissenyo sistemes intel·ligents que conecten dades complexes amb insights accionables.",
+      linkedin: "Veure Perfil de LinkedIn",
+      globalAudience: {
+        title: "Eina Global:",
+        description: "Aquesta solució està dissenyada per a professionals de la indústria de semiconductors, gerents de compres, directors financers i estrategues de cadena de subministrament arreu del món que avaluen decisions d'abastament de xips. Cobreix 32 països a la UE, EUA, Àsia-Pacífic i Amèrica Llatina."
+      }
+    },
+    
+    motivation: {
+      title: "Per Què Existeix Aquesta Eina",
+      intro: "Aquest projecte va ser creat per abordar una bretxa crítica a la indústria de semiconductors:",
+      problem: "la manca d'eines fiables i basades en dades per calcular el TCO",
+      bcgReference: "Com es destaca a",
+      bcgLinkText: "l'informe de BCG de 2023 sobre costos de fabricació de semiconductors",
+      challenges: "la indústria s'enfronta a reptes significatius per predir amb precisió el Cost Total de Propietat a causa de:",
+      challenge1: "Alta variabilitat en preus globals d'energia (diferència de 10x entre regions)",
+      challenge2: "Programes de subsidis complexos (EU Chips Act, US CHIPS Act, etc.) que poden reduir el TCO en un 25-50%",
+      challenge3: "Creixent importància d'impostos al carboni i intensitat de carboni de la xarxa en costos de fabricació",
+      challenge4: "Manca de fonts de dades transparents i en temps real per prendre decisions informades",
+      solution: "Aquesta eina combina conjunts de dades acadèmiques reals (Mendeley DOI: 10.17632/s54n4tyyz4.3, IEA Carbon Intensity Database), aprenentatge automàtic (Random Forest amb més de 20,000 escenaris) i explicacions impulsades per RAG per proporcionar als professionals de la indústria prediccions de TCO precises i transparents validades contra benchmarks de BCG."
     },
     
     program: {

@@ -35,7 +35,7 @@ const AboutPage: React.FC = () => {
               {/* Global Audience Update */}
               <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-4 mb-6 border border-blue-200">
                 <p className="text-sm text-gray-700 leading-relaxed">
-                  <strong className="text-blue-700">🌍 Global Tool:</strong> This solution is designed for semiconductor industry professionals, procurement managers, financial directors, and supply chain strategists worldwide evaluating chip sourcing decisions. Covers 32 countries across EU, USA, Asia-Pacific, and Latin America.
+                  <strong className="text-blue-700">🌍 {t.about.author.globalAudience.title}</strong> {t.about.author.globalAudience.description}
                 </p>
               </div>
               
@@ -62,21 +62,21 @@ const AboutPage: React.FC = () => {
               <span className="text-2xl">🎯</span>
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-3">Why This Tool Exists</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-3">{t.about.motivation.title}</h2>
               <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                This project was created to address a critical gap in the semiconductor industry: <strong>the lack of reliable, data-driven TCO calculation tools</strong>.
+                {t.about.motivation.intro} <strong>{t.about.motivation.problem}</strong>.
               </p>
               <p className="text-gray-700 leading-relaxed mb-4">
-                As highlighted in <a href="https://www.bcg.com/publications/2023/navigating-the-semiconductor-manufacturing-costs" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 font-semibold underline">BCG's 2023 report on semiconductor manufacturing costs</a>, the industry faces significant challenges in accurately predicting Total Cost of Ownership due to:
+                {t.about.motivation.bcgReference} <a href="https://www.bcg.com/publications/2023/navigating-the-semiconductor-manufacturing-costs" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 font-semibold underline">{t.about.motivation.bcgLinkText}</a>, {t.about.motivation.challenges}
               </p>
               <ul className="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                <li>High variability in global energy prices (10x difference between regions)</li>
-                <li>Complex subsidy programs (EU Chips Act, US CHIPS Act, etc.) that can reduce TCO by 25-50%</li>
-                <li>Growing importance of carbon taxes and grid carbon intensity in manufacturing costs</li>
-                <li>Lack of transparent, real-time data sources for informed decision-making</li>
+                <li>{t.about.motivation.challenge1}</li>
+                <li>{t.about.motivation.challenge2}</li>
+                <li>{t.about.motivation.challenge3}</li>
+                <li>{t.about.motivation.challenge4}</li>
               </ul>
               <p className="text-gray-700 leading-relaxed">
-                This tool combines <strong>real academic datasets</strong> (Mendeley DOI: 10.17632/s54n4tyyz4.3, IEA Carbon Intensity Database), <strong>machine learning</strong> (Random Forest with 20,000+ scenarios), and <strong>RAG-powered explanations</strong> to provide industry professionals with accurate, transparent TCO predictions validated against BCG benchmarks.
+                {t.about.motivation.solution}
               </p>
             </div>
           </div>

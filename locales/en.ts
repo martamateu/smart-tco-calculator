@@ -365,7 +365,25 @@ export const en = {
       title: "Author",
       name: "Marta Mateu López",
       description: "AI & Data Engineering Specialist passionate about leveraging cutting-edge technology to solve real-world challenges in the semiconductor industry. With expertise in full-stack development, machine learning, and cloud infrastructure, I design intelligent systems that bridge the gap between complex data and actionable insights.",
-      linkedin: "View LinkedIn Profile"
+      linkedin: "View LinkedIn Profile",
+      globalAudience: {
+        title: "Global Tool:",
+        description: "This solution is designed for semiconductor industry professionals, procurement managers, financial directors, and supply chain strategists worldwide evaluating chip sourcing decisions. Covers 32 countries across EU, USA, Asia-Pacific, and Latin America."
+      }
+    },
+    
+    motivation: {
+      title: "Why This Tool Exists",
+      intro: "This project was created to address a critical gap in the semiconductor industry:",
+      problem: "the lack of reliable, data-driven TCO calculation tools",
+      bcgReference: "As highlighted in",
+      bcgLinkText: "BCG's 2023 report on semiconductor manufacturing costs",
+      challenges: "the industry faces significant challenges in accurately predicting Total Cost of Ownership due to:",
+      challenge1: "High variability in global energy prices (10x difference between regions)",
+      challenge2: "Complex subsidy programs (EU Chips Act, US CHIPS Act, etc.) that can reduce TCO by 25-50%",
+      challenge3: "Growing importance of carbon taxes and grid carbon intensity in manufacturing costs",
+      challenge4: "Lack of transparent, real-time data sources for informed decision-making",
+      solution: "This tool combines real academic datasets (Mendeley DOI: 10.17632/s54n4tyyz4.3, IEA Carbon Intensity Database), machine learning (Random Forest with 20,000+ scenarios), and RAG-powered explanations to provide industry professionals with accurate, transparent TCO predictions validated against BCG benchmarks."
     },
     
     program: {
