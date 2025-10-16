@@ -1,0 +1,50 @@
+{
+  "last_updated": "2025-10-15T11:40:00.538051",
+  "source": "EIA API v2 - Retail Sales (Industrial Sector)",
+  "api_endpoint": "https://api.eia.gov/v2/electricity/retail-sales/data",
+  "update_frequency": "Daily at 06:00 UTC",
+  "data_period": "12-month rolling average",
+  "sector": "Industrial (IND)",
+  "prices": {
+    "California": {
+      "price_eur_kwh": 0.1968,
+      "state_id": "CA",
+      "updated_at": "2025-10-15T11:40:01.481884",
+      "source": "EIA Retail Sales CA",
+      "sector": "industrial",
+      "data_quality": "live"
+    },
+    "Texas": {
+      "price_eur_kwh": 0.0588,
+      "state_id": "TX",
+      "updated_at": "2025-10-15T11:40:02.377440",
+      "source": "EIA Retail Sales TX",
+      "sector": "industrial",
+      "data_quality": "live"
+    },
+    "Arizona": {
+      "price_eur_kwh": 0.0751,
+      "state_id": "AZ",
+      "updated_at": "2025-10-15T11:40:03.319437",
+      "source": "EIA Retail Sales AZ",
+      "sector": "industrial",
+      "data_quality": "live"
+    },
+    "Ohio": {
+      "price_eur_kwh": 0.0718,
+      "state_id": "OH",
+      "updated_at": "2025-10-15T11:40:04.319541",
+      "source": "EIA Retail Sales OH",
+      "sector": "industrial",
+      "data_quality": "live"
+    },
+    "New York": {
+      "price_eur_kwh": 0.0915,
+      "state_id": "NY",
+      "updated_at": "2025-10-15T11:40:05.219025",
+      "source": "EIA Retail Sales NY",
+      "sector": "industrial",
+      "data_quality": "live"
+    }
+  }
+}

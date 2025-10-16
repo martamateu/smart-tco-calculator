@@ -1,0 +1,8 @@
+material,bandgap_ev,electron_mobility_cm2_vs,thermal_conductivity_w_mk,max_temperature_c,cost_relative_to_si
+Si,1.12,1400,150,125,1.0
+SiC,3.26,900,490,600,1.6
+GaN,3.4,2000,130,500,2.4
+GaAs,1.42,8500,55,300,3.0
+IGZO,3.05,10,10,200,1.4
+CNT,0.5,100000,3000,400,6.0
+MoS₂,1.8,200,34,300,5.0

@@ -1,0 +1,55 @@
+# Google Cloud Run deployment configuration
+# Deploy with: gcloud run deploy smart-tco-calculator --config=app.yaml
+
+service: smart-tco-calculator
+
+runtime: python311
+
+# Cloud Run specific settings
+env: flex
+
+# Automatic scaling
+automatic_scaling:
+  min_num_instances: 0
+  max_num_instances: 10
+  cool_down_period_sec: 180
+  cpu_utilization:
+    target_utilization: 0.65
+
+# Resources
+resources:
+  cpu: 2
+  memory_gb: 4
+  disk_size_gb: 10
+
+# Environment variables
+env_variables:
+  LOG_LEVEL: "INFO"
+  CLOUD_RUN: "true"
+  USE_EMBEDDINGS: "true"
+  EMBEDDING_MODEL: "textembedding-gecko@003"
+
+# Health check
+liveness_check:
+  path: "/health"
+  check_interval_sec: 30
+  timeout_sec: 4
+  failure_threshold: 3
+
+readiness_check:
+  path: "/health/ready"
+  check_interval_sec: 5
+  timeout_sec: 4
+  failure_threshold: 2
+  app_start_timeout_sec: 300
+
+# Network
+network:
+  session_affinity: false
+
+# Handlers (routing)
+handlers:
+- url: /.*
+  script: auto
+  secure: always
+  redirect_http_response_code: 301

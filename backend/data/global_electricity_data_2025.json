@@ -1,0 +1,377 @@
+{
+  "document_id": "global_electricity_mendeley_2025",
+  "title": "Global Day-Ahead Electricity Price Dataset with Carbon Intensity",
+  "source": "Mendeley Data (DOI: 10.17632/s54n4tyyz4.3) + IEA Grid Carbon Intensity Database 2024",
+  "date": "2025-09-19",
+  "version": "3",
+  "type": "energy_prices_carbon",
+  "period": "12-month average (October 2024 - September 2025)",
+  "data_quality": "high",
+  "last_updated": "2025-10-14",
+  "doi": "10.17632/s54n4tyyz4.3",
+  "citation": "Ullah, M.H., Reza, S.M., Gundapaneni, L.M., Balachander, P., Babaiahgari, B., Khan, A.A.A. (2025). Global Day-Ahead Electricity Price Dataset. Mendeley Data, V3. https://doi.org/10.17632/s54n4tyyz4.3",
+  "carbon_source": "IEA Grid Carbon Intensity Database (2024)",
+  "regions": [
+    {
+      "country": "Poland",
+      "price_eur_kwh": 0.171,
+      "price_usd_kwh": 0.186,
+      "year": 2025,
+      "trend_vs_2020": "+86%",
+      "price_2020": 0.092,
+      "carbon_tax_eur_ton": 90.0,
+      "carbon_intensity_g_kwh": 765,
+      "grid_mix": {
+        "coal": 0.72,
+        "renewable": 0.18,
+        "nuclear": 0.0,
+        "gas": 0.10
+      },
+      "subsidy_rate": 0.30,
+      "data_source": "Mendeley DOI:10.17632/s54n4tyyz4.3 (ENTSO-E day-ahead market)",
+      "verification_date": "2025-10-14",
+      "notes": "Major Intel investment in Wrocław; price increases reflect transition from coal to renewables. EU Chips Act 30% subsidy available.",
+      "content": "Poland has industrial electricity prices of €0.171/kWh (USD $0.186/kWh) based on 2024-2025 12-month average from Global Day-Ahead Electricity Price Dataset (Mendeley Data DOI:10.17632/s54n4tyyz4.3). This represents an 86% increase from 2020 baseline of €0.092/kWh, reflecting Poland's energy transition from coal-heavy grid (72% coal, 18% renewables). Carbon intensity: 765 g CO2/kWh (IEA 2024). Carbon tax: €90/tonne (EU ETS 2025). EU Chips Act subsidy: 30%. Major Intel semiconductor investment in Wrocław facility."
+    },
+    {
+      "country": "Germany",
+      "price_eur_kwh": 0.178,
+      "price_usd_kwh": 0.194,
+      "year": 2025,
+      "trend_vs_2020": "Stable",
+      "carbon_tax_eur_ton": 90.0,
+      "carbon_intensity_g_kwh": 350,
+      "grid_mix": {
+        "coal": 0.28,
+        "renewable": 0.52,
+        "nuclear": 0.0,
+        "gas": 0.20
+      },
+      "subsidy_rate": 0.40,
+      "data_source": "Mendeley DOI:10.17632/s54n4tyyz4.3 (EU Wholesale Market)",
+      "verification_date": "2025-10-14",
+      "notes": "Major semiconductor hub (Intel Magdeburg facility). EU Chips Act 40% subsidy.",
+      "content": "Germany has industrial electricity prices of €0.178/kWh (USD $0.194/kWh) from Global Day-Ahead Electricity Price Dataset (Mendeley Data DOI:10.17632/s54n4tyyz4.3). Price stable vs 2020 baseline. Grid mix: 52% renewables, 28% coal, 20% gas. Carbon intensity: 350 g CO2/kWh (IEA 2024). Carbon tax: €90/tonne (EU ETS 2025). Major semiconductor hub with Intel Magdeburg facility receiving 40% EU Chips Act subsidy."
+    },
+    {
+      "country": "France",
+      "price_eur_kwh": 0.123,
+      "price_usd_kwh": 0.134,
+      "year": 2025,
+      "trend_vs_2020": "+26%",
+      "price_2020": 0.098,
+      "carbon_tax_eur_ton": 90.0,
+      "carbon_intensity_g_kwh": 65,
+      "grid_mix": {
+        "coal": 0.02,
+        "renewable": 0.28,
+        "nuclear": 0.65,
+        "gas": 0.05
+      },
+      "subsidy_rate": 0.35,
+      "data_source": "Mendeley DOI:10.17632/s54n4tyyz4.3 (EU Wholesale Market)",
+      "verification_date": "2025-10-14",
+      "notes": "Nuclear-heavy grid (65%) keeps prices competitive and carbon intensity very low. STMicroelectronics Crolles 35% subsidy.",
+      "content": "France has industrial electricity prices of €0.123/kWh (USD $0.134/kWh) from Global Day-Ahead Electricity Price Dataset (Mendeley Data DOI:10.17632/s54n4tyyz4.3). Up 26% vs 2020 (from €0.098/kWh). Nuclear-heavy grid (65% nuclear, 28% renewables) maintains competitive pricing and lowest carbon intensity in EU at 65 g CO2/kWh (IEA 2024). Carbon tax: €90/tonne (EU ETS 2025). STMicroelectronics Crolles facility eligible for 35% EU Chips Act subsidy."
+    },
+    {
+      "country": "Italy",
+      "price_eur_kwh": 0.232,
+      "price_usd_kwh": 0.252,
+      "year": 2025,
+      "trend_vs_2020": "+38%",
+      "price_2020": 0.168,
+      "carbon_tax_eur_ton": 90.0,
+      "carbon_intensity_g_kwh": 380,
+      "grid_mix": {
+        "coal": 0.15,
+        "renewable": 0.45,
+        "nuclear": 0.0,
+        "gas": 0.40
+      },
+      "subsidy_rate": 0.30,
+      "data_source": "Mendeley DOI:10.17632/s54n4tyyz4.3 (EU Wholesale Market)",
+      "verification_date": "2025-10-14",
+      "notes": "Highest prices in Western EU due to limited domestic energy production. Heavy reliance on gas imports.",
+      "content": "Italy has industrial electricity prices of €0.232/kWh (USD $0.252/kWh) from Global Day-Ahead Electricity Price Dataset (Mendeley Data DOI:10.17632/s54n4tyyz4.3). Up 38% vs 2020 (from €0.168/kWh). Highest prices in Western EU due to limited domestic production and 40% gas dependence. Carbon intensity: 380 g CO2/kWh (IEA 2024). Carbon tax: €90/tonne (EU ETS 2025). STMicroelectronics Catania eligible for 30% EU Chips Act subsidy."
+    },
+    {
+      "country": "Spain",
+      "price_eur_kwh": 0.127,
+      "price_usd_kwh": 0.138,
+      "year": 2025,
+      "trend_vs_2020": "-4%",
+      "price_2020": 0.133,
+      "carbon_tax_eur_ton": 90.0,
+      "carbon_intensity_g_kwh": 220,
+      "grid_mix": {
+        "coal": 0.08,
+        "renewable": 0.62,
+        "nuclear": 0.20,
+        "gas": 0.10
+      },
+      "subsidy_rate": 0.25,
+      "data_source": "Mendeley DOI:10.17632/s54n4tyyz4.3 (EU Wholesale Market)",
+      "verification_date": "2025-10-14",
+      "notes": "Renewable energy expansion (62% of grid) reducing costs and carbon intensity.",
+      "content": "Spain has industrial electricity prices of €0.127/kWh (USD $0.138/kWh) from Global Day-Ahead Electricity Price Dataset (Mendeley Data DOI:10.17632/s54n4tyyz4.3). Down 4% vs 2020 (from €0.133/kWh) due to massive renewable energy expansion (62% of grid). Carbon intensity: 220 g CO2/kWh (IEA 2024). Carbon tax: €90/tonne (EU ETS 2025). EU Chips Act 25% subsidy available."
+    },
+    {
+      "country": "Netherlands",
+      "price_eur_kwh": 0.163,
+      "price_usd_kwh": 0.177,
+      "year": 2025,
+      "trend_vs_2020": "+38%",
+      "price_2020": 0.118,
+      "carbon_tax_eur_ton": 120.0,
+      "carbon_intensity_g_kwh": 380,
+      "grid_mix": {
+        "coal": 0.22,
+        "renewable": 0.38,
+        "nuclear": 0.03,
+        "gas": 0.37
+      },
+      "subsidy_rate": 0.33,
+      "data_source": "Mendeley DOI:10.17632/s54n4tyyz4.3 (EU Wholesale Market)",
+      "verification_date": "2025-10-14",
+      "notes": "Carbon tax includes EU ETS (€90) + Dutch carbon tax (€30) = €120/tonne. ASML facility eligible for 33% subsidy.",
+      "content": "Netherlands has industrial electricity prices of €0.163/kWh (USD $0.177/kWh) from Global Day-Ahead Electricity Price Dataset (Mendeley Data DOI:10.17632/s54n4tyyz4.3). Up 38% vs 2020 (from €0.118/kWh). Grid mix: 38% renewables, 37% gas, 22% coal. Carbon intensity: 380 g CO2/kWh (IEA 2024). Higher carbon tax: €120/tonne (EU ETS €90 + Dutch carbon tax €30). ASML photolithography facility eligible for 33% EU Chips Act subsidy."
+    },
+    {
+      "country": "Sweden",
+      "price_eur_kwh": 0.078,
+      "price_usd_kwh": 0.085,
+      "year": 2025,
+      "trend_vs_2020": "-12%",
+      "price_2020": 0.089,
+      "carbon_tax_eur_ton": 110.0,
+      "carbon_intensity_g_kwh": 18,
+      "grid_mix": {
+        "coal": 0.01,
+        "renewable": 0.64,
+        "nuclear": 0.30,
+        "gas": 0.05
+      },
+      "subsidy_rate": 0.25,
+      "data_source": "Mendeley DOI:10.17632/s54n4tyyz4.3 (EU Wholesale Market)",
+      "verification_date": "2025-10-14",
+      "notes": "Lowest electricity prices and carbon intensity in EU due to hydro+nuclear grid (94% clean energy).",
+      "content": "Sweden has industrial electricity prices of €0.078/kWh (USD $0.085/kWh) from Global Day-Ahead Electricity Price Dataset (Mendeley Data DOI:10.17632/s54n4tyyz4.3). Down 12% vs 2020 (from €0.089/kWh). Lowest prices in EU due to hydro+nuclear grid: 64% renewables (mostly hydro), 30% nuclear = 94% clean energy. Lowest carbon intensity: 18 g CO2/kWh (IEA 2024). Carbon tax: €110/tonne. EU Chips Act 25% subsidy available."
+    },
+    {
+      "country": "Belgium",
+      "price_eur_kwh": 0.156,
+      "price_usd_kwh": 0.170,
+      "year": 2025,
+      "carbon_tax_eur_ton": 90.0,
+      "carbon_intensity_g_kwh": 180,
+      "grid_mix": {
+        "coal": 0.05,
+        "renewable": 0.35,
+        "nuclear": 0.45,
+        "gas": 0.15
+      },
+      "subsidy_rate": 0.30,
+      "data_source": "Mendeley DOI:10.17632/s54n4tyyz4.3",
+      "verification_date": "2025-10-14",
+      "notes": "IMEC research facility. Nuclear phase-out debate impacting long-term prices.",
+      "content": "Belgium has industrial electricity prices of €0.156/kWh (USD $0.170/kWh) from Global Day-Ahead Electricity Price Dataset (Mendeley Data DOI:10.17632/s54n4tyyz4.3). Grid mix: 45% nuclear, 35% renewables, 15% gas. Carbon intensity: 180 g CO2/kWh (IEA 2024). IMEC semiconductor research facility. EU Chips Act 30% subsidy."
+    },
+    {
+      "country": "Denmark",
+      "price_eur_kwh": 0.092,
+      "price_usd_kwh": 0.100,
+      "year": 2025,
+      "carbon_tax_eur_ton": 90.0,
+      "carbon_intensity_g_kwh": 110,
+      "grid_mix": {
+        "coal": 0.05,
+        "renewable": 0.60,
+        "nuclear": 0.0,
+        "gas": 0.30,
+        "biomass": 0.05
+      },
+      "subsidy_rate": 0.30,
+      "data_source": "ENTSO-E Transparency Platform + IEA Grid Database 2024",
+      "verification_date": "2025-10-15",
+      "notes": "World leader in wind energy (60% renewable grid). Clean energy pioneer. EU Chips Act eligible.",
+      "content": "Denmark has industrial electricity prices of €0.092/kWh (USD $0.100/kWh) with real-time updates from ENTSO-E Transparency Platform. World leader in wind energy with 60% renewable grid (mostly offshore wind farms). Very low carbon intensity: 110 g CO2/kWh (IEA 2024). Carbon tax: €90/tonne (EU ETS 2025). No major semiconductor fabs currently, but EU Chips Act 30% subsidy available for future investments. Clean grid makes it attractive for sustainable manufacturing."
+    },
+    {
+      "country": "Taiwan",
+      "price_eur_kwh": 0.092,
+      "price_usd_kwh": 0.100,
+      "year": 2025,
+      "carbon_tax_eur_ton": 0.0,
+      "carbon_intensity_g_kwh": 495,
+      "grid_mix": {
+        "coal": 0.45,
+        "renewable": 0.22,
+        "nuclear": 0.11,
+        "gas": 0.22
+      },
+      "subsidy_rate": 0.15,
+      "data_source": "Mendeley DOI:10.17632/s54n4tyyz4.3",
+      "verification_date": "2025-10-14",
+      "notes": "TSMC hub. Low electricity prices but high carbon intensity due to coal. No carbon tax (voluntary targets only).",
+      "content": "Taiwan has industrial electricity prices of €0.092/kWh (USD $0.100/kWh) from Global Day-Ahead Electricity Price Dataset (Mendeley Data DOI:10.17632/s54n4tyyz4.3). TSMC semiconductor manufacturing hub. Low prices due to government subsidies but high carbon intensity: 495 g CO2/kWh (IEA 2024) from 45% coal grid. No carbon tax (voluntary carbon reduction targets). Local subsidy: 15%."
+    },
+    {
+      "country": "South Korea",
+      "price_eur_kwh": 0.085,
+      "price_usd_kwh": 0.093,
+      "year": 2025,
+      "carbon_tax_eur_ton": 25.0,
+      "carbon_intensity_g_kwh": 420,
+      "grid_mix": {
+        "coal": 0.38,
+        "renewable": 0.18,
+        "nuclear": 0.28,
+        "gas": 0.16
+      },
+      "subsidy_rate": 0.20,
+      "data_source": "Mendeley DOI:10.17632/s54n4tyyz4.3",
+      "verification_date": "2025-10-14",
+      "notes": "Samsung Electronics hub. Government-subsidized industrial electricity. K-ETS carbon market.",
+      "content": "South Korea has industrial electricity prices of €0.085/kWh (USD $0.093/kWh) from Global Day-Ahead Electricity Price Dataset (Mendeley Data DOI:10.17632/s54n4tyyz4.3). Samsung Electronics semiconductor hub. Government subsidies keep industrial prices low. Grid mix: 38% coal, 28% nuclear, 18% renewables. Carbon intensity: 420 g CO2/kWh (IEA 2024). K-ETS carbon tax: €25/tonne. Local subsidy: 20%."
+    },
+    {
+      "country": "China",
+      "price_eur_kwh": 0.076,
+      "price_usd_kwh": 0.083,
+      "year": 2025,
+      "carbon_tax_eur_ton": 15.0,
+      "carbon_intensity_g_kwh": 550,
+      "grid_mix": {
+        "coal": 0.58,
+        "renewable": 0.30,
+        "nuclear": 0.05,
+        "gas": 0.07
+      },
+      "subsidy_rate": 0.35,
+      "data_source": "Mendeley DOI:10.17632/s54n4tyyz4.3",
+      "verification_date": "2025-10-14",
+      "notes": "SMIC hub. Heavily subsidized industrial electricity. National carbon market (ETS) pilot. Highest carbon intensity among major semiconductor producers.",
+      "content": "China has industrial electricity prices of €0.076/kWh (USD $0.083/kWh) from Global Day-Ahead Electricity Price Dataset (Mendeley Data DOI:10.17632/s54n4tyyz4.3). SMIC semiconductor hub. Heavily subsidized industrial electricity. Highest carbon intensity: 550 g CO2/kWh (IEA 2024) due to 58% coal grid. National carbon market (ETS) pilot: ~€15/tonne. Government subsidy: 35%."
+    },
+    {
+      "country": "Japan",
+      "price_eur_kwh": 0.165,
+      "price_usd_kwh": 0.180,
+      "year": 2025,
+      "carbon_tax_eur_ton": 22.0,
+      "carbon_intensity_g_kwh": 480,
+      "grid_mix": {
+        "coal": 0.31,
+        "renewable": 0.22,
+        "nuclear": 0.07,
+        "gas": 0.40
+      },
+      "subsidy_rate": 0.18,
+      "data_source": "Mendeley DOI:10.17632/s54n4tyyz4.3",
+      "verification_date": "2025-10-14",
+      "notes": "Sony, Renesas facilities. Post-Fukushima reliance on LNG imports drives high prices. Carbon tax on fossil fuels.",
+      "content": "Japan has industrial electricity prices of €0.165/kWh (USD $0.180/kWh) from Global Day-Ahead Electricity Price Dataset (Mendeley Data DOI:10.17632/s54n4tyyz4.3). Sony, Renesas semiconductor facilities. High prices due to LNG imports (40% gas) post-Fukushima. Carbon intensity: 480 g CO2/kWh (IEA 2024). Carbon tax on fossil fuels: ~€22/tonne. Government subsidy: 18%."
+    },
+    {
+      "country": "California",
+      "price_eur_kwh": 0.1968,
+      "price_usd_kwh": 0.214,
+      "year": 2025,
+      "carbon_tax_eur_ton": 0.0,
+      "carbon_intensity_g_kwh": 220,
+      "grid_mix": {
+        "coal": 0.0,
+        "renewable": 0.58,
+        "nuclear": 0.09,
+        "gas": 0.33
+      },
+      "subsidy_rate": 0.25,
+      "chips_act_eligible": true,
+      "data_source": "EIA Retail Sales API (Industrial Sector) - 12-month rolling average",
+      "verification_date": "2025-10-15",
+      "notes": "Highest electricity prices in USA. Leading renewable energy state (58% renewable grid). CHIPS Act 25% ITC for advanced semiconductor manufacturing.",
+      "content": "California has industrial electricity prices of €0.1968/kWh (USD $0.214/kWh) based on EIA Retail Sales API 12-month rolling average (October 2024 - September 2025). Highest prices in USA due to strong renewable energy mandates (58% renewable grid). Lowest carbon intensity among US states: 220 g CO2/kWh. No state carbon tax. CHIPS Act subsidy: 25% Investment Tax Credit for advanced semiconductor manufacturing facilities."
+    },
+    {
+      "country": "Texas",
+      "price_eur_kwh": 0.0588,
+      "price_usd_kwh": 0.064,
+      "year": 2025,
+      "carbon_tax_eur_ton": 0.0,
+      "carbon_intensity_g_kwh": 420,
+      "grid_mix": {
+        "coal": 0.18,
+        "renewable": 0.32,
+        "nuclear": 0.09,
+        "gas": 0.41
+      },
+      "subsidy_rate": 0.25,
+      "chips_act_eligible": true,
+      "data_source": "EIA Retail Sales API (Industrial Sector) - 12-month rolling average",
+      "verification_date": "2025-10-15",
+      "notes": "Lowest electricity prices in USA. TSMC major fab investment. Deregulated ERCOT market. Growing wind capacity (32% renewable). CHIPS Act 25% ITC.",
+      "content": "Texas has industrial electricity prices of €0.0588/kWh (USD $0.064/kWh) based on EIA Retail Sales API 12-month rolling average (October 2024 - September 2025). Lowest electricity prices in USA due to deregulated ERCOT market and abundant natural gas (41% gas, 32% renewable including major wind capacity). TSMC major semiconductor fab investment. Carbon intensity: 420 g CO2/kWh. No state carbon tax. CHIPS Act subsidy: 25% Investment Tax Credit."
+    },
+    {
+      "country": "Arizona",
+      "price_eur_kwh": 0.0751,
+      "price_usd_kwh": 0.082,
+      "year": 2025,
+      "carbon_tax_eur_ton": 0.0,
+      "carbon_intensity_g_kwh": 380,
+      "grid_mix": {
+        "coal": 0.22,
+        "renewable": 0.28,
+        "nuclear": 0.30,
+        "gas": 0.20
+      },
+      "subsidy_rate": 0.25,
+      "chips_act_eligible": true,
+      "data_source": "EIA Retail Sales API (Industrial Sector) - 12-month rolling average",
+      "verification_date": "2025-10-15",
+      "notes": "TSMC Phoenix fab. Intel Chandler expansion. Strong nuclear base (30% Palo Verde). Growing solar capacity. CHIPS Act 25% ITC.",
+      "content": "Arizona has industrial electricity prices of €0.0751/kWh (USD $0.082/kWh) based on EIA Retail Sales API 12-month rolling average (October 2024 - September 2025). Major semiconductor hub with TSMC Phoenix fab and Intel Chandler facilities. Strong nuclear base (30% from Palo Verde) plus growing solar (28% renewable). Carbon intensity: 380 g CO2/kWh. No state carbon tax. CHIPS Act subsidy: 25% Investment Tax Credit."
+    },
+    {
+      "country": "Ohio",
+      "price_eur_kwh": 0.0718,
+      "price_usd_kwh": 0.078,
+      "year": 2025,
+      "carbon_tax_eur_ton": 0.0,
+      "carbon_intensity_g_kwh": 520,
+      "grid_mix": {
+        "coal": 0.38,
+        "renewable": 0.15,
+        "nuclear": 0.15,
+        "gas": 0.32
+      },
+      "subsidy_rate": 0.25,
+      "chips_act_eligible": true,
+      "data_source": "EIA Retail Sales API (Industrial Sector) - 12-month rolling average",
+      "verification_date": "2025-10-15",
+      "notes": "Intel major fab investment. Higher coal dependency (38%) but transitioning. Competitive industrial rates. CHIPS Act 25% ITC.",
+      "content": "Ohio has industrial electricity prices of €0.0718/kWh (USD $0.078/kWh) based on EIA Retail Sales API 12-month rolling average (October 2024 - September 2025). Intel major semiconductor fab investment. Higher coal dependency (38%) but transitioning to cleaner sources. Carbon intensity: 520 g CO2/kWh. No state carbon tax. CHIPS Act subsidy: 25% Investment Tax Credit for advanced semiconductor manufacturing."
+    },
+    {
+      "country": "New York",
+      "price_eur_kwh": 0.0915,
+      "price_usd_kwh": 0.099,
+      "year": 2025,
+      "carbon_tax_eur_ton": 0.0,
+      "carbon_intensity_g_kwh": 240,
+      "grid_mix": {
+        "coal": 0.0,
+        "renewable": 0.45,
+        "nuclear": 0.30,
+        "gas": 0.25
+      },
+      "subsidy_rate": 0.25,
+      "chips_act_eligible": true,
+      "data_source": "EIA Retail Sales API (Industrial Sector) - 12-month rolling average",
+      "verification_date": "2025-10-15",
+      "notes": "GlobalFoundries Malta fab. Clean grid (45% renewable + 30% nuclear). No coal. CHIPS Act 25% ITC.",
+      "content": "New York has industrial electricity prices of €0.0915/kWh (USD $0.099/kWh) based on EIA Retail Sales API 12-month rolling average (October 2024 - September 2025). GlobalFoundries semiconductor fab in Malta. Very clean grid with zero coal (45% renewable + 30% nuclear). Low carbon intensity: 240 g CO2/kWh. No state carbon tax. CHIPS Act subsidy: 25% Investment Tax Credit for advanced semiconductor manufacturing."
+    }
+  ]
+}

@@ -1,0 +1,1329 @@
+INFO:     Will watch for changes in these directories: ['/Users/marta.mateu/Downloads/smart-tco-calculator']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [72766] using WatchFiles
+INFO:     Started server process [72769]
+INFO:     Waiting for application startup.
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 86, in main
+    await app(scope, self.receive, self.send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 103, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 771, in app
+    await self.lifespan(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 738, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 45, in lifespan
+    logger.info("\ud83d\ude80 Starting Smart TCO Calculator Backend...")
+Message: '\ud83d\ude80 Starting Smart TCO Calculator Backend...'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 56, in _init_rag_background
+    logger.info("\ud83d\udcda Loading RAG engine (may take 20-30 seconds)...")
+Message: '\ud83d\udcda Loading RAG engine (may take 20-30 seconds)...'
+Arguments: ()
+[32m[16:54:48] INFO    [0m ✅ Loaded 93 documents
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1760453689.484679 6827459 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+⚠️ Vertex AI embeddings failed: 403 Caller does not have required permission to use project calcium-land-466213-e0. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0 and then retry. Propagation of the new permission may take a few minutes. [reason: "USER_PROJECT_DENIED"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "aiplatform.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "calcium-land-466213-e0"
+}
+metadata {
+  key: "consumer"
+  value: "projects/calcium-land-466213-e0"
+}
+, locale: "en-US"
+message: "Caller does not have required permission to use project calcium-land-466213-e0. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0 and then retry. Propagation of the new permission may take a few minutes."
+, links {
+  description: "Google developer console IAM admin"
+  url: "https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0"
+}
+]
+[32m[16:54:55] INFO    [0m ✅ RAG engine initialized successfully
+INFO:     Application startup complete.
+[32m[16:55:10] INFO    [0m 📥 GET /api/rag/retrieval-demo
+[32m[16:55:11] INFO    [0m 📤 GET /api/rag/retrieval-demo → 200
+INFO:     127.0.0.1:50774 - "GET /api/rag/retrieval-demo?query=Poland+electricity+price+2025 HTTP/1.1" 200 OK
+[32m[16:56:13] INFO    [0m 📥 GET /api/regions
+✅ Loaded 19 energy prices from cache (age: 5.6h)
+  🔄 Germany         €0.1780 → €0.1520 (-14.6%)
+  🔄 France          €0.1230 → €0.1148 (-6.7%)
+  🔄 Italy           €0.2320 → €0.1890 (-18.5%)
+  🔄 Spain           €0.1270 → €0.1178 (-7.2%)
+✅ Updated 16/32 regions with live energy prices
+[32m[16:56:13] INFO    [0m 📥 GET /api/materials
+[32m[16:56:13] INFO    [0m 📤 GET /api/regions → 200
+INFO:     127.0.0.1:50806 - "GET /api/regions HTTP/1.1" 200 OK
+[32m[16:56:13] INFO    [0m 📤 GET /api/materials → 200
+INFO:     127.0.0.1:50807 - "GET /api/materials HTTP/1.1" 200 OK
+[32m[16:56:13] INFO    [0m 📥 GET /api/regions
+✅ Loaded 19 energy prices from cache (age: 5.6h)
+✅ Updated 16/32 regions with live energy prices
+[32m[16:56:13] INFO    [0m 📥 GET /api/materials
+[32m[16:56:13] INFO    [0m 📤 GET /api/regions → 200
+INFO:     127.0.0.1:50807 - "GET /api/regions HTTP/1.1" 200 OK
+[32m[16:56:13] INFO    [0m 📤 GET /api/materials → 200
+INFO:     127.0.0.1:50806 - "GET /api/materials HTTP/1.1" 200 OK
+[32m[16:56:14] INFO    [0m 📥 POST /api/predict
+✅ Loaded 19 energy prices from cache (age: 5.6h)
+✅ Updated 16/32 regions with live energy prices
+[32m[16:56:14] INFO    [0m 📤 POST /api/predict → 200
+INFO:     127.0.0.1:50807 - "POST /api/predict HTTP/1.1" 200 OK
+[32m[16:56:14] INFO    [0m 📥 OPTIONS /api/explain
+[32m[16:56:14] INFO    [0m 📤 OPTIONS /api/explain → 200
+INFO:     127.0.0.1:50807 - "OPTIONS /api/explain HTTP/1.1" 200 OK
+[32m[16:56:14] INFO    [0m 📥 POST /api/explain
+✅ Loaded 19 energy prices from cache (age: 5.6h)
+✅ Updated 16/32 regions with live energy prices
+[32m[16:56:15] INFO    [0m 📤 POST /api/explain → 200
+INFO:     127.0.0.1:50807 - "POST /api/explain HTTP/1.1" 200 OK
+[32m[16:56:27] INFO    [0m 📥 POST /api/predict
+✅ Loaded 19 energy prices from cache (age: 5.6h)
+✅ Updated 16/32 regions with live energy prices
+[32m[16:56:27] INFO    [0m 📤 POST /api/predict → 200
+INFO:     127.0.0.1:50815 - "POST /api/predict HTTP/1.1" 200 OK
+[32m[16:56:27] INFO    [0m 📥 POST /api/explain
+✅ Loaded 19 energy prices from cache (age: 5.6h)
+✅ Updated 16/32 regions with live energy prices
+[32m[16:56:27] INFO    [0m 📤 POST /api/explain → 200
+INFO:     127.0.0.1:50815 - "POST /api/explain HTTP/1.1" 200 OK
+[32m[16:57:34] INFO    [0m 📥 GET /api/rag/embeddings-viz
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[32m[16:57:35] INFO    [0m 📤 GET /api/rag/embeddings-viz → 200
+INFO:     127.0.0.1:50831 - "GET /api/rag/embeddings-viz HTTP/1.1" 200 OK
+[32m[16:57:35] INFO    [0m 📥 GET /api/rag/embeddings-viz
+[32m[16:57:36] INFO    [0m 📤 GET /api/rag/embeddings-viz → 200
+[32m[16:57:36] INFO    [0m 📥 GET /api/rag/retrieval-demo
+INFO:     127.0.0.1:50831 - "GET /api/rag/embeddings-viz HTTP/1.1" 200 OK
+[32m[16:57:36] INFO    [0m 📤 GET /api/rag/retrieval-demo → 200
+INFO:     127.0.0.1:50833 - "GET /api/rag/retrieval-demo?query=energy%20prices%20EU HTTP/1.1" 200 OK
+[32m[16:57:36] INFO    [0m 📥 GET /api/rag/retrieval-demo
+[32m[16:57:36] INFO    [0m 📥 GET /api/rag/stats
+[32m[16:57:36] INFO    [0m 📤 GET /api/rag/retrieval-demo → 200
+INFO:     127.0.0.1:50831 - "GET /api/rag/retrieval-demo?query=energy%20prices%20EU HTTP/1.1" 200 OK
+[32m[16:57:36] INFO    [0m 📤 GET /api/rag/stats → 200
+INFO:     127.0.0.1:50833 - "GET /api/rag/stats HTTP/1.1" 200 OK
+[32m[16:57:36] INFO    [0m 📥 GET /api/rag/stats
+[32m[16:57:36] INFO    [0m 📤 GET /api/rag/stats → 200
+INFO:     127.0.0.1:50831 - "GET /api/rag/stats HTTP/1.1" 200 OK
+[32m[16:58:02] INFO    [0m 📥 GET /api/rag/embeddings-viz
+[32m[16:58:02] INFO    [0m 📤 GET /api/rag/embeddings-viz → 200
+INFO:     127.0.0.1:50845 - "GET /api/rag/embeddings-viz HTTP/1.1" 200 OK
+[32m[16:58:02] INFO    [0m 📥 GET /api/rag/retrieval-demo
+[32m[16:58:02] INFO    [0m 📤 GET /api/rag/retrieval-demo → 200
+INFO:     127.0.0.1:50845 - "GET /api/rag/retrieval-demo?query=carbon%20footprint HTTP/1.1" 200 OK
+[32m[16:58:02] INFO    [0m 📥 GET /api/rag/stats
+[32m[16:58:02] INFO    [0m 📤 GET /api/rag/stats → 200
+INFO:     127.0.0.1:50845 - "GET /api/rag/stats HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'backend/data_knowledge_layer/retriever.py', 'backend/data_knowledge_layer/loader.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 86, in main
+    await app(scope, self.receive, self.send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 103, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 771, in app
+    await self.lifespan(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 738, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 85, in lifespan
+    logger.info("\ud83d\udc4b Shutting down Smart TCO Calculator Backend...")
+Message: '\ud83d\udc4b Shutting down Smart TCO Calculator Backend...'
+Arguments: ()
+INFO:     Application shutdown complete.
+INFO:     Finished server process [72769]
+INFO:     Started server process [77079]
+INFO:     Waiting for application startup.
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 86, in main
+    await app(scope, self.receive, self.send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 103, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 771, in app
+    await self.lifespan(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 738, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 45, in lifespan
+    logger.info("\ud83d\ude80 Starting Smart TCO Calculator Backend...")
+Message: '\ud83d\ude80 Starting Smart TCO Calculator Backend...'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 56, in _init_rag_background
+    logger.info("\ud83d\udcda Loading RAG engine (may take 20-30 seconds)...")
+Message: '\ud83d\udcda Loading RAG engine (may take 20-30 seconds)...'
+Arguments: ()
+[32m[17:04:38] INFO    [0m ✅ Loaded 93 documents
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1760454279.462093 6847099 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+⚠️ Vertex AI embeddings failed: 403 Caller does not have required permission to use project calcium-land-466213-e0. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0 and then retry. Propagation of the new permission may take a few minutes. [reason: "USER_PROJECT_DENIED"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "aiplatform.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "calcium-land-466213-e0"
+}
+metadata {
+  key: "consumer"
+  value: "projects/calcium-land-466213-e0"
+}
+, locale: "en-US"
+message: "Caller does not have required permission to use project calcium-land-466213-e0. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0 and then retry. Propagation of the new permission may take a few minutes."
+, links {
+  description: "Google developer console IAM admin"
+  url: "https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0"
+}
+]
+[32m[17:04:45] INFO    [0m ✅ RAG engine initialized successfully
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/train_tco_model.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 86, in main
+    await app(scope, self.receive, self.send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 103, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 771, in app
+    await self.lifespan(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 738, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 85, in lifespan
+    logger.info("\ud83d\udc4b Shutting down Smart TCO Calculator Backend...")
+Message: '\ud83d\udc4b Shutting down Smart TCO Calculator Backend...'
+Arguments: ()
+INFO:     Application shutdown complete.
+INFO:     Finished server process [77079]
+INFO:     Started server process [77357]
+INFO:     Waiting for application startup.
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 86, in main
+    await app(scope, self.receive, self.send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 103, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 771, in app
+    await self.lifespan(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 738, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 45, in lifespan
+    logger.info("\ud83d\ude80 Starting Smart TCO Calculator Backend...")
+Message: '\ud83d\ude80 Starting Smart TCO Calculator Backend...'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 56, in _init_rag_background
+    logger.info("\ud83d\udcda Loading RAG engine (may take 20-30 seconds)...")
+Message: '\ud83d\udcda Loading RAG engine (may take 20-30 seconds)...'
+Arguments: ()
+[32m[17:05:19] INFO    [0m ✅ Loaded 93 documents
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1760454319.873942 6848451 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+⚠️ Vertex AI embeddings failed: 403 Caller does not have required permission to use project calcium-land-466213-e0. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0 and then retry. Propagation of the new permission may take a few minutes. [reason: "USER_PROJECT_DENIED"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "aiplatform.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "calcium-land-466213-e0"
+}
+metadata {
+  key: "consumer"
+  value: "projects/calcium-land-466213-e0"
+}
+, locale: "en-US"
+message: "Caller does not have required permission to use project calcium-land-466213-e0. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0 and then retry. Propagation of the new permission may take a few minutes."
+, links {
+  description: "Google developer console IAM admin"
+  url: "https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0"
+}
+]
+[32m[17:05:25] INFO    [0m ✅ RAG engine initialized successfully
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/train_tco_model.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 86, in main
+    await app(scope, self.receive, self.send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 103, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 771, in app
+    await self.lifespan(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 738, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 85, in lifespan
+    logger.info("\ud83d\udc4b Shutting down Smart TCO Calculator Backend...")
+Message: '\ud83d\udc4b Shutting down Smart TCO Calculator Backend...'
+Arguments: ()
+INFO:     Application shutdown complete.
+INFO:     Finished server process [77357]
+INFO:     Started server process [77509]
+INFO:     Waiting for application startup.
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 86, in main
+    await app(scope, self.receive, self.send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 103, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 771, in app
+    await self.lifespan(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 738, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 45, in lifespan
+    logger.info("\ud83d\ude80 Starting Smart TCO Calculator Backend...")
+Message: '\ud83d\ude80 Starting Smart TCO Calculator Backend...'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 56, in _init_rag_background
+    logger.info("\ud83d\udcda Loading RAG engine (may take 20-30 seconds)...")
+Message: '\ud83d\udcda Loading RAG engine (may take 20-30 seconds)...'
+Arguments: ()
+[32m[17:05:38] INFO    [0m ✅ Loaded 93 documents
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1760454338.793770 6849137 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+⚠️ Vertex AI embeddings failed: 403 Caller does not have required permission to use project calcium-land-466213-e0. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0 and then retry. Propagation of the new permission may take a few minutes. [reason: "USER_PROJECT_DENIED"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "aiplatform.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "calcium-land-466213-e0"
+}
+metadata {
+  key: "consumer"
+  value: "projects/calcium-land-466213-e0"
+}
+, locale: "en-US"
+message: "Caller does not have required permission to use project calcium-land-466213-e0. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0 and then retry. Propagation of the new permission may take a few minutes."
+, links {
+  description: "Google developer console IAM admin"
+  url: "https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0"
+}
+]
+[32m[17:05:44] INFO    [0m ✅ RAG engine initialized successfully
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/train_tco_model.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 86, in main
+    await app(scope, self.receive, self.send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 103, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 771, in app
+    await self.lifespan(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 738, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 85, in lifespan
+    logger.info("\ud83d\udc4b Shutting down Smart TCO Calculator Backend...")
+Message: '\ud83d\udc4b Shutting down Smart TCO Calculator Backend...'
+Arguments: ()
+INFO:     Application shutdown complete.
+INFO:     Finished server process [77509]
+INFO:     Started server process [77693]
+INFO:     Waiting for application startup.
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 86, in main
+    await app(scope, self.receive, self.send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 103, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 771, in app
+    await self.lifespan(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 738, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 45, in lifespan
+    logger.info("\ud83d\ude80 Starting Smart TCO Calculator Backend...")
+Message: '\ud83d\ude80 Starting Smart TCO Calculator Backend...'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 56, in _init_rag_background
+    logger.info("\ud83d\udcda Loading RAG engine (may take 20-30 seconds)...")
+Message: '\ud83d\udcda Loading RAG engine (may take 20-30 seconds)...'
+Arguments: ()
+[32m[17:06:02] INFO    [0m ✅ Loaded 93 documents
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1760454363.052398 6850126 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+⚠️ Vertex AI embeddings failed: 403 Caller does not have required permission to use project calcium-land-466213-e0. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0 and then retry. Propagation of the new permission may take a few minutes. [reason: "USER_PROJECT_DENIED"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "aiplatform.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "calcium-land-466213-e0"
+}
+metadata {
+  key: "consumer"
+  value: "projects/calcium-land-466213-e0"
+}
+, locale: "en-US"
+message: "Caller does not have required permission to use project calcium-land-466213-e0. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0 and then retry. Propagation of the new permission may take a few minutes."
+, links {
+  description: "Google developer console IAM admin"
+  url: "https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0"
+}
+]
+[32m[17:06:08] INFO    [0m ✅ RAG engine initialized successfully
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/data_knowledge_layer/rag_engine.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 86, in main
+    await app(scope, self.receive, self.send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 103, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 771, in app
+    await self.lifespan(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 738, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 85, in lifespan
+    logger.info("\ud83d\udc4b Shutting down Smart TCO Calculator Backend...")
+Message: '\ud83d\udc4b Shutting down Smart TCO Calculator Backend...'
+Arguments: ()
+INFO:     Application shutdown complete.
+INFO:     Finished server process [77693]
+INFO:     Started server process [77931]
+INFO:     Waiting for application startup.
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 86, in main
+    await app(scope, self.receive, self.send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 103, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 771, in app
+    await self.lifespan(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 738, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 45, in lifespan
+    logger.info("\ud83d\ude80 Starting Smart TCO Calculator Backend...")
+Message: '\ud83d\ude80 Starting Smart TCO Calculator Backend...'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 56, in _init_rag_background
+    logger.info("\ud83d\udcda Loading RAG engine (may take 20-30 seconds)...")
+Message: '\ud83d\udcda Loading RAG engine (may take 20-30 seconds)...'
+Arguments: ()
+[32m[17:06:32] INFO    [0m ✅ Loaded 93 documents
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1760454393.482972 6851437 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+⚠️ Vertex AI embeddings failed: 403 Caller does not have required permission to use project calcium-land-466213-e0. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0 and then retry. Propagation of the new permission may take a few minutes. [reason: "USER_PROJECT_DENIED"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "aiplatform.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "calcium-land-466213-e0"
+}
+metadata {
+  key: "consumer"
+  value: "projects/calcium-land-466213-e0"
+}
+, locale: "en-US"
+message: "Caller does not have required permission to use project calcium-land-466213-e0. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0 and then retry. Propagation of the new permission may take a few minutes."
+, links {
+  description: "Google developer console IAM admin"
+  url: "https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0"
+}
+]
+[32m[17:06:39] INFO    [0m ✅ RAG engine initialized successfully
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/train_tco_model.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 86, in main
+    await app(scope, self.receive, self.send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 103, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 771, in app
+    await self.lifespan(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 738, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 85, in lifespan
+    logger.info("\ud83d\udc4b Shutting down Smart TCO Calculator Backend...")
+Message: '\ud83d\udc4b Shutting down Smart TCO Calculator Backend...'
+Arguments: ()
+INFO:     Application shutdown complete.
+INFO:     Finished server process [77931]
+INFO:     Started server process [78434]
+INFO:     Waiting for application startup.
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 86, in main
+    await app(scope, self.receive, self.send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 103, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 771, in app
+    await self.lifespan(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 738, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 45, in lifespan
+    logger.info("\ud83d\ude80 Starting Smart TCO Calculator Backend...")
+Message: '\ud83d\ude80 Starting Smart TCO Calculator Backend...'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 56, in _init_rag_background
+    logger.info("\ud83d\udcda Loading RAG engine (may take 20-30 seconds)...")
+Message: '\ud83d\udcda Loading RAG engine (may take 20-30 seconds)...'
+Arguments: ()
+[32m[17:07:09] INFO    [0m ✅ Loaded 93 documents
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1760454429.854789 6853386 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+⚠️ Vertex AI embeddings failed: 403 Caller does not have required permission to use project calcium-land-466213-e0. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0 and then retry. Propagation of the new permission may take a few minutes. [reason: "USER_PROJECT_DENIED"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "aiplatform.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "calcium-land-466213-e0"
+}
+metadata {
+  key: "consumer"
+  value: "projects/calcium-land-466213-e0"
+}
+, locale: "en-US"
+message: "Caller does not have required permission to use project calcium-land-466213-e0. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0 and then retry. Propagation of the new permission may take a few minutes."
+, links {
+  description: "Google developer console IAM admin"
+  url: "https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0"
+}
+]
+[32m[17:07:15] INFO    [0m ✅ RAG engine initialized successfully
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'backend/train_tco_model.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 86, in main
+    await app(scope, self.receive, self.send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 103, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 771, in app
+    await self.lifespan(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 738, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 85, in lifespan
+    logger.info("\ud83d\udc4b Shutting down Smart TCO Calculator Backend...")
+Message: '\ud83d\udc4b Shutting down Smart TCO Calculator Backend...'
+Arguments: ()
+INFO:     Application shutdown complete.
+INFO:     Finished server process [78434]
+INFO:     Started server process [78543]
+INFO:     Waiting for application startup.
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 86, in main
+    await app(scope, self.receive, self.send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/base.py", line 103, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 771, in app
+    await self.lifespan(scope, receive, send)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/starlette/routing.py", line 738, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 45, in lifespan
+    logger.info("\ud83d\ude80 Starting Smart TCO Calculator Backend...")
+Message: '\ud83d\ude80 Starting Smart TCO Calculator Backend...'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+UnicodeEncodeError: 'utf-8' codec can't encode characters in position 29-30: surrogates not allowed
+Call stack:
+  File "<string>", line 1, in <module>
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/venv/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/main.py", line 56, in _init_rag_background
+    logger.info("\ud83d\udcda Loading RAG engine (may take 20-30 seconds)...")
+Message: '\ud83d\udcda Loading RAG engine (may take 20-30 seconds)...'
+Arguments: ()
+[32m[17:07:21] INFO    [0m ✅ Loaded 93 documents
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1760454441.734595 6854112 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+⚠️ Vertex AI embeddings failed: 403 Caller does not have required permission to use project calcium-land-466213-e0. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0 and then retry. Propagation of the new permission may take a few minutes. [reason: "USER_PROJECT_DENIED"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "aiplatform.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "calcium-land-466213-e0"
+}
+metadata {
+  key: "consumer"
+  value: "projects/calcium-land-466213-e0"
+}
+, locale: "en-US"
+message: "Caller does not have required permission to use project calcium-land-466213-e0. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0 and then retry. Propagation of the new permission may take a few minutes."
+, links {
+  description: "Google developer console IAM admin"
+  url: "https://console.developers.google.com/iam-admin/iam/project?project=calcium-land-466213-e0"
+}
+]
+[32m[17:07:27] INFO    [0m ✅ RAG engine initialized successfully
+INFO:     Application startup complete.
+[32m[17:07:44] INFO    [0m 📥 OPTIONS /api/predict
+[32m[17:07:44] INFO    [0m 📤 OPTIONS /api/predict → 200
+INFO:     127.0.0.1:51143 - "OPTIONS /api/predict HTTP/1.1" 200 OK
+[32m[17:07:44] INFO    [0m 📥 POST /api/predict
+❌ Invalid input: Material '' not found
+[32m[17:07:44] INFO    [0m 📤 POST /api/predict → 400
+INFO:     127.0.0.1:51143 - "POST /api/predict HTTP/1.1" 400 Bad Request
+/opt/homebrew/Cellar/python@3.11/3.11.13/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

@@ -1,0 +1,337 @@
+{
+  "audit_timestamp": "2025-10-13T12:11:29.721144",
+  "data_sources": [
+    {
+      "name": "Energy Prices (ENTSO-E)",
+      "file": "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/data/cache/energy_prices_live.json",
+      "status": "healthy",
+      "last_update": "2025-10-13T10:40:45.248198",
+      "age_hours": 1.5,
+      "ttl_hours": 24,
+      "regions": 14,
+      "message": "Fresh data (1.5h old) covering 14 regions"
+    },
+    {
+      "name": "Semiconductor Materials (JRC/Materials Project)",
+      "file": "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/data/semiconductors_comprehensive.json",
+      "status": "healthy",
+      "materials": 27,
+      "last_modified": "2025-10-10T14:27:15.124560",
+      "message": "27 materials loaded (2 days old)"
+    },
+    {
+      "name": "OECD Energy Prices (Baseline)",
+      "file": "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/data/oecd_energy_prices.csv",
+      "status": "healthy",
+      "message": "Static baseline data available"
+    },
+    {
+      "name": "JRC Semiconductor Manufacturing Data",
+      "file": "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/data/jrc_semiconductor_data.csv",
+      "status": "healthy",
+      "message": "JRC data available"
+    }
+  ],
+  "ml_models": [
+    {
+      "name": "Random Forest TCO Predictor",
+      "model_file": "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/models/tco_random_forest.pkl",
+      "metadata_file": "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/models/tco_random_forest.json",
+      "status": "unknown",
+      "model_type": "RandomForestRegressor",
+      "training_date": null,
+      "features": [
+        "band_gap_ev",
+        "density_g_cm3",
+        "trl",
+        "volume_log",
+        "years",
+        "energy_cost_eur_kwh",
+        "carbon_tax_eur_ton",
+        "subsidy_rate",
+        "base_cost_eur"
+      ],
+      "accuracy_metrics": {},
+      "message": "",
+      "model_loaded": true,
+      "n_estimators": 200,
+      "max_depth": 25,
+      "n_features": 9
+    }
+  ],
+  "rag_knowledge_base": [
+    {
+      "name": "RAG Knowledge Base Documents",
+      "status": "healthy",
+      "document_sources": [
+        {
+          "source": "Markdown Documentation",
+          "count": 7,
+          "files": [
+            "ENTSOE_ENERGY_PRICES.md",
+            "CARBON_TAX_SOURCES.md",
+            "MAINTENANCE_SOURCES.md",
+            "CHIP_COST_SOURCES.md",
+            "SUBSIDY_SOURCES.md",
+            "HOW_TO_ADD_PDFS.md",
+            "CARBON_FOOTPRINT_SOURCES.md"
+          ]
+        },
+        {
+          "source": "CSV Data Files",
+          "count": 3,
+          "files": [
+            "oecd_energy_prices.csv",
+            "material_properties.csv",
+            "jrc_semiconductor_data.csv"
+          ]
+        },
+        {
+          "source": "JSON Data Files",
+          "count": 1,
+          "files": [
+            "semiconductors_comprehensive.json"
+          ]
+        },
+        {
+          "source": "PDF Documents",
+          "count": 16,
+          "files": [
+            "2ce493f0-en.pdf",
+            "2ef8cebc-en.pdf",
+            "dbf6150b-en.pdf",
+            "EU_Chips_Act_Regulation_2023.pdf",
+            "827374a6-en.pdf",
+            "JRC141323_01.pdf",
+            "CELEX_32022R2560_EN_TXT.pdf",
+            "JRC133892_01.pdf",
+            "058ca239-en.pdf",
+            "JRC133736_01.pdf",
+            "SWD_2022_147_F1_STAFF_WORKING_PAPER_EN_V2_P14_1979809_ejlHFfUCmTniXeamwT2OgHriSg_86690.pdf",
+            "SR-2025-12_EN.pdf",
+            "JRC133850_01.pdf",
+            "TAXUD-2023-01189-01-00-EN-ORI-00.pdf",
+            "2024_carbon_market_report_en.pdf",
+            "FSR_draft_guidelines_application_of_EU_Reg_2022-2560.pdf"
+          ]
+        }
+      ],
+      "total_documents": 27,
+      "missing_sources": [
+        "Official EU Chips Act policy PDFs",
+        "EU Commission subsidy program guidelines",
+        "JRC technical research papers",
+        "OECD comprehensive energy statistics reports",
+        "Regional carbon tax legislation documents"
+      ],
+      "message": "27 documents available for RAG"
+    },
+    {
+      "name": "RAG Vector Embeddings (FAISS)",
+      "status": "runtime",
+      "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+      "index_file": null,
+      "vector_dimensions": 384,
+      "message": "FAISS index built at runtime (not persisted) - acceptable for small knowledge bases"
+    }
+  ],
+  "missing_data": [],
+  "expired_data": [],
+  "healthy_data": [
+    {
+      "name": "Energy Prices (ENTSO-E)",
+      "file": "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/data/cache/energy_prices_live.json",
+      "status": "healthy",
+      "last_update": "2025-10-13T10:40:45.248198",
+      "age_hours": 1.5,
+      "ttl_hours": 24,
+      "regions": 14,
+      "message": "Fresh data (1.5h old) covering 14 regions"
+    },
+    {
+      "name": "Semiconductor Materials (JRC/Materials Project)",
+      "file": "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/data/semiconductors_comprehensive.json",
+      "status": "healthy",
+      "materials": 27,
+      "last_modified": "2025-10-10T14:27:15.124560",
+      "message": "27 materials loaded (2 days old)"
+    },
+    {
+      "name": "OECD Energy Prices (Baseline)",
+      "file": "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/data/oecd_energy_prices.csv",
+      "status": "healthy",
+      "message": "Static baseline data available"
+    },
+    {
+      "name": "JRC Semiconductor Manufacturing Data",
+      "file": "/Users/marta.mateu/Downloads/smart-tco-calculator/backend/data/jrc_semiconductor_data.csv",
+      "status": "healthy",
+      "message": "JRC data available"
+    },
+    {
+      "name": "RAG Knowledge Base Documents",
+      "status": "healthy",
+      "document_sources": [
+        {
+          "source": "Markdown Documentation",
+          "count": 7,
+          "files": [
+            "ENTSOE_ENERGY_PRICES.md",
+            "CARBON_TAX_SOURCES.md",
+            "MAINTENANCE_SOURCES.md",
+            "CHIP_COST_SOURCES.md",
+            "SUBSIDY_SOURCES.md",
+            "HOW_TO_ADD_PDFS.md",
+            "CARBON_FOOTPRINT_SOURCES.md"
+          ]
+        },
+        {
+          "source": "CSV Data Files",
+          "count": 3,
+          "files": [
+            "oecd_energy_prices.csv",
+            "material_properties.csv",
+            "jrc_semiconductor_data.csv"
+          ]
+        },
+        {
+          "source": "JSON Data Files",
+          "count": 1,
+          "files": [
+            "semiconductors_comprehensive.json"
+          ]
+        },
+        {
+          "source": "PDF Documents",
+          "count": 16,
+          "files": [
+            "2ce493f0-en.pdf",
+            "2ef8cebc-en.pdf",
+            "dbf6150b-en.pdf",
+            "EU_Chips_Act_Regulation_2023.pdf",
+            "827374a6-en.pdf",
+            "JRC141323_01.pdf",
+            "CELEX_32022R2560_EN_TXT.pdf",
+            "JRC133892_01.pdf",
+            "058ca239-en.pdf",
+            "JRC133736_01.pdf",
+            "SWD_2022_147_F1_STAFF_WORKING_PAPER_EN_V2_P14_1979809_ejlHFfUCmTniXeamwT2OgHriSg_86690.pdf",
+            "SR-2025-12_EN.pdf",
+            "JRC133850_01.pdf",
+            "TAXUD-2023-01189-01-00-EN-ORI-00.pdf",
+            "2024_carbon_market_report_en.pdf",
+            "FSR_draft_guidelines_application_of_EU_Reg_2022-2560.pdf"
+          ]
+        }
+      ],
+      "total_documents": 27,
+      "missing_sources": [
+        "Official EU Chips Act policy PDFs",
+        "EU Commission subsidy program guidelines",
+        "JRC technical research papers",
+        "OECD comprehensive energy statistics reports",
+        "Regional carbon tax legislation documents"
+      ],
+      "message": "27 documents available for RAG"
+    },
+    {
+      "name": "RAG Vector Embeddings (FAISS)",
+      "status": "runtime",
+      "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+      "index_file": null,
+      "vector_dimensions": 384,
+      "message": "FAISS index built at runtime (not persisted) - acceptable for small knowledge bases"
+    }
+  ],
+  "recommendations": [],
+  "suggested_improvements": [
+    {
+      "model_name": "Time Series Forecaster (Prophet/LSTM)",
+      "purpose": "Predict energy price trends over 5-10 years",
+      "priority": "HIGH",
+      "benefits": "More accurate cost projections, better long-term planning",
+      "data_needed": "Historical energy prices (5+ years), seasonal patterns",
+      "complexity": "Medium"
+    },
+    {
+      "model_name": "Subsidy Eligibility Classifier",
+      "purpose": "Predict which regions/materials qualify for EU Chips Act subsidies",
+      "priority": "MEDIUM",
+      "benefits": "Automated subsidy recommendations, policy compliance",
+      "data_needed": "EU Chips Act criteria, regional policy documents",
+      "complexity": "Low"
+    },
+    {
+      "model_name": "Carbon Footprint Estimator",
+      "purpose": "Predict CO2 emissions by material/region with uncertainty bounds",
+      "priority": "MEDIUM",
+      "benefits": "Sustainability insights, carbon tax optimization",
+      "data_needed": "Regional electricity carbon intensity, material lifecycle data",
+      "complexity": "Medium"
+    },
+    {
+      "model_name": "Supply Chain Risk Scorer",
+      "purpose": "Assess geopolitical and supply chain risks for each region/material",
+      "priority": "LOW",
+      "benefits": "Risk-adjusted TCO, better strategic planning",
+      "data_needed": "Trade data, geopolitical risk indices, supplier diversity metrics",
+      "complexity": "High"
+    },
+    {
+      "source": "European Commission DG CONNECT",
+      "data_type": "Official EU Chips Act implementation guidelines",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/european-chips-act",
+      "priority": "HIGH",
+      "benefits": "Accurate subsidy calculations, policy compliance",
+      "format": "PDF documents"
+    },
+    {
+      "source": "ENTSO-E Historical Data",
+      "data_type": "5-10 years of electricity price history",
+      "url": "https://transparency.entsoe.eu/",
+      "priority": "HIGH",
+      "benefits": "Train time series forecasting models, trend analysis",
+      "format": "CSV/API"
+    },
+    {
+      "source": "World Bank Carbon Pricing Dashboard",
+      "data_type": "Carbon tax rates by country, historical trends",
+      "url": "https://carbonpricingdashboard.worldbank.org/",
+      "priority": "MEDIUM",
+      "benefits": "Accurate carbon cost projections",
+      "format": "Excel/CSV"
+    },
+    {
+      "source": "IEA Electricity Information",
+      "data_type": "Detailed electricity generation mix by country",
+      "url": "https://www.iea.org/data-and-statistics",
+      "priority": "MEDIUM",
+      "benefits": "Carbon intensity calculations, sustainability insights",
+      "format": "Excel/API"
+    },
+    {
+      "source": "Semiconductor Industry Association (SIA)",
+      "data_type": "Chip pricing trends, production volume statistics",
+      "url": "https://www.semiconductors.org/",
+      "priority": "MEDIUM",
+      "benefits": "More accurate chip cost estimates",
+      "format": "Reports/PDF"
+    },
+    {
+      "source": "YOLE D\u00e9veloppement Market Research",
+      "data_type": "SiC/GaN market forecasts, pricing trends",
+      "url": "https://www.yolegroup.com/",
+      "priority": "LOW",
+      "benefits": "Advanced materials cost projections",
+      "format": "Commercial reports"
+    },
+    {
+      "source": "EU Regional Policy Database",
+      "data_type": "Regional development funds, innovation grants",
+      "url": "https://ec.europa.eu/regional_policy/",
+      "priority": "LOW",
+      "benefits": "Additional subsidy opportunities beyond Chips Act",
+      "format": "Database/PDF"
+    }
+  ]
+}

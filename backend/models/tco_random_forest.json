@@ -1,0 +1,64 @@
+{
+  "model_type": "RandomForestRegressor",
+  "n_estimators": 200,
+  "r2_train": 0.7170937933004643,
+  "r2_test": 0.579419044335721,
+  "mae_test": 42362421.77053906,
+  "rmse_test": 571034374.6764745,
+  "features": [
+    "band_gap_ev",
+    "density_g_cm3",
+    "trl",
+    "volume_log",
+    "years",
+    "energy_cost_eur_kwh",
+    "carbon_tax_eur_ton",
+    "subsidy_rate",
+    "base_cost_eur"
+  ],
+  "training_samples": 20000,
+  "training_data_source": "Mendeley Global Day-Ahead Electricity Price Dataset (DOI: 10.17632/s54n4tyyz4.3) + IEA Grid Carbon Intensity Database 2024",
+  "energy_price_range": "\u20ac0.076 - \u20ac0.232/kWh",
+  "carbon_tax_range": "\u20ac0 - \u20ac120/tonne",
+  "carbon_intensity_range": "18 - 765 g CO2/kWh",
+  "training_date": "2025-10-14T17:26:41.829431",
+  "doi": "10.17632/s54n4tyyz4.3",
+  "feature_importance": [
+    {
+      "feature": "volume_log",
+      "importance": 0.8192143441379603
+    },
+    {
+      "feature": "years",
+      "importance": 0.05787331616168365
+    },
+    {
+      "feature": "density_g_cm3",
+      "importance": 0.028665250946767154
+    },
+    {
+      "feature": "energy_cost_eur_kwh",
+      "importance": 0.02800762923720711
+    },
+    {
+      "feature": "band_gap_ev",
+      "importance": 0.02707283494542718
+    },
+    {
+      "feature": "base_cost_eur",
+      "importance": 0.013737260883277288
+    },
+    {
+      "feature": "carbon_tax_eur_ton",
+      "importance": 0.011472647282742136
+    },
+    {
+      "feature": "subsidy_rate",
+      "importance": 0.007721389894052288
+    },
+    {
+      "feature": "trl",
+      "importance": 0.00623532651088304
+    }
+  ]
+}

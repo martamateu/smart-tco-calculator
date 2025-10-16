@@ -1,0 +1,218 @@
+{
+  "metadata": {
+    "last_update": "2025-10-16T12:49:07.171624",
+    "source": "ENTSO-E Transparency Platform API",
+    "api_url": "https://transparency.entsoe.eu/",
+    "ttl_hours": 24,
+    "regions_covered": 19
+  },
+  "prices": [
+    {
+      "region_code": "Germany",
+      "country": "Germany",
+      "price_eur_kwh": 0.1568,
+      "price_usd_kwh": 0.1693,
+      "source": "ENTSO-E Transparency Platform Day-Ahead Prices",
+      "period": "2025-10-09 to 2025-10-16",
+      "market_price_eur_mwh": 111.97,
+      "data_points": 1426,
+      "is_fallback": false
+    },
+    {
+      "region_code": "France",
+      "country": "France",
+      "price_eur_kwh": 0.1132,
+      "price_usd_kwh": 0.1223,
+      "source": "ENTSO-E Transparency Platform Day-Ahead Prices",
+      "period": "2025-10-09 to 2025-10-16",
+      "market_price_eur_mwh": 80.83,
+      "data_points": 758,
+      "is_fallback": false
+    },
+    {
+      "region_code": "Italy",
+      "country": "Italy",
+      "price_eur_kwh": 0.1677,
+      "price_usd_kwh": 0.1811,
+      "source": "ENTSO-E Transparency Platform Day-Ahead Prices",
+      "period": "2025-10-09 to 2025-10-16",
+      "market_price_eur_mwh": 119.8,
+      "data_points": 742,
+      "is_fallback": false
+    },
+    {
+      "region_code": "Spain",
+      "country": "Spain",
+      "price_eur_kwh": 0.1218,
+      "price_usd_kwh": 0.1315,
+      "source": "ENTSO-E Transparency Platform Day-Ahead Prices",
+      "period": "2025-10-09 to 2025-10-16",
+      "market_price_eur_mwh": 87.02,
+      "data_points": 2385,
+      "is_fallback": false
+    },
+    {
+      "region_code": "Netherlands",
+      "country": "Netherlands",
+      "price_eur_kwh": 0.1544,
+      "price_usd_kwh": 0.1668,
+      "source": "ENTSO-E Transparency Platform Day-Ahead Prices",
+      "period": "2025-10-09 to 2025-10-16",
+      "market_price_eur_mwh": 110.26,
+      "data_points": 767,
+      "is_fallback": false
+    },
+    {
+      "region_code": "Poland",
+      "country": "Poland",
+      "price_eur_kwh": 0.1704,
+      "price_usd_kwh": 0.184,
+      "source": "ENTSO-E Transparency Platform Day-Ahead Prices",
+      "period": "2025-10-09 to 2025-10-16",
+      "market_price_eur_mwh": 121.74,
+      "data_points": 730,
+      "is_fallback": false
+    },
+    {
+      "region_code": "Belgium",
+      "country": "Belgium",
+      "price_eur_kwh": 0.1421,
+      "price_usd_kwh": 0.1535,
+      "source": "ENTSO-E Transparency Platform Day-Ahead Prices",
+      "period": "2025-10-09 to 2025-10-16",
+      "market_price_eur_mwh": 101.52,
+      "data_points": 766,
+      "is_fallback": false
+    },
+    {
+      "region_code": "Austria",
+      "country": "Austria",
+      "price_eur_kwh": 0.1693,
+      "price_usd_kwh": 0.1828,
+      "source": "ENTSO-E Transparency Platform Day-Ahead Prices",
+      "period": "2025-10-09 to 2025-10-16",
+      "market_price_eur_mwh": 120.91,
+      "data_points": 1499,
+      "is_fallback": false
+    },
+    {
+      "region_code": "Czech Republic",
+      "country": "Czech Republic",
+      "price_eur_kwh": 0.1603,
+      "price_usd_kwh": 0.1731,
+      "source": "ENTSO-E Transparency Platform Day-Ahead Prices",
+      "period": "2025-10-09 to 2025-10-16",
+      "market_price_eur_mwh": 114.52,
+      "data_points": 767,
+      "is_fallback": false
+    },
+    {
+      "region_code": "Denmark",
+      "country": "Denmark",
+      "price_eur_kwh": 0.1457,
+      "price_usd_kwh": 0.1574,
+      "source": "ENTSO-E Transparency Platform Day-Ahead Prices",
+      "period": "2025-10-09 to 2025-10-16",
+      "market_price_eur_mwh": 104.07,
+      "data_points": 764,
+      "is_fallback": false
+    },
+    {
+      "region_code": "Finland",
+      "country": "Finland",
+      "price_eur_kwh": 0.0814,
+      "price_usd_kwh": 0.0879,
+      "source": "ENTSO-E Transparency Platform Day-Ahead Prices",
+      "period": "2025-10-09 to 2025-10-16",
+      "market_price_eur_mwh": 58.18,
+      "data_points": 690,
+      "is_fallback": false
+    },
+    {
+      "region_code": "Greece",
+      "country": "Greece",
+      "price_eur_kwh": 0.1854,
+      "price_usd_kwh": 0.2002,
+      "source": "ENTSO-E Transparency Platform Day-Ahead Prices",
+      "period": "2025-10-09 to 2025-10-16",
+      "market_price_eur_mwh": 132.46,
+      "data_points": 703,
+      "is_fallback": false
+    },
+    {
+      "region_code": "Hungary",
+      "country": "Hungary",
+      "price_eur_kwh": 0.198,
+      "price_usd_kwh": 0.2138,
+      "source": "ENTSO-E Transparency Platform Day-Ahead Prices",
+      "period": "2025-10-09 to 2025-10-16",
+      "market_price_eur_mwh": 141.43,
+      "data_points": 766,
+      "is_fallback": false
+    },
+    {
+      "region_code": "Ireland",
+      "country": "Ireland",
+      "price_eur_kwh": 0.158,
+      "price_usd_kwh": 0.1706,
+      "source": "OECD Energy Prices Database (2024 Q3 estimate)",
+      "period": "2024 Q3",
+      "is_fallback": true,
+      "fallback_reason": "ENTSO-E API unavailable, using OECD estimate"
+    },
+    {
+      "region_code": "Portugal",
+      "country": "Portugal",
+      "price_eur_kwh": 0.1312,
+      "price_usd_kwh": 0.1417,
+      "source": "ENTSO-E Transparency Platform Day-Ahead Prices",
+      "period": "2025-10-09 to 2025-10-16",
+      "market_price_eur_mwh": 93.72,
+      "data_points": 659,
+      "is_fallback": false
+    },
+    {
+      "region_code": "Romania",
+      "country": "Romania",
+      "price_eur_kwh": 0.1949,
+      "price_usd_kwh": 0.2105,
+      "source": "ENTSO-E Transparency Platform Day-Ahead Prices",
+      "period": "2025-10-09 to 2025-10-16",
+      "market_price_eur_mwh": 139.23,
+      "data_points": 765,
+      "is_fallback": false
+    },
+    {
+      "region_code": "Sweden",
+      "country": "Sweden",
+      "price_eur_kwh": 0.078,
+      "price_usd_kwh": 0.0842,
+      "source": "OECD Energy Prices Database (2024 Q3 estimate)",
+      "period": "2024 Q3",
+      "is_fallback": true,
+      "fallback_reason": "ENTSO-E API unavailable, using OECD estimate"
+    },
+    {
+      "region_code": "Slovakia",
+      "country": "Slovakia",
+      "price_eur_kwh": 0.1563,
+      "price_usd_kwh": 0.1688,
+      "source": "ENTSO-E Transparency Platform Day-Ahead Prices",
+      "period": "2025-10-09 to 2025-10-16",
+      "market_price_eur_mwh": 111.62,
+      "data_points": 766,
+      "is_fallback": false
+    },
+    {
+      "region_code": "Slovenia",
+      "country": "Slovenia",
+      "price_eur_kwh": 0.1766,
+      "price_usd_kwh": 0.1907,
+      "source": "ENTSO-E Transparency Platform Day-Ahead Prices",
+      "period": "2025-10-09 to 2025-10-16",
+      "market_price_eur_mwh": 126.15,
+      "data_points": 760,
+      "is_fallback": false
+    }
+  ]
+}

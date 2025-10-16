@@ -1,0 +1,6 @@
+material,technology_node_nm,global_capacity_wafers_per_year,eu_capacity_wafers_per_year,eu_share_pct,energy_kwh_per_wafer,co2_kg_per_wafer,avg_cost_per_wafer_eur,year,source,last_verified,data_quality
+Si,28-180,24500000,2940000,12.0,950,228,480,2025,JRC141323_01.pdf - EU semiconductor sector analysis,2025-10-13,high
+Si,7-14,8200000,164000,2.0,1850,444,12500,2025,JRC141323_01.pdf - EU semiconductor sector analysis,2025-10-13,high
+SiC,N/A,485000,97000,20.0,780,187,850,2025,JRC133850_01.pdf - Semiconductors in EU state of play,2025-10-13,high
+GaN,N/A,195000,39000,20.0,720,173,1280,2025,JRC133850_01.pdf - Semiconductors in EU state of play,2025-10-13,high
+GaAs,N/A,285000,43000,15.0,890,214,1520,2025,JRC133892_01.pdf - EC consultation semiconductors value chain,2025-10-13,medium

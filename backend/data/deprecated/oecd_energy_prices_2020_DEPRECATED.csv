@@ -1,0 +1,11 @@
+region,electricity_eur_per_kwh,year,trend_annual_pct,carbon_intensity_g_per_kwh,source,last_verified,data_quality
+Germany,0.178,2020,2.3,338,OECD Energy Prices 2020 (dbf6150b-en.pdf),2025-10-13,high
+France,0.098,2020,1.8,52,OECD Energy Prices 2020 (dbf6150b-en.pdf),2025-10-13,high
+Italy,0.168,2020,2.8,281,OECD Energy Prices 2020 (dbf6150b-en.pdf),2025-10-13,high
+Spain,0.132,2020,2.1,175,OECD Energy Prices 2020 (dbf6150b-en.pdf),2025-10-13,high
+Netherlands,0.118,2020,2.0,392,OECD Energy Prices 2020 (dbf6150b-en.pdf),2025-10-13,high
+Poland,0.092,2020,3.2,765,OECD Energy Prices 2020 (dbf6150b-en.pdf),2025-10-13,high
+Belgium,0.128,2020,2.2,156,OECD Energy Prices 2020 (dbf6150b-en.pdf),2025-10-13,high
+EU,0.128,2020,2.2,295,OECD Energy Prices 2020 (dbf6150b-en.pdf),2025-10-13,high
+USA,0.068,2020,1.5,417,OECD Energy Prices 2020 (dbf6150b-en.pdf),2025-10-13,high
+Asia,0.095,2020,1.8,598,OECD/IEA estimates,2025-10-13,medium

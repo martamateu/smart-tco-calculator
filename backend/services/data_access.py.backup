@@ -1,0 +1,729 @@
+"""
+Data access layer - provides static material and region catalogs.
+Loads REAL data from:
+- Mendeley Global Electricity Dataset (DOI: 10.17632/s54n4tyyz4.3)
+- Materials Project API (semiconductors_comprehensive.json)
+- ENTSO-E live energy prices (energy_prices_live.json)
+"""
+
+from typing import List, Dict, Optional, Any
+import json
+from pathlib import Path
+from datetime import datetime, timedelta
+from backend.models.schemas import Material, Region
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+# ============================================================================
+# LOAD REAL ENERGY PRICES FROM CACHE
+# ============================================================================
+
+def check_energy_prices_availability() -> Dict[str, Any]:
+    """
+    Check if energy prices are available and fresh.
+    
+    Returns:
+        Dict with status, age_hours, last_update, and is_expired
+    """
+    cache_path = Path(__file__).parent.parent / "data" / "cache" / "energy_prices_live.json"
+    
+    if not cache_path.exists():
+        return {
+            "status": "missing",
+            "is_expired": True,
+            "age_hours": None,
+            "last_update": None,
+            "message": "Energy prices cache not found"
+        }
+    
+    try:
+        with open(cache_path, 'r') as f:
+            data = json.load(f)
+        
+        last_update = datetime.fromisoformat(data['metadata']['last_update'])
+        age_hours = (datetime.now() - last_update).total_seconds() / 3600
+        is_expired = age_hours > 24  # 24-hour TTL
+        
+        return {
+            "status": "expired" if is_expired else "healthy",
+            "is_expired": is_expired,
+            "age_hours": round(age_hours, 1),
+            "last_update": data['metadata']['last_update'],
+            "message": f"Energy prices cache is {age_hours:.1f}h old" if is_expired else "Energy prices are up to date"
+        }
+        
+    except Exception as e:
+        return {
+            "status": "error",
+            "is_expired": True,
+            "age_hours": None,
+            "last_update": None,
+            "message": f"Error checking energy prices: {str(e)}"
+        }
+
+
+def _load_energy_prices_cache() -> Dict[str, Dict]:
+    """
+    Load REAL energy prices from API cache (EIA, Eurostat, etc.)
+    Returns: {region_code: {price_eur_kwh, price_usd_kwh, source, period}}
+    """
+    cache_path = Path(__file__).parent.parent / "data" / "cache" / "energy_prices_live.json"
+    
+    if not cache_path.exists():
+        print("⚠️  Energy prices cache not found - using fallback prices")
+        return {}
+    
+    try:
+        with open(cache_path, 'r') as f:
+            data = json.load(f)
+        
+        # Check cache age (TTL 24 hours)
+        last_update = datetime.fromisoformat(data['metadata']['last_update'])
+        age_hours = (datetime.now() - last_update).total_seconds() / 3600
+        
+        if age_hours > 24:
+            print(f"⚠️  Energy prices cache expired ({age_hours:.1f}h old) - consider refreshing")
+        
+        # Build lookup dict by region_code
+        prices_by_region = {}
+        for entry in data['prices']:
+            key = entry.get('region_code') or entry.get('country')
+            prices_by_region[key] = {
+                'price_eur_kwh': entry['price_eur_kwh'],
+                'price_usd_kwh': entry['price_usd_kwh'],
+                'source': entry['source'],
+                'period': entry.get('period', 'unknown')
+            }
+        
+        print(f"✅ Loaded {len(prices_by_region)} energy prices from cache (age: {age_hours:.1f}h)")
+        return prices_by_region
+        
+    except Exception as e:
+        print(f"❌ Error loading energy prices cache: {e}")
+        return {}
+
+
+# ============================================================================
+# LOAD MENDELEY GLOBAL ELECTRICITY DATA
+# ============================================================================
+
+def _load_mendeley_regions() -> List[dict]:
+    """
+    Load regions from Mendeley Global Electricity Dataset
+    DOI: 10.17632/s54n4tyyz4.3
+    Returns: List of region dictionaries with real data
+    """
+    mendeley_path = Path(__file__).parent.parent / "data" / "global_electricity_data_2025.json"
+    
+    if not mendeley_path.exists():
+        logger.warning("⚠️  Mendeley dataset not found, using hardcoded fallback")
+        return []
+    
+    try:
+        with open(mendeley_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        
+        regions = []
+        for region_data in data.get('regions', []):
+            # Convert Mendeley format to our Region schema
+            region = {
+                "code": region_data['country'],
+                "name": f"{region_data['country']} 🌍",  # Will add proper flags
+                "energy_cost": region_data['price_eur_kwh'],
+                "carbon_tax": region_data.get('carbon_tax_eur_ton', 0.0),
+                "subsidy_rate": region_data.get('subsidy_rate', 0.0),
+                "subsidy_source": region_data.get('data_source', 'Mendeley Data'),
+                "chips_act_eligible": region_data.get('subsidy_rate', 0) > 0,
+                "mendeley_data": region_data  # Keep original for reference
+            }
+            regions.append(region)
+        
+        logger.info(f"✅ Loaded {len(regions)} regions from Mendeley dataset (DOI: {data.get('doi')})")
+        return regions
+        
+    except Exception as e:
+        logger.error(f"❌ Error loading Mendeley dataset: {e}")
+        return []
+
+
+def _update_regions_with_entsoe(regions: List[dict]) -> List[dict]:
+    """
+    Update EU region prices with live ENTSO-E data if available
+    
+    Args:
+        regions: List of region dicts from Mendeley
+    
+    Returns:
+        Updated regions with live EU prices where available
+    """
+    # EU countries covered by ENTSO-E
+    EU_COUNTRIES = ['Germany', 'France', 'Italy', 'Spain', 'Netherlands', 
+                   'Poland', 'Belgium', 'Sweden', 'Austria', 'Denmark',
+                   'Finland', 'Greece', 'Hungary', 'Ireland', 'Portugal',
+                   'Romania', 'Czech Republic', 'Slovakia', 'Slovenia']
+    
+    # Load ENTSO-E cache
+    entsoe_prices = _load_energy_prices_cache()
+    
+    if not entsoe_prices:
+        logger.info("ℹ️  No ENTSO-E cache available, using Mendeley prices only")
+        return regions
+    
+    updated_count = 0
+    for region in regions:
+        if region['code'] in EU_COUNTRIES and region['code'] in entsoe_prices:
+            old_price = region['energy_cost']
+            new_price = entsoe_prices[region['code']]['price_eur_kwh']
+            
+            if abs(old_price - new_price) > 0.001:  # Only log if changed
+                change_pct = ((new_price - old_price) / old_price) * 100
+                logger.info(f"  🔄 {region['code']:<15} €{old_price:.4f} → €{new_price:.4f} ({change_pct:+.1f}%)")
+                region['energy_cost'] = new_price
+                region['live_price_updated'] = True
+                updated_count += 1
+    
+    if updated_count > 0:
+        logger.info(f"✅ Updated {updated_count}/{len(regions)} regions with live energy prices")
+    
+    return regions
+
+
+# ============================================================================
+# LOAD REAL MATERIALS DATA
+# ============================================================================
+
+def _load_materials_from_json() -> List[dict]:
+    """Load real semiconductor data from Materials Project JSON (FAST)"""
+    json_path = Path(__file__).parent.parent / "data" / "semiconductors_comprehensive.json"
+    
+    if not json_path.exists():
+        # Fallback to basic materials if comprehensive data not available
+        return _get_fallback_materials()
+    
+    with open(json_path, 'r') as f:
+        data = json.load(f)
+    
+    materials = []
+    for row in data:
+        # Map JSON fields to API schema
+        materials.append({
+            "id": row["id"],
+            "name": row["name"],
+            "category": row["category"],
+            "chip_cost": float(row["chip_cost_eur"]),
+            "energy_consumption": float(row["energy_consumption_w"]),
+            "carbon_footprint": float(row["carbon_footprint_kg"]),
+            "trl": int(row["trl"]),
+            "maturity": "Commercial" if row["trl"] >= 8 else ("Pilot" if row["trl"] >= 6 else "Lab"),
+            "manufacturers": _get_manufacturers(row["id"]),
+            "applications": _get_applications(row["category"]),
+            "band_gap": float(row.get("band_gap_ev", 1.0)),  # For ML model
+            "density": float(row.get("density_g_cm3", 4.0))  # For ML model
+        })
+    
+    return materials
+
+
+def _get_manufacturers(material_id: str) -> List[str]:
+    """Get typical manufacturers for each material"""
+    mfg_map = {
+        "si": ["Intel", "TSMC", "Samsung", "GlobalFoundries"],
+        "sic": ["Wolfspeed", "STMicroelectronics", "Infineon", "ON Semiconductor"],
+        "gan": ["GaN Systems", "Infineon", "Navitas", "EPC"],
+        "gaas": ["Skyworks", "Qorvo", "Broadcom"],
+        "inp": ["IQE", "Sumitomo"],
+        "ge": ["AXT", "Umicore"],
+        "c": ["Element Six", "Applied Diamond"],
+        "aln": ["Kyocera", "CoorsTek"],
+        "zno": ["American Elements", "Cermet"],
+        "cdte": ["First Solar", "Hanergy"],
+    }
+    return mfg_map.get(material_id, ["Research Stage"])
+
+
+def _get_applications(category: str) -> List[str]:
+    """Get typical applications by category"""
+    app_map = {
+        "Traditional Semiconductor": ["CPUs", "Memory", "General logic", "Consumer electronics"],
+        "Wide-bandgap Semiconductor": ["EV inverters", "Power supplies", "Solar inverters", "Industrial motors"],
+        "III-V Compound": ["RF amplifiers", "LEDs", "Solar cells", "High-speed comm"],
+        "III-Nitride Wide-bandgap": ["Fast chargers", "5G base stations", "Data centers", "Aerospace"],
+        "II-VI Compound": ["LEDs", "Photodetectors", "Solar cells", "Lasers"],
+        "2D Transition Metal Dichalcogenide": ["Flexible electronics", "Sensors", "Transistors", "Research"],
+        "Ultra-wide Bandgap": ["Extreme environments", "High power", "High temperature", "Research"]
+    }
+    return app_map.get(category, ["Emerging applications", "Research"])
+
+
+def _get_fallback_materials() -> List[dict]:
+    """Fallback materials if CSV not available"""
+    return [
+    {
+        "id": "si",
+        "name": "Si (Silicon)",
+        "category": "Traditional Semiconductor",
+        "chip_cost": 0.50,
+        "energy_consumption": 5.0,
+        "carbon_footprint": 0.25,
+        "trl": 9,
+        "maturity": "Commercial",
+        "manufacturers": ["Intel", "TSMC", "Samsung", "GlobalFoundries"],
+        "applications": ["CPUs", "Memory", "General logic", "Consumer electronics"]
+    },
+    {
+        "id": "sic",
+        "name": "SiC (Silicon Carbide)",
+        "category": "Wide-bandgap Semiconductor",
+        "chip_cost": 0.80,
+        "energy_consumption": 2.5,
+        "carbon_footprint": 0.08,
+        "trl": 9,
+        "maturity": "Commercial",
+        "manufacturers": ["Wolfspeed", "STMicroelectronics", "Infineon", "ON Semiconductor"],
+        "applications": ["EV inverters", "Power supplies", "Solar inverters", "Industrial motors"]
+    },
+    {
+        "id": "gan",
+        "name": "GaN (Gallium Nitride)",
+        "category": "Wide-bandgap Semiconductor",
+        "chip_cost": 1.20,
+        "energy_consumption": 2.0,
+        "carbon_footprint": 0.06,
+        "trl": 8,
+        "maturity": "Commercial",
+        "manufacturers": ["GaN Systems", "Infineon", "Navitas", "EPC"],
+        "applications": ["Fast chargers", "5G base stations", "Data centers", "Aerospace"]
+    },
+    {
+        "id": "gaas",
+        "name": "GaAs (Gallium Arsenide)",
+        "category": "III-V Semiconductor",
+        "chip_cost": 1.50,
+        "energy_consumption": 3.5,
+        "carbon_footprint": 0.12,
+        "trl": 9,
+        "maturity": "Commercial",
+        "manufacturers": ["Skyworks", "Qorvo", "Broadcom"],
+        "applications": ["RF components", "Satellite", "Optical devices", "Mobile phones"]
+    },
+    {
+        "id": "igzo",
+        "name": "IGZO (Indium Gallium Zinc Oxide)",
+        "category": "Oxide Semiconductor",
+        "chip_cost": 0.70,
+        "energy_consumption": 0.5,
+        "carbon_footprint": 0.05,
+        "trl": 8,
+        "maturity": "Commercial",
+        "manufacturers": ["Sharp", "LG Display", "Samsung Display"],
+        "applications": ["Display backplanes", "Wearables", "IoT sensors", "Low-power logic"]
+    },
+    {
+        "id": "cnt",
+        "name": "CNT-FET (Carbon Nanotube Transistor)",
+        "category": "Emerging Nanomaterial",
+        "chip_cost": 3.00,
+        "energy_consumption": 0.3,
+        "carbon_footprint": 0.02,
+        "trl": 6,
+        "maturity": "Prototype",
+        "manufacturers": ["IBM Research", "MIT", "Stanford"],
+        "applications": ["Ultra-low power IoT", "Flexible electronics", "Research"]
+    },
+    {
+        "id": "mos2",
+        "name": "MoS₂ (Molybdenum Disulfide)",
+        "category": "2D Material",
+        "chip_cost": 2.50,
+        "energy_consumption": 0.4,
+        "carbon_footprint": 0.03,
+        "trl": 4,
+        "maturity": "Laboratory",
+        "manufacturers": ["Research institutions"],
+        "applications": ["Flexible electronics", "Photodetectors", "Future computing"]
+    }
+]
+
+
+# ============================================================================
+# REGIONS CATALOG
+# ============================================================================
+
+# Load regions dynamically from Mendeley dataset + ENTSO-E live prices
+# This replaces the old 32-region hardcoded array with validated data
+REGIONS_DB = _update_regions_with_entsoe(_load_mendeley_regions())
+
+
+# ============================================================================
+# UPDATE REGIONS WITH LIVE ENERGY PRICES
+# ============================================================================
+
+def _update_regions_with_live_prices(regions: List[dict]) -> List[dict]:
+    """
+    Update region energy costs with REAL prices from API cache
+    Falls back to original prices if cache unavailable
+    """
+        "code": "Belgium",
+        "name": "Belgium 🇧🇪",
+        "energy_cost": 0.145,  # Will be updated with ENTSO-E live data
+        "carbon_tax": 90.0,  # REAL: EU ETS €90/tonne (2025)
+        "subsidy_rate": 0.30,  # REAL: EU Chips Act 2023
+        "subsidy_source": "EU Chips Act (Regulation 2023/1781) - 30% capital expenditure",
+        "chips_act_eligible": True
+    },
+    {
+        "code": "Austria",
+        "name": "Austria 🇦🇹",
+        "energy_cost": 0.168,  # Will be updated with ENTSO-E live data
+        "carbon_tax": 90.0,  # REAL: EU ETS €90/tonne (2025)
+        "subsidy_rate": 0.30,  # REAL: EU Chips Act 2023
+        "subsidy_source": "EU Chips Act (Regulation 2023/1781) - 30% capital expenditure",
+        "chips_act_eligible": True
+    },
+    {
+        "code": "Czech Republic",
+        "name": "Czech Republic 🇨🇿",
+        "energy_cost": 0.162,  # Will be updated with ENTSO-E live data
+        "carbon_tax": 90.0,  # REAL: EU ETS €90/tonne (2025)
+        "subsidy_rate": 0.25,  # REAL: EU Chips Act 2023
+        "subsidy_source": "EU Chips Act (Regulation 2023/1781) - 25% capital expenditure",
+        "chips_act_eligible": True
+    },
+    {
+        "code": "Denmark",
+        "name": "Denmark 🇩🇰",
+        "energy_cost": 0.092,  # Will be updated with ENTSO-E live data
+        "carbon_tax": 90.0,  # REAL: EU ETS €90/tonne (2025)
+        "subsidy_rate": 0.25,  # REAL: EU Chips Act 2023
+        "subsidy_source": "EU Chips Act (Regulation 2023/1781) - 25% capital expenditure",
+        "chips_act_eligible": True
+    },
+    {
+        "code": "Finland",
+        "name": "Finland 🇫🇮",
+        "energy_cost": 0.084,  # Will be updated with ENTSO-E live data
+        "carbon_tax": 90.0,  # REAL: EU ETS €90/tonne (2025)
+        "subsidy_rate": 0.25,  # REAL: EU Chips Act 2023
+        "subsidy_source": "EU Chips Act (Regulation 2023/1781) - 25% capital expenditure",
+        "chips_act_eligible": True
+    },
+    {
+        "code": "Greece",
+        "name": "Greece 🇬🇷",
+        "energy_cost": 0.171,  # Will be updated with ENTSO-E live data
+        "carbon_tax": 90.0,  # REAL: EU ETS €90/tonne (2025)
+        "subsidy_rate": 0.25,  # REAL: EU Chips Act 2023
+        "subsidy_source": "EU Chips Act (Regulation 2023/1781) - 25% capital expenditure",
+        "chips_act_eligible": True
+    },
+    {
+        "code": "Hungary",
+        "name": "Hungary 🇭🇺",
+        "energy_cost": 0.189,  # Will be updated with ENTSO-E live data
+        "carbon_tax": 90.0,  # REAL: EU ETS €90/tonne (2025)
+        "subsidy_rate": 0.25,  # REAL: EU Chips Act 2023
+        "subsidy_source": "EU Chips Act (Regulation 2023/1781) - 25% capital expenditure",
+        "chips_act_eligible": True
+    },
+    {
+        "code": "Ireland",
+        "name": "Ireland 🇮🇪",
+        "energy_cost": 0.158,  # Will be updated with ENTSO-E live data
+        "carbon_tax": 90.0,  # REAL: EU ETS €90/tonne (2025)
+        "subsidy_rate": 0.30,  # REAL: EU Chips Act 2023
+        "subsidy_source": "EU Chips Act (Regulation 2023/1781) - 30% capital expenditure",
+        "chips_act_eligible": True
+    },
+    {
+        "code": "Portugal",
+        "name": "Portugal 🇵🇹",
+        "energy_cost": 0.126,  # Will be updated with ENTSO-E live data
+        "carbon_tax": 90.0,  # REAL: EU ETS €90/tonne (2025)
+        "subsidy_rate": 0.25,  # REAL: EU Chips Act 2023
+        "subsidy_source": "EU Chips Act (Regulation 2023/1781) - 25% capital expenditure",
+        "chips_act_eligible": True
+    },
+    {
+        "code": "Romania",
+        "name": "Romania 🇷🇴",
+        "energy_cost": 0.185,  # Will be updated with ENTSO-E live data
+        "carbon_tax": 90.0,  # REAL: EU ETS €90/tonne (2025)
+        "subsidy_rate": 0.25,  # REAL: EU Chips Act 2023
+        "subsidy_source": "EU Chips Act (Regulation 2023/1781) - 25% capital expenditure",
+        "chips_act_eligible": True
+    },
+    {
+        "code": "Sweden",
+        "name": "Sweden 🇸🇪",
+        "energy_cost": 0.078,  # Will be updated with ENTSO-E live data
+        "carbon_tax": 90.0,  # REAL: EU ETS €90/tonne (2025)
+        "subsidy_rate": 0.30,  # REAL: EU Chips Act 2023
+        "subsidy_source": "EU Chips Act (Regulation 2023/1781) - 30% capital expenditure",
+        "chips_act_eligible": True
+    },
+    {
+        "code": "Slovakia",
+        "name": "Slovakia 🇸🇰",
+        "energy_cost": 0.159,  # Will be updated with ENTSO-E live data
+        "carbon_tax": 90.0,  # REAL: EU ETS €90/tonne (2025)
+        "subsidy_rate": 0.25,  # REAL: EU Chips Act 2023
+        "subsidy_source": "EU Chips Act (Regulation 2023/1781) - 25% capital expenditure",
+        "chips_act_eligible": True
+    },
+    {
+        "code": "Slovenia",
+        "name": "Slovenia 🇸🇮",
+        "energy_cost": 0.172,  # Will be updated with ENTSO-E live data
+        "carbon_tax": 90.0,  # REAL: EU ETS €90/tonne (2025)
+        "subsidy_rate": 0.25,  # REAL: EU Chips Act 2023
+        "subsidy_source": "EU Chips Act (Regulation 2023/1781) - 25% capital expenditure",
+        "chips_act_eligible": True
+    },
+    
+    # ========== USA (CHIPS Act 2022) ==========
+    # Energy prices updated from USA ISO Day-Ahead Market Data (12-month avg Oct 2024-Sep 2025)
+    {
+        "code": "Arizona",
+        "name": "Arizona, USA 🇺🇸",
+        "energy_cost": 0.047,  # USA ISO Day-Ahead 2025 (12-month avg): €0.0471/kWh - CAISO market
+        "carbon_tax": 0.0,  # REAL: No carbon tax in Arizona
+        "subsidy_rate": 0.35,  # REAL: CHIPS Act 2022 - TSMC investment
+        "subsidy_source": "USA CHIPS Act (Public Law 117-167) - 35% investment tax credit for TSMC Arizona",
+        "chips_act_eligible": True
+    },
+    {
+        "code": "Texas",
+        "name": "Texas, USA 🇺🇸",
+        "energy_cost": 0.039,  # USA ISO Day-Ahead 2025 (12-month avg): €0.0389/kWh - ERCOT market
+        "carbon_tax": 0.0,  # REAL: No carbon tax in Texas
+        "subsidy_rate": 0.30,  # REAL: CHIPS Act 2022 - Samsung
+        "subsidy_source": "USA CHIPS Act (Public Law 117-167) - 30% investment tax credit for Samsung Taylor",
+        "chips_act_eligible": True
+    },
+    {
+        "code": "Ohio",
+        "name": "Ohio, USA 🇺🇸",
+        "energy_cost": 0.053,  # USA ISO Day-Ahead 2025 (12-month avg): €0.0527/kWh - PJM market
+        "carbon_tax": 0.0,  # REAL: No carbon tax in Ohio
+        "subsidy_rate": 0.33,  # REAL: CHIPS Act 2022 - Intel Megafab
+        "subsidy_source": "USA CHIPS Act (Public Law 117-167) - 33% investment tax credit for Intel Ohio Megafab",
+        "chips_act_eligible": True
+    },
+    {
+        "code": "New York",
+        "name": "New York, USA 🇺🇸",
+        "energy_cost": 0.073,  # USA ISO Day-Ahead 2025 (12-month avg): €0.0734/kWh - NYISO market
+        "carbon_tax": 0.0,  # REAL: No carbon tax in New York
+        "subsidy_rate": 0.32,  # REAL: CHIPS Act 2022 - Micron
+        "subsidy_source": "USA CHIPS Act (Public Law 117-167) - 32% investment tax credit for Micron Clay",
+        "chips_act_eligible": True
+    },
+    
+    # ========== ASIA (Major Semiconductor Hubs) ==========
+    # Energy prices updated from Day-Ahead Market Data (12-month avg Oct 2024-Sep 2025)
+    {
+        "code": "Taiwan",
+        "name": "Taiwan 🇹🇼",
+        "energy_cost": 0.09,  # Note: No Day-Ahead data available, using Taipower 2024 industrial tariff
+        "carbon_tax": 0.0,  # REAL: Carbon fee coming 2025, currently €0 (will be ~€8.50/tonne)
+        "subsidy_rate": 0.30,  # REAL: Taiwan Government Support 2024
+        "subsidy_source": "Industrial Innovation Act - 25-30% R&D tax credits and capital subsidies (Ministry of Economic Affairs)",
+        "chips_act_eligible": False
+    },
+    {
+        "code": "South Korea",
+        "name": "South Korea 🇰🇷",
+        "energy_cost": 0.131,  # Day-Ahead 2025 (12-month avg): €0.1315/kWh - KPX market
+        "carbon_tax": 16.0,  # REAL: K-ETS ₩20,000-25,000/t (~€14-17/t, avg €16) - ICAP 2024
+        "subsidy_rate": 0.38,  # REAL: K-Semiconductor Strategy 2024
+        "subsidy_source": "K-Semiconductor Strategy - 30-38% facility investment support (Ministry of Trade, Industry and Energy)",
+        "chips_act_eligible": False
+    },
+    {
+        "code": "China",
+        "name": "China 🇨🇳",
+        "energy_cost": 0.09,  # Note: No Day-Ahead data available, using NEA 2024 industrial average
+        "carbon_tax": 12.0,  # REAL: Shanghai ETS ¥80-90/t (~€12/t) - Shanghai Environment Exchange 2024
+        "subsidy_rate": 0.40,  # REAL: National IC Fund 2024
+        "subsidy_source": "National Integrated Circuit Industry Investment Fund (Phase III) - 35-40% capital and tax incentives (State Council)",
+        "chips_act_eligible": False
+    },
+    {
+        "code": "Japan",
+        "name": "Japan 🇯🇵",
+        "energy_cost": 0.126,  # Day-Ahead 2025 (12-month avg): €0.1259/kWh - JEPX market
+        "carbon_tax": 1.8,  # REAL: Carbon tax ¥289/t (~€1.80/t) - very low - OECD 2024
+        "subsidy_rate": 0.35,  # REAL: Leading-edge Semiconductor Support 2024
+        "subsidy_source": "Leading-edge Semiconductor Technology Corporation (LSTC) + METI subsidies - 30-35% facility support for TSMC Kumamoto",
+        "chips_act_eligible": False
+    },
+    {
+        "code": "Singapore",
+        "name": "Singapore 🇸🇬",
+        "energy_cost": 0.140,  # Day-Ahead 2025 (12-month avg): €0.1404/kWh - EMC market
+        "carbon_tax": 17.0,  # REAL: Carbon tax S$25/t (~€17/t) - NEA Singapore 2024
+        "subsidy_rate": 0.32,  # REAL: SSIC Program 2024
+        "subsidy_source": "Singapore Semiconductor Industry Competitiveness (SSIC) Program - 25-32% R&D and capital grants (Economic Development Board)",
+        "chips_act_eligible": False
+    },
+    {
+        "code": "India",
+        "name": "India 🇮🇳",
+        "energy_cost": 0.071,  # Day-Ahead 2025 (12-month avg): €0.0714/kWh - IEX market
+        "carbon_tax": 2.5,  # REAL: Indirect via coal cess ~€2.50/t - Ministry of Finance 2024
+        "subsidy_rate": 0.30,  # REAL: India Semiconductor Mission 2024
+        "subsidy_source": "India Semiconductor Mission (ISM) - 30-50% capital expenditure support for Micron Gujarat facility (Ministry of Electronics and IT)",
+        "chips_act_eligible": False
+    },
+    
+    # ========== AMERICAS (Additional Regions) ==========
+    # Energy prices from Day-Ahead Market Data (12-month avg Oct 2024-Sep 2025)
+    {
+        "code": "Brazil",
+        "name": "Brazil 🇧🇷",
+        "energy_cost": 0.028,  # Day-Ahead 2025 (12-month avg): €0.0281/kWh - CCEE market
+        "carbon_tax": 0.0,  # REAL: No carbon tax currently
+        "subsidy_rate": 0.05,  # ⚠️ PLACEHOLDER: No documented sources found (see SUBSIDY_SOURCES.md)
+        "subsidy_source": "Unknown - No verified government program documented",
+        "chips_act_eligible": False
+    },
+    {
+        "code": "Chile",
+        "name": "Chile 🇨🇱",
+        "energy_cost": 0.509,  # Day-Ahead 2025 (12-month avg): €0.5089/kWh - Coordinator market (HIGH!)
+        "carbon_tax": 5.0,  # REAL: Carbon tax ~$5/tCO2
+        "subsidy_rate": 0.05,  # ⚠️ PLACEHOLDER: No documented sources found
+        "subsidy_source": "Unknown - No verified government program documented",
+        "chips_act_eligible": False
+    },
+    
+    # ========== OCEANIA ==========
+    {
+        "code": "Australia",
+        "name": "Australia 🇦🇺",
+        "energy_cost": 0.108,  # Day-Ahead 2025 (12-month avg): €0.1075/kWh - NEM market
+        "carbon_tax": 0.0,  # REAL: No carbon tax (repealed in 2014)
+        "subsidy_rate": 0.05,  # ⚠️ PLACEHOLDER: No documented sources found
+        "subsidy_source": "Unknown - No verified government program documented",
+        "chips_act_eligible": False
+    }
+
+
+# ============================================================================
+# UPDATE REGIONS WITH LIVE ENERGY PRICES
+# ============================================================================
+
+def _update_regions_with_live_prices(regions: List[dict]) -> List[dict]:
+    """
+    Update region energy costs with REAL prices from API cache
+    Falls back to original prices if cache unavailable
+    """
+    live_prices = _load_energy_prices_cache()
+    
+    if not live_prices:
+        return regions  # Use original fallback prices
+    
+    # Region code mapping (ENTSO-E uses full country names, we use codes)
+    code_to_country = {
+        'Germany': ['Germany', 'DE'],
+        'France': ['France', 'FR'], 
+        'Italy': ['Italy', 'IT'],
+        'Spain': ['Spain', 'ES'],
+        'Netherlands': ['Netherlands', 'NL'],
+        'Poland': ['Poland', 'PL'],
+        'Belgium': ['Belgium', 'BE'],
+        'Austria': ['Austria', 'AT'],
+        'Czech Republic': ['Czech Republic', 'CZ'],
+        'Finland': ['Finland', 'FI'],
+        'Greece': ['Greece', 'GR'],
+        'Hungary': ['Hungary', 'HU'],
+        'Portugal': ['Portugal', 'PT'],
+        'Romania': ['Romania', 'RO'],
+        'Slovakia': ['Slovakia', 'SK'],
+        'Slovenia': ['Slovenia', 'SI'],
+        # Non-EU regions keep original
+        'Arizona': ['Arizona', 'AZ'],
+        'Texas': ['Texas', 'TX'],
+        'Ohio': ['Ohio', 'OH'],
+        'New York': ['New York', 'NY'],
+        'Taiwan': ['Taiwan', 'TW'],
+        'South Korea': ['South Korea', 'KR'],
+        'China': ['China', 'CN'],
+        'Japan': ['Japan', 'JP'],
+        'Singapore': ['Singapore', 'SG'],
+        'India': ['India', 'IN']
+    }
+    
+    updated = 0
+    for region in regions:
+        region_code = region['code']
+        
+        # Try to find matching price from cache
+        matched_price = None
+        if region_code in code_to_country:
+            # Check all possible names for this region
+            for name in code_to_country[region_code]:
+                if name in live_prices:
+                    matched_price = live_prices[name]
+                    break
+        
+        if matched_price:
+            old_price = region['energy_cost']
+            new_price = matched_price['price_eur_kwh']
+            region['energy_cost'] = new_price
+            region['energy_source'] = matched_price['source']
+            region['energy_period'] = matched_price.get('period', 'N/A')
+            region['is_fallback'] = matched_price.get('is_fallback', False)
+            region['fallback_reason'] = matched_price.get('fallback_reason', None)
+            
+            diff_pct = ((new_price - old_price) / old_price * 100) if old_price > 0 else 0
+            if abs(diff_pct) > 5:  # Log significant changes
+                fallback_indicator = " [FALLBACK]" if region['is_fallback'] else ""
+                print(f"  🔄 {region_code:15s} €{old_price:.4f} → €{new_price:.4f} ({diff_pct:+.1f}%){fallback_indicator}")
+            
+            updated += 1
+    
+    if updated > 0:
+        print(f"✅ Updated {updated}/{len(regions)} regions with live energy prices")
+    
+    return regions
+
+
+# ============================================================================
+# ACCESS FUNCTIONS
+# ============================================================================
+
+def get_materials_catalog() -> List[Material]:
+    """Get all available materials from real Materials Project data"""
+    materials_data = _load_materials_from_json()
+    return [Material(**m) for m in materials_data]
+
+
+def get_regions_catalog() -> List[Region]:
+    """Get all available regions with LIVE energy prices from API cache"""
+    regions_with_live_prices = _update_regions_with_live_prices(REGIONS_DB)
+    return [Region(**r) for r in regions_with_live_prices]
+
+
+def get_material_by_id(material_id: str) -> Material:
+    """Get a specific material by ID"""
+    materials = get_materials_catalog()
+    material = next((m for m in materials if m.id == material_id), None)
+    
+    if not material:
+        raise ValueError(f"Material '{material_id}' not found")
+    
+    return material
+
+
+def get_region_by_code(region_code: str) -> Region:
+    """Get a specific region by code"""
+    regions = get_regions_catalog()
+    region = next((r for r in regions if r.code == region_code), None)
+    
+    if not region:
+        raise ValueError(f"Region '{region_code}' not found")
+    
+    return region
