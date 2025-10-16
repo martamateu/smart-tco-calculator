@@ -93,7 +93,7 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# CORS middleware - allow frontend on localhost:5173
+# CORS middleware - allow frontend on localhost and GitHub Pages
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -101,6 +101,7 @@ app.add_middleware(
         "http://localhost:3000",
         "http://127.0.0.1:5173",
         "http://127.0.0.1:3000",
+        "https://martamateu.github.io",  # GitHub Pages
     ],
     allow_credentials=True,
     allow_methods=["*"],
