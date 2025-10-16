@@ -93,12 +93,3 @@ npm run dev
 - For backend: add test cases with `pytest`
 - For frontend: use React Testing Library
 
-## License
-
-MIT (add your chosen license here if different)
-
-***
-
-Solo copia todo este contenido y publícalo como archivo README.md en la raíz de tu repositorio. Si quieres añadir imágenes o más detalles, puedes editarlo libremente.
-
-[1](https://github.com/martamateu/smart-tco-calculator/blob/main/backend/main.py)
