@@ -3,6 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, ZAxis } from 'recharts';
 import { useLanguage } from '../contexts/LanguageContext';
 
+// Use production backend URL or localhost for development
+const API_BASE_URL = process.env.NODE_ENV === 'production'
+  ? 'https://smart-tco-backend-859997094469.europe-west1.run.app/api'
+  : 'http://localhost:8000/api';
+
 type Page = 'home' | 'docs' | 'about' | 'citations' | 'dashboard-outlook' | 'dashboard-energy-comparison' | 'dashboard-energy-prices' | 'dashboard-ml-model' | 'dashboard-rag-system';
 
 interface RAGVisualizationProps {
@@ -58,17 +63,17 @@ const RAGVisualization: React.FC<RAGVisualizationProps> = ({ onNavigate }) => {
         setLoading(true);
         
         // Fetch embedding visualization data
-        const embeddingResponse = await fetch('http://localhost:8000/api/rag/embeddings-viz');
+        const embeddingResponse = await fetch(`${API_BASE_URL}/rag/embeddings-viz`);
         if (!embeddingResponse.ok) throw new Error('Failed to fetch RAG embeddings');
         const embeddingData = await embeddingResponse.json();
         
         // Fetch retrieval example
-        const retrievalResponse = await fetch(`http://localhost:8000/api/rag/retrieval-demo?query=${encodeURIComponent(selectedQuery)}`);
+        const retrievalResponse = await fetch(`${API_BASE_URL}/rag/retrieval-demo?query=${encodeURIComponent(selectedQuery)}`);
         if (!retrievalResponse.ok) throw new Error('Failed to fetch retrieval example');
         const retrievalData = await retrievalResponse.json();
         
         // Fetch RAG statistics
-        const statsResponse = await fetch('http://localhost:8000/api/rag/stats');
+        const statsResponse = await fetch(`${API_BASE_URL}/rag/stats`);
         if (!statsResponse.ok) throw new Error('Failed to fetch RAG stats');
         const statsData = await statsResponse.json();
         

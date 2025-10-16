@@ -4,6 +4,11 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import { useLanguage } from '../contexts/LanguageContext';
 import api from '../services/api';
 
+// Use production backend URL or localhost for development
+const API_BASE_URL = process.env.NODE_ENV === 'production'
+  ? 'https://smart-tco-backend-859997094469.europe-west1.run.app/api'
+  : 'http://localhost:8000/api';
+
 type Page = 'home' | 'docs' | 'about' | 'citations' | 'dashboard-outlook' | 'dashboard-energy-comparison' | 'dashboard-energy-prices' | 'dashboard-ml-model' | 'dashboard-rag-system';
 
 interface RandomForestVisualizationProps {
@@ -36,7 +41,7 @@ const RandomForestVisualization: React.FC<RandomForestVisualizationProps> = ({ o
         setLoading(true);
         
         // Fetch feature importance from backend
-        const response = await fetch('http://localhost:8000/api/ml-model/feature-importance');
+        const response = await fetch(`${API_BASE_URL}/ml-model/feature-importance`);
         if (!response.ok) throw new Error('Failed to fetch model data');
         
         const data = await response.json();
