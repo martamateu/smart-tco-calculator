@@ -1,7 +1,8 @@
 import { TcoInput, TcoResult, Material, Region, Scenario, Explanation, ChatRequest, ChatResponse } from '../types';
 
 // Use production backend URL or localhost for development
-const API_BASE_URL = process.env.NODE_ENV === 'production'
+// For GitHub Pages, we always use production backend
+const API_BASE_URL = window.location.hostname === 'martamateu.github.io'
   ? 'https://smart-tco-backend-859997094469.europe-west1.run.app/api'
   : 'http://localhost:8000/api';
 
