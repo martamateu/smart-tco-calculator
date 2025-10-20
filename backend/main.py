@@ -1,6 +1,39 @@
 """
 Smart TCO Calculator - FastAPI Backend
-Main application entry point with CORS, routing, and health checks.
+Ma    logger.info("🚀 Starting Smart TCO Calculator Backend...")
+
+    # Load energy price caches from GCS on startup
+    try:
+        logger.info("☁️  Loading price caches from Cloud Storage...")
+        cache_dir = Path(__file__).parent / "data" / "cache"
+        cache_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Download ENTSO-E cache
+        try:
+            entso_local = cache_dir / "energy_prices_live.json"
+            download_from_gcs("cache/energy_prices_live.json", str(entso_local))
+            logger.info("   ✅ ENTSO-E cache loaded from GCS")
+        except Exception as e:
+            logger.warning(f"   ⚠️  Failed to load ENTSO-E cache from GCS: {e}")
+        
+        # Download EIA cache  
+        try:
+            eia_local = Path(__file__).parent / "data" / "eia_prices_cache.json"
+            download_from_gcs("cache/eia_prices_cache.json", str(eia_local))
+            logger.info("   ✅ EIA cache loaded from GCS")
+        except Exception as e:
+            logger.warning(f"   ⚠️  Failed to load EIA cache from GCS: {e}")
+            
+        logger.info("✅ Price caches synchronized from Cloud Storage")
+    except Exception as e:
+        logger.warning(f"⚠️  Failed to load caches from GCS (will use local): {e}")
+
+    # Mark the RAG as initializing and provide placeholders in app.state
+    app.state.rag_engine = None
+    app.state.data_loader = None
+    app.state.rag_initializing = True
+
+    async def _init_rag_background():cation entry point with CORS, routing, and health checks.
 """
 
 from fastapi import FastAPI, Request
@@ -22,6 +55,7 @@ from backend.routers import tco, materials, regions, scenarios, admin, ml_visual
 from backend.utils.logger import setup_logger
 from backend.data_knowledge_layer.loader import DataLoader
 from backend.data_knowledge_layer.rag_engine import RAGEngine
+from backend.utils.gcs_cache import download_from_gcs
 
 # Setup logging
 logger = setup_logger(__name__)
