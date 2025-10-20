@@ -13,12 +13,24 @@ from datetime import datetime
 from backend.utils.data_audit import DataAudit
 from backend.utils.fetch_energy_prices import update_energy_cache
 from backend.utils.fetch_eia_prices import update_eia_prices_cache
-from backend.utils.fetch_materials_project import update_materials_database, get_materials_update_status
 from backend.train_tco_model import train_model
 from backend.utils.gcs_cache import upload_to_gcs, load_json_from_gcs, save_json_to_gcs, get_cache_age_hours
 
 router = APIRouter(prefix="/api/admin", tags=["admin"])
 logger = logging.getLogger(__name__)
+
+# Import Materials Project functions - optional (requires mp-api package)
+try:
+    from backend.utils.fetch_materials_project import update_materials_database, get_materials_update_status
+    MATERIALS_PROJECT_AVAILABLE = True
+except ImportError as e:
+    logger.warning(f"⚠️  Materials Project API not available: {e}")
+    MATERIALS_PROJECT_AVAILABLE = False
+    # Provide fallback functions
+    def update_materials_database(dry_run=False):
+        return {"success": False, "error": "mp-api package not installed or incompatible"}
+    def get_materials_update_status():
+        return {"exists": False, "error": "mp-api not available"}
 
 # Simple auth for admin endpoints (in production, use proper authentication)
 ADMIN_API_KEY = os.getenv("ADMIN_API_KEY", "dev-only-key-please-change")
