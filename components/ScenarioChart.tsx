@@ -26,11 +26,10 @@ const ScenarioChart: React.FC<ScenarioChartProps> = ({ onNavigate }) => {
   const [materials, setMaterials] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   
-  // FIXED: Only use regions that actually exist in global_electricity_data_2025.json
-  // Available: Poland, Germany, France, Italy, Spain, Netherlands, Sweden, Belgium,
-  //           Taiwan, South Korea, United States, China, Japan (13 total)
+  // FIXED: Only use regions that actually exist in the backend
+  // Available: EU countries, Asian countries, and US states
   const topRegions = ['Germany', 'France', 'Netherlands', 'Spain', 'Belgium', 
-                     'United States', 'Taiwan', 'South Korea', 'Japan', 'China', 'Poland', 'Italy', 'Sweden'];
+                     'California', 'Taiwan', 'South Korea', 'Japan', 'China', 'Poland', 'Italy', 'Sweden'];
 
   useEffect(() => {
     api.getMaterials().then(materialsData => {
