@@ -13,6 +13,7 @@ from datetime import datetime
 from backend.utils.data_audit import DataAudit
 from backend.utils.fetch_energy_prices import update_energy_cache
 from backend.utils.fetch_eia_prices import update_eia_prices_cache
+from backend.utils.fetch_materials_project import update_materials_database, get_materials_update_status
 from backend.train_tco_model import train_model
 from backend.utils.gcs_cache import upload_to_gcs, load_json_from_gcs, save_json_to_gcs, get_cache_age_hours
 
@@ -244,6 +245,63 @@ async def refresh_eia_prices(
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@router.post("/refresh-prices/materials-project")
+async def refresh_materials_project(
+    request: Request,
+    background_tasks: BackgroundTasks,
+    x_api_key: Optional[str] = Header(None),
+    authorization: Optional[str] = Header(None),
+    dry_run: bool = False
+):
+    """
+    Update semiconductor material properties from Materials Project API.
+    Called by Cloud Scheduler monthly (or manually).
+    
+    Updates physical properties: band_gap, density, formation_energy, is_stable
+    Preserves manual data: chip_cost, trl, carbon_footprint, energy_consumption
+    
+    Query params:
+        - dry_run: If true, shows what would be updated without saving
+    """
+    verify_admin_auth(request, x_api_key, authorization)
+    
+    logger.info("🔬 Starting Materials Project update...")
+    
+    # Get API key from environment
+    mp_api_key = os.getenv("MATERIALS_PROJECT_API_KEY")
+    if not mp_api_key:
+        raise HTTPException(
+            status_code=500,
+            detail="MATERIALS_PROJECT_API_KEY not configured in environment"
+        )
+    
+    try:
+        # Run update in background
+        def update_materials():
+            try:
+                result = update_materials_database(dry_run=dry_run)
+                logger.info(f"✅ Materials Project update completed: {result}")
+            except Exception as e:
+                logger.error(f"❌ Materials Project update failed: {e}")
+        
+        background_tasks.add_task(update_materials)
+        
+        return {
+            "status": "started",
+            "source": "Materials Project API",
+            "materials_count": 27,
+            "updates": ["band_gap_ev", "density_g_cm3", "formation_energy_ev_atom", "is_stable"],
+            "preserves": ["chip_cost_eur", "trl", "carbon_footprint_kg", "energy_consumption_w"],
+            "dry_run": dry_run,
+            "message": "Materials Project update started in background" if not dry_run else "DRY RUN - showing changes without saving",
+            "timestamp": datetime.now().isoformat()
+        }
+    
+    except Exception as e:
+        logger.error(f"❌ Failed to start Materials Project update: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @router.post("/retrain-model")
 async def retrain_ml_model(
     request: Request,
@@ -327,11 +385,13 @@ async def get_system_status():
     """
     cache_file = Path(__file__).parent.parent / "data" / "cache" / "energy_prices_live.json"
     model_file = Path(__file__).parent.parent / "models" / "tco_random_forest.pkl"
+    materials_status = get_materials_update_status()
     
     return {
         "timestamp": datetime.now().isoformat(),
         "energy_prices_available": cache_file.exists(),
         "ml_model_available": model_file.exists(),
+        "materials_database": materials_status,
         "rag_engine_status": "operational",
         "api_version": "1.0.0"
     }
