@@ -218,7 +218,7 @@ async def refresh_eia_prices(
         # Run update in background
         def update_prices():
             try:
-                update_eia_prices_cache(eia_api_key)
+                update_eia_prices_cache()  # Function gets API key from environment internally
                 logger.info("✅ EIA prices updated successfully")
             except Exception as e:
                 logger.error(f"❌ EIA price update failed: {e}")
