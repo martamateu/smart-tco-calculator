@@ -1,47 +1,6 @@
 """
 Smart TCO Calculator - FastAPI Backend
-Ma    logger.info("🚀 Starting Smart TCO Calculator Backend...")
-
-    # Load energy price caches from GCS on startup
-    try:
-        logger.info("☁️  Loading price caches from Cloud Storage...")
-        cache_dir = Path(__file__).parent / "data" / "cache"
-        cache_dir.mkdir(parents=True, exist_ok=True)
-        
-        # Download ENTSO-E cache
-        try:
-            entso_local = cache_dir / "energy_prices_live.json"
-            download_from_gcs("cache/energy_prices_live.json", str(entso_local))
-            logger.info("   ✅ ENTSO-E cache loaded from GCS")
-        except Exception as e:
-            logger.warning(f"   ⚠️  Failed to load ENTSO-E cache from GCS: {e}")
-        
-        # Download EIA cache  
-        try:
-            eia_local = Path(__file__).parent / "data" / "eia_prices_cache.json"
-            download_from_gcs("cache/eia_prices_cache.json", str(eia_local))
-            logger.info("   ✅ EIA cache loaded from GCS")
-        except Exception as e:
-            logger.warning(f"   ⚠️  Failed to load EIA cache from GCS: {e}")
-        
-        # Download materials database
-        try:
-            materials_local = Path(__file__).parent / "data" / "semiconductors_comprehensive.json"
-            download_from_gcs("data/semiconductors_comprehensive.json", str(materials_local))
-            logger.info("   ✅ Materials database loaded from GCS")
-        except Exception as e:
-            logger.warning(f"   ⚠️  Failed to load materials from GCS (using local): {e}")
-            
-        logger.info("✅ Caches synchronized from Cloud Storage")
-    except Exception as e:
-        logger.warning(f"⚠️  Failed to load caches from GCS (will use local): {e}")
-
-    # Mark the RAG as initializing and provide placeholders in app.state
-    app.state.rag_engine = None
-    app.state.data_loader = None
-    app.state.rag_initializing = True
-
-    async def _init_rag_background():cation entry point with CORS, routing, and health checks.
+Main application entry point with CORS, routing, and health checks.
 """
 
 from fastapi import FastAPI, Request
@@ -84,7 +43,41 @@ async def lifespan(app: FastAPI):
     """
     global data_loader, rag_engine
 
-    logger.info("\ud83d\ude80 Starting Smart TCO Calculator Backend...")
+    logger.info("🚀 Starting Smart TCO Calculator Backend...")
+
+    # Load energy price caches from GCS on startup
+    try:
+        logger.info("☁️  Loading price caches from Cloud Storage...")
+        cache_dir = Path(__file__).parent / "data" / "cache"
+        cache_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Download ENTSO-E cache
+        try:
+            entso_local = cache_dir / "energy_prices_live.json"
+            download_from_gcs("cache/energy_prices_live.json", str(entso_local))
+            logger.info("   ✅ ENTSO-E cache loaded from GCS")
+        except Exception as e:
+            logger.warning(f"   ⚠️  Failed to load ENTSO-E cache from GCS: {e}")
+        
+        # Download EIA cache  
+        try:
+            eia_local = Path(__file__).parent / "data" / "eia_prices_cache.json"
+            download_from_gcs("cache/eia_prices_cache.json", str(eia_local))
+            logger.info("   ✅ EIA cache loaded from GCS")
+        except Exception as e:
+            logger.warning(f"   ⚠️  Failed to load EIA cache from GCS: {e}")
+        
+        # Download materials database
+        try:
+            materials_local = Path(__file__).parent / "data" / "semiconductors_comprehensive.json"
+            download_from_gcs("data/semiconductors_comprehensive.json", str(materials_local))
+            logger.info("   ✅ Materials database loaded from GCS")
+        except Exception as e:
+            logger.warning(f"   ⚠️  Failed to load materials from GCS (using local): {e}")
+            
+        logger.info("✅ Caches synchronized from Cloud Storage")
+    except Exception as e:
+        logger.warning(f"⚠️  Failed to load caches from GCS (will use local): {e}")
 
     # Mark the RAG as initializing and provide placeholders in app.state
     app.state.rag_engine = None
