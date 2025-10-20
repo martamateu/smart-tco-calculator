@@ -52,6 +52,89 @@ Real-time TCO analysis for semiconductor manufacturing across 27 materials and 1
 
 ## 🏗️ Architecture
 
+### System Overview
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    PRESENTATION LAYER                        │
+│                                                              │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │           GitHub Pages - Static Hosting              │  │
+│  │  React + TypeScript + Vite + i18n (EN/ES/CAT)       │  │
+│  └──────────────────────────────────────────────────────┘  │
+└────────────────────────┬─────────────────────────────────────┘
+                         │ HTTPS
+┌────────────────────────┴─────────────────────────────────────┐
+│                   CI/CD PIPELINE                             │
+│              GitHub Actions - Automated Deployment           │
+└────────────────────────┬─────────────────────────────────────┘
+                         │
+┌────────────────────────┴─────────────────────────────────────┐
+│           APPLICATION LAYER - Google Cloud Run               │
+│                                                              │
+│  ┌──────────────┐  ┌──────────────────────────────────────┐│
+│  │   FastAPI    │  │      API Endpoints                   ││
+│  │   Service    │──│  /materials  /regions  /predict      ││
+│  │   REST API   │  │  /explain    /chat     /admin        ││
+│  └──────────────┘  └──────────────────────────────────────┘│
+│         │                                                    │
+│  ┌──────┴──────┐                                            │
+│  │  Business   │   ┌─────────────────────────────────────┐ │
+│  │   Logic     │───│     RAG Knowledge System            │ │
+│  └─────────────┘   │  - loader (PDF documents)          │ │
+│                    │  - retriever (semantic search)      │ │
+│                    │  - rag_engine (LLM + context)       │ │
+│                    └─────────────────────────────────────┘ │
+│                                                              │
+│  ┌──────────────────────────────────┐  ┌─────────────────┐│
+│  │   Entities & Schemas             │  │  Random Forest  ││
+│  │   (Pydantic models)              │──│     Model       ││
+│  └──────────────────────────────────┘  │  (ML inference) ││
+│                                         └─────────────────┘│
+└────────────────────────┬─────────────────────────────────────┘
+                         │
+┌────────────────────────┴─────────────────────────────────────┐
+│              DATA & INFRASTRUCTURE                           │
+│                                                              │
+│  ┌─────────────────────────────┐  ┌─────────────────────┐  │
+│  │      GCS Bucket             │  │  Cloud Scheduler    │  │
+│  │  Cache & Static Data        │  │  Automated Tasks    │  │
+│  │  - energy_prices_live.json  │  │  - ENTSO-E (8h)    │  │
+│  │  - eia_prices_cache.json    │  │  - EIA (daily)     │  │
+│  │  - semiconductors_*.json    │  │  - Materials (Q)   │  │
+│  └─────────────────────────────┘  └─────────────────────┘  │
+└──────────────────────────────────────────────────────────────┘
+         │              │              │              │
+┌────────┴──────┐  ┌────┴─────┐  ┌────┴──────┐  ┌────┴──────┐
+│   ENTSO-E     │  │   EIA    │  │ Materials │  │  Gemini   │
+│ EU Energy Data│  │ US Energy│  │  Project  │  │    AI     │
+└───────────────┘  └──────────┘  └───────────┘  │LLM Service│
+                                                 └───────────┘
+```
+
+### Key Components
+
+**Presentation Layer:**
+- Static React app hosted on GitHub Pages
+- Multi-language support (EN/ES/CAT)
+- Responsive design for mobile/desktop
+
+**Application Layer:**
+- **FastAPI Service**: Python REST API on Cloud Run
+- **Business Logic**: TCO calculations, price updates, data validation
+- **RAG System**: PDF document loader + semantic search + LLM-powered explanations
+- **ML Model**: Random Forest for TCO predictions
+
+**Data Layer:**
+- **GCS Bucket**: Persistent storage for caches and static data
+- **Cloud Scheduler**: Automated data refresh (OIDC authenticated)
+
+**External APIs:**
+- ENTSO-E: Day-ahead electricity prices (19 EU countries)
+- EIA: Retail electricity prices (5 US states)
+- Materials Project: Semiconductor material properties (27 materials)
+- Google Gemini: AI explanations and chat
+
 ### Backend (FastAPI + Cloud Run)
 - **Hosting:** Google Cloud Run (europe-west1)
 - **URL:** https://smart-tco-backend-859997094469.europe-west1.run.app
