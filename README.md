@@ -18,7 +18,7 @@ Real-time TCO analysis for semiconductor manufacturing across 27 materials and 1
 |-----------|--------|------------------|---------|------------|
 | **EU Energy Prices** | [ENTSO-E Transparency Platform](https://transparency.entsoe.eu/) | Every 8 hours | 19 EU countries | ✅ Active |
 | **USA Energy Prices** | [EIA Open Data](https://www.eia.gov/opendata/) | Daily at 6 AM EST | 5 states (CA, TX, AZ, OH, NY) | ✅ Active |
-| **Material Properties** | [Materials Project API](https://materialsproject.org/) | Monthly (1st at 2 AM) | 27 semiconductors | ✅ Active |
+| **Material Properties** | [Materials Project REST API](https://materialsproject.org/) | Quarterly (Jan/Apr/Jul/Oct) | 27 semiconductors | ✅ Active |
 
 **EU Regions (ENTSO-E):** Austria, Belgium, Bulgaria, Croatia, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Netherlands, Poland, Portugal, Spain, United Kingdom
 
@@ -59,7 +59,7 @@ Real-time TCO analysis for semiconductor manufacturing across 27 materials and 1
 - **Schedulers:** Cloud Scheduler with OIDC authentication
   - `refresh-entsoe-prices`: Every 8 hours (Europe/Madrid)
   - `refresh-eia-prices`: Daily at 6 AM (America/New_York)
-  - `refresh-materials-project`: Monthly on 1st (Europe/Madrid)
+  - `refresh-materials-project`: Quarterly - 1st of Jan/Apr/Jul/Oct at 3 AM (Europe/Madrid)
 
 ### Frontend (React + GitHub Pages)
 - **Hosting:** GitHub Pages

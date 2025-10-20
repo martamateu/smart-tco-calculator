@@ -6,14 +6,14 @@ REGION="europe-west1"
 BACKEND_URL="https://smart-tco-backend-859997094469.europe-west1.run.app"
 SERVICE_ACCOUNT="859997094469-compute@developer.gserviceaccount.com"
 
-# Job name and schedule (monthly on 1st at 2 AM Madrid time)
+# Job name and schedule (quarterly on 1st of Jan/Apr/Jul/Oct at 3 AM Madrid time)
 JOB_NAME="refresh-materials-project"
-SCHEDULE="0 2 1 * *"  # Cron: minute hour day month weekday
+SCHEDULE="0 3 1 1,4,7,10 *"  # Cron: minute hour day month weekday (Jan, Apr, Jul, Oct)
 TIMEZONE="Europe/Madrid"
 
 echo "🔬 Creating Cloud Scheduler for Materials Project updates..."
 echo ""
-echo "Schedule: Monthly (1st day at 2 AM Madrid time)"
+echo "Schedule: Quarterly (1st day of Jan/Apr/Jul/Oct at 3 AM Madrid time)"
 echo "Endpoint: POST $BACKEND_URL/api/admin/refresh-prices/materials-project"
 echo ""
 
@@ -31,7 +31,7 @@ gcloud scheduler jobs create http "$JOB_NAME" \
   --message-body='{"dry_run": false}' \
   --attempt-deadline="600s" \
   --max-retry-attempts=3 \
-  --description="Update semiconductor material properties from Materials Project API (monthly)"
+  --description="Update semiconductor material properties from Materials Project API (quarterly: Jan/Apr/Jul/Oct)"
 
 if [ $? -eq 0 ]; then
   echo ""
