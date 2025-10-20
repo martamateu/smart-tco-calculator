@@ -51,9 +51,9 @@ const EnhancedScenarioChart: React.FC<EnhancedScenarioChartProps> = ({ onNavigat
       setRegionsData(regionMap);
       
       // FIXED: Default selection with only real regions from Mendeley dataset
-      // Available: Poland, Germany, France, Italy, Spain, Netherlands, Sweden, Belgium,
-      //           Taiwan, South Korea, United States, China, Japan (13 total)
-      const defaultRegions = ['Germany', 'France', 'United States', 'Japan', 'South Korea', 'Taiwan', 'China', 'Poland'];
+      // Available: Poland, Germany, France, Italy, Spain, Netherlands, Sweden, Belgium, Denmark,
+      //           Taiwan, South Korea, China, Japan, California, Texas, Arizona, Ohio, New York (18 total)
+      const defaultRegions = ['Germany', 'France', 'California', 'Japan', 'South Korea', 'Taiwan', 'China', 'Poland'];
       const availableDefaults = defaultRegions.filter(code => 
         regions.some((r: any) => r.code === code)
       );

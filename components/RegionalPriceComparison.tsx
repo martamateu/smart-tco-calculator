@@ -68,7 +68,7 @@ const RegionalPriceComparison: React.FC<RegionalPriceComparisonProps> = ({ onNav
   if (loading) {
     return (
       <div className="bg-white p-8 rounded-2xl shadow-lg mt-8">
-        <div className="animate-pulse">Loading global electricity prices from Mendeley dataset...</div>
+        <div className="animate-pulse">{t.dashboard.energyPrices.loading}</div>
       </div>
     );
   }
@@ -91,13 +91,13 @@ const RegionalPriceComparison: React.FC<RegionalPriceComparisonProps> = ({ onNav
   return (
     <div className="bg-white p-8 rounded-2xl shadow-lg mt-8">
       <h2 className="text-2xl font-bold text-gray-800 mb-4">
-        ⚡ Global Electricity Price Comparison Dashboard
+        {t.dashboard.energyPrices.title}
       </h2>
       <p className="text-gray-600 text-sm mb-6">
-        Comprehensive electricity pricing analysis across 32 countries using validated data from <strong>Mendeley Data</strong> repository (DOI: 10.17632/s54n4tyyz4.3). This dataset provides industrial electricity prices for semiconductor manufacturing hubs in Europe, North America, Asia-Pacific, and Latin America. Prices reflect 2025 Q1 data and show up to <strong>10x variation</strong> between regions, directly impacting TCO calculations as documented by <strong>BCG (2023)</strong>.
+        {t.dashboard.energyPrices.description}
         <br />
         <span className="text-xs text-blue-700 mt-2 block">
-          📊 Data Source: Mendeley Global Electricity Dataset (DOI: 10.17632/s54n4tyyz4.3) | Validated against IEA Energy Prices | BCG Cost Benchmarks
+          📊 {t.dashboard.energyPrices.dataSources}
         </span>
       </p>
       

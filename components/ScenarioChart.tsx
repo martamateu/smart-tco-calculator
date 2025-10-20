@@ -26,10 +26,11 @@ const ScenarioChart: React.FC<ScenarioChartProps> = ({ onNavigate }) => {
   const [materials, setMaterials] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   
-  // FIXED: Only use regions that actually exist in the backend
-  // Available: EU countries, Asian countries, and US states
-  const topRegions = ['Germany', 'France', 'Netherlands', 'Spain', 'Belgium', 
-                     'California', 'Taiwan', 'South Korea', 'Japan', 'China', 'Poland', 'Italy', 'Sweden'];
+  // FIXED: All 18 regions available in the backend
+  // EU countries, Asian countries, and US states
+  const topRegions = ['Poland', 'Germany', 'France', 'Italy', 'Spain', 'Netherlands', 
+                     'Sweden', 'Belgium', 'Denmark', 'Taiwan', 'South Korea', 'China', 
+                     'Japan', 'California', 'Texas', 'Arizona', 'Ohio', 'New York'];
 
   useEffect(() => {
     api.getMaterials().then(materialsData => {
@@ -99,20 +100,20 @@ const ScenarioChart: React.FC<ScenarioChartProps> = ({ onNavigate }) => {
   return (
     <div className="bg-white p-8 rounded-2xl shadow-lg mt-8">
       <h2 className="text-2xl font-bold text-gray-800 mb-4">
-        🌍 Regional TCO Comparison Dashboard
+        {t.dashboard.outlook.title}
       </h2>
       <p className="text-gray-600 text-sm mb-6">
-        Comprehensive TCO analysis across 32 countries with real-time data integration. This dashboard compares total cost of ownership for semiconductor manufacturing using validated electricity prices from <strong>Mendeley Data</strong> (DOI: 10.17632/s54n4tyyz4.3), carbon intensity from <strong>IEA Global Grid Carbon Intensity</strong>, and industry benchmarks validated by <strong>BCG (2023)</strong>. Energy costs can vary up to 10x between regions, while subsidies impact TCO by 25-50%.
+        {t.dashboard.outlook.description}
         <br />
         <span className="text-xs text-blue-700 mt-2 block">
-          📊 Data Sources: Mendeley Global Electricity Dataset (2025) | IEA Grid Carbon Intensity | BCG Semiconductor Cost Analysis
+          📊 {t.dashboard.outlook.dataSources}
         </span>
       </p>
       
       {/* Material Selector */}
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          Select Semiconductor Material:
+          {t.dashboard.outlook.selectMaterial}
         </label>
         <select
           value={selectedMaterial}
@@ -135,7 +136,7 @@ const ScenarioChart: React.FC<ScenarioChartProps> = ({ onNavigate }) => {
             selectedMetric === 'total' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
           }`}
         >
-          📊 Total TCO
+          📊 {t.dashboard.outlook.totalTCO}
         </button>
         <button
           onClick={() => setSelectedMetric('energy')}
@@ -143,7 +144,7 @@ const ScenarioChart: React.FC<ScenarioChartProps> = ({ onNavigate }) => {
             selectedMetric === 'energy' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
           }`}
         >
-          ⚡ Energy Cost
+          ⚡ {t.dashboard.outlook.energyCost}
         </button>
         <button
           onClick={() => setSelectedMetric('subsidy')}
@@ -151,7 +152,7 @@ const ScenarioChart: React.FC<ScenarioChartProps> = ({ onNavigate }) => {
             selectedMetric === 'subsidy' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
           }`}
         >
-          💰 Subsidies
+          💰 {t.dashboard.outlook.subsidyAmount}
         </button>
       </div>
       

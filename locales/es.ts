@@ -423,6 +423,39 @@ export const es: Translations = {
     }
   },
   
+  dashboard: {
+    outlook: {
+      title: "Panel de Comparación Regional de TCO",
+      description: "Análisis exhaustivo de TCO en 18 regiones con integración de datos en tiempo real. Este panel compara el coste total de propiedad para fabricación de semiconductores utilizando precios de electricidad validados de Mendeley Data (DOI: 10.17632/s54n4tyyz4.3), intensidad de carbono de IEA Global Grid Carbon Intensity, y benchmarks industriales validados por BCG (2023). Los costes energéticos pueden variar hasta 10x entre regiones, mientras que los subsidios impactan el TCO en un 25-50%.",
+      dataSources: "Fuentes de Datos: Mendeley Global Electricity Dataset (2025) | IEA Grid Carbon Intensity | Análisis de Costes BCG",
+      selectMaterial: "Seleccionar Material Semiconductor:",
+      totalTCO: "TCO Total",
+      energyCost: "Coste Energético",
+      subsidyAmount: "Cantidad de Subsidio"
+    },
+    energyComparison: {
+      title: "Panel de Tendencias de Coste Energético a 5 Años",
+      description: "Rastrea y compara la evolución del coste energético en múltiples regiones durante un período de proyección de 5 años. Este análisis utiliza datos de precios actuales combinados con previsiones de crecimiento para ayudar a visualizar las implicaciones del TCO a largo plazo.",
+      loading: "Cargando tendencias energéticas regionales...",
+      error: "Error al cargar datos de comparación multirregional.",
+      selectRegions: "Seleccionar Regiones a Comparar (hasta 8):",
+      selectMetric: "Seleccionar Métrica:",
+      energyCostLabel: "Coste Energético (€)",
+      subsidyRateLabel: "Tasa de Subsidio (%)",
+      totalCostLabel: "Coste Total (€)"
+    },
+    energyPrices: {
+      title: "Panel de Comparación Global de Precios de Electricidad",
+      description: "Análisis exhaustivo de precios de electricidad en 18 regiones utilizando datos validados del repositorio Mendeley Data (DOI: 10.17632/s54n4tyyz4.3). Este conjunto de datos proporciona precios de electricidad industrial para centros de fabricación de semiconductores en Europa, América del Norte, Asia-Pacífico y América Latina. Los precios reflejan datos del Q1 de 2025 y muestran hasta una variación de 10x entre regiones, impactando directamente en los cálculos de TCO según documentado por BCG (2023).",
+      dataSources: "Fuente de Datos: Mendeley Global Electricity Dataset (DOI: 10.17632/s54n4tyyz4.3) | Validado con IEA Energy Prices | Benchmarks de Costes BCG",
+      loading: "Cargando precios globales de electricidad del dataset Mendeley...",
+      error: "Error al cargar precios de electricidad. Por favor, inténtalo de nuevo.",
+      priceRange: "Rango de Precios",
+      cheapest: "Más Barato",
+      mostExpensive: "Más Caro"
+    }
+  },
+  
   citations: {
     title: "Referencias Bibliográficas",
     subtitle: "Citaciones formales de todos los conjuntos de datos y artículos de investigación utilizados en la Calculadora Inteligente de TCO. Todas las fuentes de datos están verificadas, revisadas por pares o provienen de fuentes gubernamentales/institucionales oficiales.",

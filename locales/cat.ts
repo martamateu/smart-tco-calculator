@@ -423,6 +423,39 @@ export const cat: Translations = {
     }
   },
   
+  dashboard: {
+    outlook: {
+      title: "Panell de Comparació Regional de TCO",
+      description: "Anàlisi exhaustiva de TCO en 18 regions amb integració de dades en temps real. Aquest panell compara el cost total de propietat per a fabricació de semiconductors utilitzant preus d'electricitat validats de Mendeley Data (DOI: 10.17632/s54n4tyyz4.3), intensitat de carboni de IEA Global Grid Carbon Intensity, i benchmarks industrials validats per BCG (2023). Els costos energètics poden variar fins a 10x entre regions, mentre que els subsidis impacten el TCO en un 25-50%.",
+      dataSources: "Fonts de Dades: Mendeley Global Electricity Dataset (2025) | IEA Grid Carbon Intensity | Anàlisi de Costos BCG",
+      selectMaterial: "Seleccionar Material Semiconductor:",
+      totalTCO: "TCO Total",
+      energyCost: "Cost Energètic",
+      subsidyAmount: "Quantitat de Subsidi"
+    },
+    energyComparison: {
+      title: "Panell de Tendències de Cost Energètic a 5 Anys",
+      description: "Rastreja i compara l'evolució del cost energètic en múltiples regions durant un període de projecció de 5 anys. Aquesta anàlisi utilitza dades de preus actuals combinades amb previsions de creixement per ajudar a visualitzar les implicacions del TCO a llarg termini.",
+      loading: "Carregant tendències energètiques regionals...",
+      error: "Error al carregar dades de comparació multiregional.",
+      selectRegions: "Seleccionar Regions a Comparar (fins a 8):",
+      selectMetric: "Seleccionar Mètrica:",
+      energyCostLabel: "Cost Energètic (€)",
+      subsidyRateLabel: "Taxa de Subsidi (%)",
+      totalCostLabel: "Cost Total (€)"
+    },
+    energyPrices: {
+      title: "Panell de Comparació Global de Preus d'Electricitat",
+      description: "Anàlisi exhaustiva de preus d'electricitat en 18 regions utilitzant dades validades del repositori Mendeley Data (DOI: 10.17632/s54n4tyyz4.3). Aquest conjunt de dades proporciona preus d'electricitat industrial per a centres de fabricació de semiconductors a Europa, Amèrica del Nord, Àsia-Pacífic i Amèrica Llatina. Els preus reflecteixen dades del Q1 de 2025 i mostren fins a una variació de 10x entre regions, impactant directament en els càlculs de TCO segons documentat per BCG (2023).",
+      dataSources: "Font de Dades: Mendeley Global Electricity Dataset (DOI: 10.17632/s54n4tyyz4.3) | Validat amb IEA Energy Prices | Benchmarks de Costos BCG",
+      loading: "Carregant preus globals d'electricitat del dataset Mendeley...",
+      error: "Error al carregar preus d'electricitat. Si us plau, torna-ho a intentar.",
+      priceRange: "Rang de Preus",
+      cheapest: "Més Barat",
+      mostExpensive: "Més Car"
+    }
+  },
+  
   citations: {
     title: "Referències Bibliogràfiques",
     subtitle: "Citacions formals de tots els conjunts de dades i articles de recerca utilitzats a la Calculadora Intel·ligent de TCO. Totes les fonts de dades estan verificades, revisades per parells o provenen de fonts governamentals/institucionals oficials.",

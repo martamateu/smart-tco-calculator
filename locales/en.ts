@@ -421,6 +421,39 @@ export const en = {
     }
   },
   
+  dashboard: {
+    outlook: {
+      title: "Regional TCO Comparison Dashboard",
+      description: "Comprehensive TCO analysis across 18 regions with real-time data integration. This dashboard compares total cost of ownership for semiconductor manufacturing using validated electricity prices from Mendeley Data (DOI: 10.17632/s54n4tyyz4.3), carbon intensity from IEA Global Grid Carbon Intensity, and industry benchmarks validated by BCG (2023). Energy costs can vary up to 10x between regions, while subsidies impact TCO by 25-50%.",
+      dataSources: "Data Sources: Mendeley Global Electricity Dataset (2025) | IEA Grid Carbon Intensity | BCG Semiconductor Cost Analysis",
+      selectMaterial: "Select Semiconductor Material:",
+      totalTCO: "Total TCO",
+      energyCost: "Energy Cost",
+      subsidyAmount: "Subsidy Amount"
+    },
+    energyComparison: {
+      title: "5-Year Energy Cost Trends Dashboard",
+      description: "Track and compare energy cost evolution across multiple regions over a 5-year projection period. This analysis uses current price data combined with growth forecasts to help visualize long-term TCO implications.",
+      loading: "Loading regional energy trends...",
+      error: "Error loading multi-region comparison data.",
+      selectRegions: "Select Regions to Compare (up to 8):",
+      selectMetric: "Select Metric:",
+      energyCostLabel: "Energy Cost (€)",
+      subsidyRateLabel: "Subsidy Rate (%)",
+      totalCostLabel: "Total Cost (€)"
+    },
+    energyPrices: {
+      title: "Global Electricity Price Comparison Dashboard",
+      description: "Comprehensive electricity pricing analysis across 18 regions using validated data from Mendeley Data repository (DOI: 10.17632/s54n4tyyz4.3). This dataset provides industrial electricity prices for semiconductor manufacturing hubs in Europe, North America, Asia-Pacific, and Latin America. Prices reflect 2025 Q1 data and show up to 10x variation between regions, directly impacting TCO calculations as documented by BCG (2023).",
+      dataSources: "Data Source: Mendeley Global Electricity Dataset (DOI: 10.17632/s54n4tyyz4.3) | Validated against IEA Energy Prices | BCG Cost Benchmarks",
+      loading: "Loading global electricity prices from Mendeley dataset...",
+      error: "Error loading electricity prices. Please try again.",
+      priceRange: "Price Range",
+      cheapest: "Cheapest",
+      mostExpensive: "Most Expensive"
+    }
+  },
+  
   citations: {
     title: "Academic References",
     subtitle: "Formal citations for all datasets and research papers used in the Smart TCO Calculator. All data sources are verified, peer-reviewed, or from official government/institutional sources.",
