@@ -14,6 +14,7 @@ from backend.utils.data_audit import DataAudit
 from backend.utils.fetch_energy_prices import update_energy_cache
 from backend.utils.fetch_eia_prices import update_eia_prices_cache
 from backend.train_tco_model import train_model
+from backend.utils.gcs_cache import upload_to_gcs, load_json_from_gcs, save_json_to_gcs, get_cache_age_hours
 
 router = APIRouter(prefix="/api/admin", tags=["admin"])
 logger = logging.getLogger(__name__)
@@ -168,9 +169,14 @@ async def refresh_entsoe_prices(
         # Run update in background
         def update_prices():
             try:
+                # Update local cache first
                 cache_path = Path(__file__).parent.parent / "data" / "cache" / "energy_prices_live.json"
                 update_energy_cache(entsoe_api_key, cache_path)
-                logger.info("✅ ENTSO-E prices updated successfully")
+                
+                # Upload to GCS for persistence
+                upload_to_gcs(cache_path, "cache/energy_prices_live.json")
+                
+                logger.info("✅ ENTSO-E prices updated successfully and uploaded to GCS")
             except Exception as e:
                 logger.error(f"❌ ENTSO-E price update failed: {e}")
         
@@ -335,6 +341,7 @@ async def get_system_status():
 async def get_cache_status():
     """
     Get detailed cache status for debugging price updates.
+    Shows both local filesystem and GCS cache status.
     Public endpoint - no auth required.
     """
     import json
@@ -346,7 +353,8 @@ async def get_cache_status():
     result = {
         "timestamp": datetime.now().isoformat(),
         "entso_cache": {},
-        "eia_cache": {}
+        "eia_cache": {},
+        "gcs_cache": {}
     }
     
     # Check ENTSO-E cache
@@ -396,5 +404,24 @@ async def get_cache_status():
             result["eia_cache"] = {"exists": True, "error": str(e)}
     else:
         result["eia_cache"] = {"exists": False}
+    
+    # Check GCS cache
+    try:
+        entso_age = get_cache_age_hours("cache/energy_prices_live.json")
+        eia_age = get_cache_age_hours("cache/eia_prices_cache.json")
+        
+        result["gcs_cache"] = {
+            "bucket": "tco-calculator-cache",
+            "entso_e": {
+                "exists": entso_age is not None,
+                "age_hours": entso_age
+            },
+            "eia": {
+                "exists": eia_age is not None,
+                "age_hours": eia_age
+            }
+        }
+    except Exception as e:
+        result["gcs_cache"] = {"error": str(e)}
     
     return result

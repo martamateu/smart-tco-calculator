@@ -177,9 +177,18 @@ def update_eia_prices_cache() -> Dict[str, any]:
             fail_count += 1
     
     # Save to cache
+    # Save to local cache
     cache_path.parent.mkdir(parents=True, exist_ok=True)
     with open(cache_path, 'w') as f:
         json.dump(results, f, indent=2)
+    
+    # Upload to GCS for persistence
+    try:
+        from backend.utils.gcs_cache import upload_to_gcs
+        upload_to_gcs(cache_path, "cache/eia_prices_cache.json")
+        print("   ☁️  Uploaded to Cloud Storage")
+    except Exception as e:
+        print(f"   ⚠️  Failed to upload to GCS: {e}")
     
     print("\n" + "="*70)
     print(f"✅ EIA PRICE UPDATE COMPLETE")
