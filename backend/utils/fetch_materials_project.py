@@ -3,20 +3,16 @@ Fetch and update semiconductor material properties from Materials Project API.
 
 This module updates physical properties (band gap, density, formation energy)
 while preserving manual data (costs, TRL, carbon footprint).
+
+Uses REST API directly to avoid mp-api Pydantic conflicts.
 """
 
 import os
 import json
+import requests
 from pathlib import Path
 from typing import Dict, List, Optional
 from datetime import datetime
-
-try:
-    from mp_api.client import MPRester
-    MP_API_AVAILABLE = True
-except ImportError:
-    MP_API_AVAILABLE = False
-    print("⚠️  mp-api not installed. Run: pip install mp-api")
 
 
 def get_materials_project_api_key() -> str:
@@ -29,7 +25,7 @@ def get_materials_project_api_key() -> str:
 
 def fetch_material_properties(material_id: str, api_key: str) -> Optional[Dict]:
     """
-    Fetch material properties from Materials Project API.
+    Fetch material properties from Materials Project REST API.
     
     Args:
         material_id: Materials Project ID (e.g., 'mp-149')
@@ -39,39 +35,45 @@ def fetch_material_properties(material_id: str, api_key: str) -> Optional[Dict]:
         Dict with band_gap_ev, density_g_cm3, formation_energy_ev_atom, is_stable
         or None if fetch fails
     """
-    if not MP_API_AVAILABLE:
-        print(f"   ⚠️  Skipping {material_id}: mp-api not available")
-        return None
+    # Materials Project API v2 endpoint
+    # Docs: https://api.materialsproject.org/docs
+    url = f"https://api.materialsproject.org/materials/{material_id}"
+    
+    headers = {
+        "X-API-KEY": api_key,
+        "Accept": "application/json"
+    }
+    
+    # Request specific fields to minimize response size
+    params = {
+        "fields": "material_id,band_gap,density,formation_energy_per_atom,is_stable"
+    }
     
     try:
-        with MPRester(api_key) as mpr:
-            # Get material data
-            docs = mpr.materials.summary.search(
-                material_ids=[material_id],
-                fields=[
-                    "material_id",
-                    "band_gap",
-                    "density",
-                    "formation_energy_per_atom",
-                    "is_stable"
-                ]
-            )
-            
-            if not docs:
-                print(f"   ⚠️  Material {material_id} not found in Materials Project")
-                return None
-            
-            doc = docs[0]
-            
-            return {
-                "band_gap_ev": float(doc.band_gap) if doc.band_gap is not None else 0.0,
-                "density_g_cm3": float(doc.density) if doc.density is not None else 0.0,
-                "formation_energy_ev_atom": float(doc.formation_energy_per_atom) if doc.formation_energy_per_atom is not None else 0.0,
-                "is_stable": bool(doc.is_stable) if doc.is_stable is not None else False
-            }
-            
-    except Exception as e:
+        response = requests.get(url, headers=headers, params=params, timeout=30)
+        response.raise_for_status()
+        
+        data = response.json()
+        
+        # API returns data in 'data' key (v2 format)
+        if "data" not in data or not data["data"]:
+            print(f"   ⚠️  Material {material_id} not found in Materials Project")
+            return None
+        
+        material_data = data["data"][0] if isinstance(data["data"], list) else data["data"]
+        
+        return {
+            "band_gap_ev": float(material_data.get("band_gap", 0)) if material_data.get("band_gap") is not None else 0.0,
+            "density_g_cm3": float(material_data.get("density", 0)) if material_data.get("density") is not None else 0.0,
+            "formation_energy_ev_atom": float(material_data.get("formation_energy_per_atom", 0)) if material_data.get("formation_energy_per_atom") is not None else 0.0,
+            "is_stable": bool(material_data.get("is_stable", False))
+        }
+        
+    except requests.exceptions.RequestException as e:
         print(f"   ❌ Error fetching {material_id}: {e}")
+        return None
+    except (KeyError, ValueError, TypeError) as e:
+        print(f"   ❌ Error parsing response for {material_id}: {e}")
         return None
 
 
@@ -85,15 +87,6 @@ def update_materials_database(dry_run: bool = False) -> Dict[str, any]:
     Returns:
         Dict with update statistics
     """
-    if not MP_API_AVAILABLE:
-        return {
-            "success": False,
-            "error": "mp-api package not installed",
-            "updated": 0,
-            "failed": 0,
-            "skipped": 0
-        }
-    
     # Load current database
     data_dir = Path(__file__).parent.parent / "data"
     json_path = data_dir / "semiconductors_comprehensive.json"
@@ -231,7 +224,7 @@ def get_materials_update_status() -> Dict[str, any]:
         "file_size_kb": round(stat.st_size / 1024, 2),
         "last_modified": modified_time.isoformat(),
         "age_hours": round(age_hours, 1),
-        "api_available": MP_API_AVAILABLE
+        "api_available": True  # Always true now (uses requests directly)
     }
 
 
