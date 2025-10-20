@@ -329,3 +329,72 @@ async def get_system_status():
         "rag_engine_status": "operational",
         "api_version": "1.0.0"
     }
+
+
+@router.get("/cache-status")
+async def get_cache_status():
+    """
+    Get detailed cache status for debugging price updates.
+    Public endpoint - no auth required.
+    """
+    import json
+    from datetime import datetime, timezone
+    
+    entso_cache = Path(__file__).parent.parent / "data" / "cache" / "energy_prices_live.json"
+    eia_cache = Path(__file__).parent.parent / "data" / "eia_prices_cache.json"
+    
+    result = {
+        "timestamp": datetime.now().isoformat(),
+        "entso_cache": {},
+        "eia_cache": {}
+    }
+    
+    # Check ENTSO-E cache
+    if entso_cache.exists():
+        try:
+            with open(entso_cache) as f:
+                data = json.load(f)
+            last_update = data.get("metadata", {}).get("last_update")
+            if last_update:
+                last_update_dt = datetime.fromisoformat(last_update.replace('Z', '+00:00'))
+                age_hours = (datetime.now(timezone.utc) - last_update_dt).total_seconds() / 3600
+            else:
+                age_hours = None
+            
+            result["entso_cache"] = {
+                "exists": True,
+                "last_update": last_update,
+                "age_hours": round(age_hours, 1) if age_hours else None,
+                "regions_count": data.get("metadata", {}).get("regions_covered", 0),
+                "file_size_kb": round(entso_cache.stat().st_size / 1024, 2)
+            }
+        except Exception as e:
+            result["entso_cache"] = {"exists": True, "error": str(e)}
+    else:
+        result["entso_cache"] = {"exists": False}
+    
+    # Check EIA cache
+    if eia_cache.exists():
+        try:
+            with open(eia_cache) as f:
+                data = json.load(f)
+            last_update = data.get("last_updated")
+            if last_update:
+                last_update_dt = datetime.fromisoformat(last_update.replace('Z', '+00:00'))
+                age_hours = (datetime.now(timezone.utc) - last_update_dt).total_seconds() / 3600
+            else:
+                age_hours = None
+                
+            result["eia_cache"] = {
+                "exists": True,
+                "last_update": last_update,
+                "age_hours": round(age_hours, 1) if age_hours else None,
+                "states_count": len(data.get("prices", {})),
+                "file_size_kb": round(eia_cache.stat().st_size / 1024, 2)
+            }
+        except Exception as e:
+            result["eia_cache"] = {"exists": True, "error": str(e)}
+    else:
+        result["eia_cache"] = {"exists": False}
+    
+    return result
