@@ -54,7 +54,7 @@ async def lifespan(app: FastAPI):
         # Download ENTSO-E cache
         try:
             entso_local = cache_dir / "energy_prices_live.json"
-            download_from_gcs("cache/energy_prices_live.json", str(entso_local))
+            download_from_gcs("cache/energy_prices_live.json", entso_local)
             logger.info("   ✅ ENTSO-E cache loaded from GCS")
         except Exception as e:
             logger.warning(f"   ⚠️  Failed to load ENTSO-E cache from GCS: {e}")
@@ -62,7 +62,7 @@ async def lifespan(app: FastAPI):
         # Download EIA cache  
         try:
             eia_local = Path(__file__).parent / "data" / "eia_prices_cache.json"
-            download_from_gcs("cache/eia_prices_cache.json", str(eia_local))
+            download_from_gcs("cache/eia_prices_cache.json", eia_local)
             logger.info("   ✅ EIA cache loaded from GCS")
         except Exception as e:
             logger.warning(f"   ⚠️  Failed to load EIA cache from GCS: {e}")
@@ -70,7 +70,7 @@ async def lifespan(app: FastAPI):
         # Download materials database
         try:
             materials_local = Path(__file__).parent / "data" / "semiconductors_comprehensive.json"
-            download_from_gcs("data/semiconductors_comprehensive.json", str(materials_local))
+            download_from_gcs("data/semiconductors_comprehensive.json", materials_local)
             logger.info("   ✅ Materials database loaded from GCS")
         except Exception as e:
             logger.warning(f"   ⚠️  Failed to load materials from GCS (using local): {e}")
