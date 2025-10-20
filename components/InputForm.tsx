@@ -60,30 +60,51 @@ const InputForm: React.FC<InputFormProps> = ({ onSubmit, isLoading }) => {
             onChange={handleChange}
             className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-roseRed focus:border-roseRed sm:text-sm rounded-md"
           >
-            {/* Wide Bandgap */}
-            <optgroup label="⚡ Wide Bandgap (Power & RF)">
-              {materials.filter(m => ['sic', 'gan', 'gan_on_sic'].includes(m.id)).map(m => 
+            {/* Traditional Semiconductors */}
+            <optgroup label="💎 Traditional Semiconductor">
+              {materials.filter(m => m.category === 'Traditional Semiconductor').map(m => 
                 <option key={m.id} value={m.id}>{m.name}</option>
               )}
             </optgroup>
             
-            {/* Advanced Logic */}
-            <optgroup label="🔬 Advanced Logic (3nm-7nm)">
-              {materials.filter(m => ['si_3nm', 'si_5nm', 'si_7nm'].includes(m.id)).map(m => 
+            {/* Wide-bandgap */}
+            <optgroup label="⚡ Wide-bandgap Semiconductor">
+              {materials.filter(m => m.category === 'Wide-bandgap Semiconductor').map(m => 
                 <option key={m.id} value={m.id}>{m.name}</option>
               )}
             </optgroup>
             
-            {/* Mature Logic */}
-            <optgroup label="💎 Mature Logic (14nm+)">
-              {materials.filter(m => ['si_14nm', 'si_28nm'].includes(m.id)).map(m => 
+            {/* Ultra-wide Bandgap */}
+            <optgroup label="� Ultra-wide Bandgap">
+              {materials.filter(m => m.category === 'Ultra-wide Bandgap').map(m => 
                 <option key={m.id} value={m.id}>{m.name}</option>
               )}
             </optgroup>
             
-            {/* Specialty & Compound */}
-            <optgroup label="🧪 Specialty & Compound Semiconductors">
-              {materials.filter(m => ['gaas', 'inp', 'sige', 'diamond'].includes(m.id)).map(m => 
+            {/* III-V Compounds */}
+            <optgroup label="🧪 III-V Compound">
+              {materials.filter(m => m.category === 'III-V Compound').map(m => 
+                <option key={m.id} value={m.id}>{m.name}</option>
+              )}
+            </optgroup>
+            
+            {/* III-Nitride Wide-bandgap */}
+            <optgroup label="⚡ III-Nitride Wide-bandgap">
+              {materials.filter(m => m.category === 'III-Nitride Wide-bandgap').map(m => 
+                <option key={m.id} value={m.id}>{m.name}</option>
+              )}
+            </optgroup>
+            
+            {/* II-VI Compounds */}
+            <optgroup label="🔬 II-VI Compound">
+              {materials.filter(m => m.category === 'II-VI Compound').map(m => 
+                <option key={m.id} value={m.id}>{m.name}</option>
+              )}
+            </optgroup>
+            
+            {/* 2D Materials */}
+            <optgroup label="📐 2D Transition Metal Dichalcogenide">
+              {materials.filter(m => m.category === '2D Transition Metal Dichalcogenide').map(m => 
                 <option key={m.id} value={m.id}>{m.name}</option>
               )}
             </optgroup>

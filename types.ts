@@ -2,6 +2,7 @@
 export interface Material {
   id: string;
   name: string;
+  category?: string;
   base_cost?: number;
 }
 
