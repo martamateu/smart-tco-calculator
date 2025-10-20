@@ -23,8 +23,16 @@ Ma    logger.info("🚀 Starting Smart TCO Calculator Backend...")
             logger.info("   ✅ EIA cache loaded from GCS")
         except Exception as e:
             logger.warning(f"   ⚠️  Failed to load EIA cache from GCS: {e}")
+        
+        # Download materials database
+        try:
+            materials_local = Path(__file__).parent / "data" / "semiconductors_comprehensive.json"
+            download_from_gcs("data/semiconductors_comprehensive.json", str(materials_local))
+            logger.info("   ✅ Materials database loaded from GCS")
+        except Exception as e:
+            logger.warning(f"   ⚠️  Failed to load materials from GCS (using local): {e}")
             
-        logger.info("✅ Price caches synchronized from Cloud Storage")
+        logger.info("✅ Caches synchronized from Cloud Storage")
     except Exception as e:
         logger.warning(f"⚠️  Failed to load caches from GCS (will use local): {e}")
 
