@@ -52,6 +52,9 @@ Real-time TCO analysis for semiconductor manufacturing across 27 materials and 1
 
 ## 🏗️ Architecture
 
+![System Architecture](docs/images/architecture-diagram.png)
+*Comprehensive system architecture showing all layers and components*
+
 ### System Overview
 
 ```
