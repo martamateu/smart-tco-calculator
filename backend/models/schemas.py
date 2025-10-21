@@ -111,11 +111,11 @@ class TcoPredictRequest(BaseModel):
     """Request for TCO prediction"""
     material: str = Field(..., description="Material ID")
     region: str = Field(..., description="Region code")
-    volume: int = Field(..., gt=0, description="Annual volume of chips")
+    volume: int = Field(..., gt=0, description="Annual production volume (chips per year)")
     years: int = Field(5, ge=1, le=20, description="Analysis period in years")
     energy_cost: Optional[float] = Field(None, description="Override energy cost EUR/kWh")
     subsidy: Optional[float] = Field(None, ge=0, le=1, description="Override subsidy rate")
-    usage_hours: Optional[int] = Field(43800, description="Annual usage hours (default 5 years * 8760)")
+    usage_hours: Optional[int] = Field(43800, description="Operational hours per chip lifetime (default: 5 years * 8760 h/year)")
     
     class Config:
         json_schema_extra = {

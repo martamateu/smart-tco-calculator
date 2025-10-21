@@ -55,13 +55,19 @@ TCO_total = (Chip_Cost + Energy_Cost + Carbon_Tax + Maintenance_Cost + Supply_Ch
 Where:
 
 ```
-Chip_Cost = chip_unit_cost × volume
-Energy_Cost = energy_consumption_per_chip × device_lifetime_hours × volume × energy_price_per_kwh
-Carbon_Tax = carbon_footprint_per_chip × volume × carbon_tax_rate
+Chip_Cost = chip_unit_cost × volume × years
+Energy_Cost = energy_consumption_per_chip × device_lifetime_hours × volume × years × energy_price_per_kwh
+Carbon_Tax = carbon_footprint_per_chip × volume × years × carbon_tax_rate
 Maintenance_Cost = Chip_Cost × 0.10  (10% of chip cost)
 Supply_Chain_Risk = Chip_Cost × risk_factor  (0-15% depending on region)
 Subsidy_Amount = (Chip_Cost + Energy_Cost + Carbon_Tax + Maintenance_Cost) × subsidy_rate
 ```
+
+**Important Notes:**
+- `volume` = annual production (chips per year)
+- `years` = analysis period
+- `device_lifetime_hours` = total operational hours per chip during customer use (default: 5 years × 8,760 h/year = 43,800 hours)
+- Energy costs occur when customers USE the chips, not during manufacturing phase
 
 ---
 
@@ -72,7 +78,7 @@ Subsidy_Amount = (Chip_Cost + Energy_Cost + Carbon_Tax + Maintenance_Cost) × su
 - **Example**: SiC power chip = €2.50, GaN RF chip = €15.00
 - **File**: `backend/data/semiconductors_comprehensive.json`
 
-#### **volume** (chips per year)
+#### **volume** (chips per year - annual production)
 - **Source**: User input
 - **Typical Range**: 10,000 - 10,000,000 chips/year
 

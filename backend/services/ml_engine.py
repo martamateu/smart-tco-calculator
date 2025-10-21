@@ -213,20 +213,32 @@ class TcoEngine:
         self, material, volume: int, years: int, energy_cost_per_kwh: float, usage_hours: int
     ) -> float:
         """
-        Calculate energy costs (fabrication + operational).
+        Calculate energy costs for chip operation during customer use phase.
+        
+        Formula: Energy_Cost = energy_consumption_per_chip × usage_hours_lifetime × volume × years × price_per_kwh
         
         Assumptions:
-        - Each chip operates for `usage_hours` total (default: 5 years * 8760 hours)
-        - Energy cost is based on device power consumption in watts
+        - `volume`: chips produced per year (annual production)
+        - `years`: analysis period
+        - `usage_hours`: total operational hours per chip during its lifetime (default: 5 years * 8760 = 43,800h)
+        - Energy cost occurs when customers USE the chips, not during manufacturing
+        
+        Example:
+        - 250mW chip used for 5 years (43,800h) per chip
+        - 100,000 chips/year × 5 years = 500,000 total chips
+        - kWh per chip: (0.25W × 43,800h) / 1000 = 10.95 kWh per chip lifetime
+        - Total kWh: 10.95 × 500,000 = 5,475,000 kWh (not 5.4 billion!)
+        - Cost: 5,475,000 kWh × €0.17/kWh = €930,750
         """
+        # Total number of chips produced over the analysis period
         total_chips = volume * years
         
         # Energy consumption per chip over its lifetime
-        # Power (W) * Hours / 1000 = kWh
-        kwh_per_chip = (material.energy_consumption * usage_hours) / 1000
+        # Power (W) * Hours / 1000 = kWh per chip
+        kwh_per_chip_lifetime = (material.energy_consumption * usage_hours) / 1000
         
         # Total energy cost
-        total_kwh = kwh_per_chip * total_chips
+        total_kwh = kwh_per_chip_lifetime * total_chips
         total_cost = total_kwh * energy_cost_per_kwh
         
         return total_cost
