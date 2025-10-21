@@ -13,6 +13,7 @@ const InputForm: React.FC<InputFormProps> = ({ onSubmit, isLoading }) => {
   const { t } = useLanguage();
   const [materials, setMaterials] = useState<Material[]>([]);
   const [regions, setRegions] = useState<Region[]>([]);
+  const [isLoadingData, setIsLoadingData] = useState<boolean>(true);
   const [inputs, setInputs] = useState<TcoInput>({
     material: '',
     region: '',
@@ -22,11 +23,18 @@ const InputForm: React.FC<InputFormProps> = ({ onSubmit, isLoading }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const [mats, regs] = await Promise.all([api.getMaterials(), api.getRegions()]);
-      setMaterials(mats);
-      setRegions(regs);
-      if (mats.length > 0) setInputs(prev => ({ ...prev, material: mats[0].id }));
-      if (regs.length > 0) setInputs(prev => ({ ...prev, region: regs[0].code }));
+      try {
+        setIsLoadingData(true);
+        const [mats, regs] = await Promise.all([api.getMaterials(), api.getRegions()]);
+        setMaterials(mats);
+        setRegions(regs);
+        if (mats.length > 0) setInputs(prev => ({ ...prev, material: mats[0].id }));
+        if (regs.length > 0) setInputs(prev => ({ ...prev, region: regs[0].code }));
+      } catch (error) {
+        console.error('Error loading data:', error);
+      } finally {
+        setIsLoadingData(false);
+      }
     };
     fetchData();
   }, []);
@@ -43,6 +51,69 @@ const InputForm: React.FC<InputFormProps> = ({ onSubmit, isLoading }) => {
     e.preventDefault();
     onSubmit(inputs);
   };
+
+  if (isLoadingData) {
+    return (
+      <div className="bg-white p-8 rounded-2xl shadow-lg h-full flex flex-col justify-center items-center">
+        <div className="w-full">
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">{t.home.title}</h2>
+          <p className="text-gray-600 mb-8 text-sm">{t.home.subtitle}</p>
+          
+          <div className="space-y-6">
+            {/* Material Skeleton */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                {t.home.selectMaterial}
+              </label>
+              <div className="relative">
+                <div className="h-10 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 rounded-md animate-pulse"></div>
+              </div>
+            </div>
+
+            {/* Region Skeleton */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                {t.home.selectRegion}
+              </label>
+              <div className="relative">
+                <div className="h-10 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 rounded-md animate-pulse"></div>
+              </div>
+            </div>
+
+            {/* Volume Skeleton */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                {t.home.volume}
+              </label>
+              <div className="h-2 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 rounded-lg animate-pulse mt-2"></div>
+            </div>
+
+            {/* Years Skeleton */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                {t.home.years}
+              </label>
+              <div className="h-2 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 rounded-lg animate-pulse mt-2"></div>
+            </div>
+
+            {/* Button Skeleton */}
+            <div className="pt-2">
+              <div className="h-11 bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300 rounded-xl animate-pulse"></div>
+            </div>
+          </div>
+
+          {/* Loading Text */}
+          <div className="flex items-center justify-center mt-8 gap-2">
+            <svg className="animate-spin h-5 w-5 text-roseRed" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <span className="text-gray-600 text-sm font-medium">Loading materials and regions...</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white p-8 rounded-2xl shadow-lg h-full">
