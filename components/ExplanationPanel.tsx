@@ -224,6 +224,16 @@ const ExplanationPanel: React.FC<ExplanationPanelProps> = ({
         </div>
       </div>
 
+      {/* Animated Arrow - Scroll Down Indicator */}
+      <div className="flex justify-center mt-6 mb-4">
+        <div className="flex flex-col items-center gap-1">
+          <p className="text-xs text-gray-500 font-medium">💬 Aquí tienes un chatbot</p>
+          <svg className="w-6 h-6 text-purple-500 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </div>
+      </div>
+
       {/* Chat Section */}
       <div className="mt-8 pt-6 border-t border-purple-200">
         <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
@@ -313,16 +323,6 @@ const ExplanationPanel: React.FC<ExplanationPanelProps> = ({
                 </button>
               ))}
             </div>
-          </div>
-        )}
-
-        {/* Animated Arrow pointing to chatbot */}
-        {chatHistory.length > 0 && (
-          <div className="mt-8 flex flex-col items-center gap-2">
-            <p className="text-xs text-gray-500 font-medium">Continue asking questions</p>
-            <svg className="w-6 h-6 text-purple-500 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
           </div>
         )}
       </div>
