@@ -41,7 +41,7 @@ const AboutPage: React.FC = () => {
               
               {/* LinkedIn Button */}
               <a
-                href="https://www.linkedin.com/in/marta-mateu-delgado-a2a9a5209/"
+                href="https://www.linkedin.com/in/marta-mateu/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 bg-gradient-to-r from-roseRed to-pink-600 text-white px-8 py-4 rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 font-semibold text-lg"
