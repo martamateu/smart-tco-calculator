@@ -118,6 +118,32 @@ const NavBar: React.FC<NavBarProps> = ({ currentPage, onNavigate }) => {
                     </button>
                     <button
                       onClick={() => {
+                        onNavigate('dashboard-material-comparison');
+                        setShowDashboardMenu(false);
+                      }}
+                      className={`w-full text-left px-4 py-2 text-sm ${
+                        currentPage === 'dashboard-material-comparison' 
+                          ? 'bg-roseRed text-white' 
+                          : 'text-gray-700 hover:bg-gray-100'
+                      }`}
+                    >
+                      💎 {t.nav.dashboardMaterialComparison}
+                    </button>
+                    <button
+                      onClick={() => {
+                        onNavigate('dashboard-sensitivity');
+                        setShowDashboardMenu(false);
+                      }}
+                      className={`w-full text-left px-4 py-2 text-sm ${
+                        currentPage === 'dashboard-sensitivity' 
+                          ? 'bg-roseRed text-white' 
+                          : 'text-gray-700 hover:bg-gray-100'
+                      }`}
+                    >
+                      📊 {t.nav.dashboardSensitivity}
+                    </button>
+                    <button
+                      onClick={() => {
                         onNavigate('dashboard-ml-model');
                         setShowDashboardMenu(false);
                       }}

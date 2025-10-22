@@ -9,6 +9,8 @@ export const cat: Translations = {
     dashboardOutlook: "Perspectiva Regional a 5 Anys",
     dashboardEnergyComparison: "Comparació de Preus d'Energia (5 Anys)",
     dashboardEnergyPrices: "Preus Industrials d'Energia per Regió",
+    dashboardMaterialComparison: "Comparativa de Materials",
+    dashboardSensitivity: "Anàlisi de Sensibilitat",
     dashboardMLModel: "Visualització del Model ML",
     dashboardRAGSystem: "Visualització del Sistema RAG",
     docs: "Documentació",
@@ -116,19 +118,37 @@ Aquesta metodologia híbrida combina la **potència predictiva del ML** amb la *
   2. Negociar contractes PPA (Power Purchase Agreements) amb renovables
   3. Aprofitar subvencions governamentals (EU Chips Act fins 30%)`,
     chatTitle: "Fes Preguntes de Seguiment",
-    chatPlaceholder: "Pregunta sobre costs d'energia, subvencions, comparacions...",
+    chatPlaceholder: "Pregunta sobre costos energètics, subsidis, comparatives...",
     send: "Enviar",
     thinking: "Pensant...",
-    tryAsking: "Prova preguntar:",
+    tryAsking: "Prova a preguntar:",
     copy: "Copiar",
     copied: "Copiat!",
     suggestedQuestions: [
-      "Per què el cost d'energia és tan alt?",
-      "Quines subvencions estan disponibles?",
+      "Per què el cost energètic és tan alt?",
+      "Quins subsidis estan disponibles?",
       "Com es compara amb altres materials?",
-      "Quin és l'impacte de l'impost al carboni?",
-      "Com puc reduir els costs?"
-    ]
+      "Quin és l'impacte de l'impost de carboni?",
+      "Com puc reduir costos?"
+    ],
+    interactiveTitle: "📊 Explora Anàlisis Interactius",
+    interactiveSubtitle: "Fes clic a qualsevol gràfic per veure anàlisis detallades i comparatives interactives:",
+    regionalCard: {
+      title: "Comparativa Regional",
+      description: "18 regions · Preus energia · Subsidis"
+    },
+    materialCard: {
+      title: "Comparativa de Materials",
+      description: "Si · GaN · SiC · GaAs · Diamond"
+    },
+    sensitivityCard: {
+      title: "Anàlisi de Sensibilitat",
+      description: "Energia · Volum · Subsidis"
+    },
+    outlookCard: {
+      title: "Projecció 2025-2030",
+      description: "Tendències · Costos futurs"
+    }
   },
 
   // Scenario Chart

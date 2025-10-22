@@ -222,10 +222,10 @@ const ExplanationPanel: React.FC<ExplanationPanelProps> = ({
           <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
           </svg>
-          📊 Explora Análisis Interactivos
+          {t.explanation.interactiveTitle}
         </h3>
         <p className="text-sm text-gray-600 mb-4">
-          Haz clic en cualquier gráfico para ver análisis detallados y comparativas interactivas:
+          {t.explanation.interactiveSubtitle}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {/* Regional Comparison */}
@@ -240,8 +240,8 @@ const ExplanationPanel: React.FC<ExplanationPanelProps> = ({
               <span className="text-xl">🌍</span>
             </div>
             <div className="flex-1">
-              <h4 className="font-semibold text-gray-800 text-sm">Comparativa Regional</h4>
-              <p className="text-xs text-gray-600">18 regiones · Precios energía · Subsidios</p>
+              <h4 className="font-semibold text-gray-800 text-sm">{t.explanation.regionalCard.title}</h4>
+              <p className="text-xs text-gray-600">{t.explanation.regionalCard.description}</p>
             </div>
             <svg className="w-5 h-5 text-blue-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -260,8 +260,8 @@ const ExplanationPanel: React.FC<ExplanationPanelProps> = ({
               <span className="text-xl">💎</span>
             </div>
             <div className="flex-1">
-              <h4 className="font-semibold text-gray-800 text-sm">Comparativa de Materiales</h4>
-              <p className="text-xs text-gray-600">Si · GaN · SiC · GaAs · Diamond</p>
+              <h4 className="font-semibold text-gray-800 text-sm">{t.explanation.materialCard.title}</h4>
+              <p className="text-xs text-gray-600">{t.explanation.materialCard.description}</p>
             </div>
             <svg className="w-5 h-5 text-purple-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -280,8 +280,8 @@ const ExplanationPanel: React.FC<ExplanationPanelProps> = ({
               <span className="text-xl">📈</span>
             </div>
             <div className="flex-1">
-              <h4 className="font-semibold text-gray-800 text-sm">Análisis de Sensibilidad</h4>
-              <p className="text-xs text-gray-600">Energía · Volumen · Subsidios</p>
+              <h4 className="font-semibold text-gray-800 text-sm">{t.explanation.sensitivityCard.title}</h4>
+              <p className="text-xs text-gray-600">{t.explanation.sensitivityCard.description}</p>
             </div>
             <svg className="w-5 h-5 text-green-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -300,8 +300,8 @@ const ExplanationPanel: React.FC<ExplanationPanelProps> = ({
               <span className="text-xl">🔮</span>
             </div>
             <div className="flex-1">
-              <h4 className="font-semibold text-gray-800 text-sm">Proyección 2025-2030</h4>
-              <p className="text-xs text-gray-600">Tendencias · Costos futuros</p>
+              <h4 className="font-semibold text-gray-800 text-sm">{t.explanation.outlookCard.title}</h4>
+              <p className="text-xs text-gray-600">{t.explanation.outlookCard.description}</p>
             </div>
             <svg className="w-5 h-5 text-yellow-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

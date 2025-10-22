@@ -7,6 +7,8 @@ export const en = {
     dashboardOutlook: "5-Year Regional Outlook",
     dashboardEnergyComparison: "Energy Prices Comparison (5 Years)",
     dashboardEnergyPrices: "Industrial Energy Prices by Region",
+    dashboardMaterialComparison: "Material Comparison",
+    dashboardSensitivity: "Sensitivity Analysis",
     dashboardMLModel: "ML Model Visualization",
     dashboardRAGSystem: "RAG System Visualization",
     docs: "Docs",
@@ -126,7 +128,25 @@ This hybrid methodology combines **ML predictive power** with **SEMI E35 formula
       "How does this compare to other materials?",
       "What's the carbon tax impact?",
       "How can I reduce costs?"
-    ]
+    ],
+    interactiveTitle: "📊 Explore Interactive Analysis",
+    interactiveSubtitle: "Click on any chart to see detailed analysis and interactive comparisons:",
+    regionalCard: {
+      title: "Regional Comparison",
+      description: "18 regions · Energy prices · Subsidies"
+    },
+    materialCard: {
+      title: "Material Comparison",
+      description: "Si · GaN · SiC · GaAs · Diamond"
+    },
+    sensitivityCard: {
+      title: "Sensitivity Analysis",
+      description: "Energy · Volume · Subsidies"
+    },
+    outlookCard: {
+      title: "2025-2030 Projection",
+      description: "Trends · Future costs"
+    }
   },
 
   // Scenario Chart
