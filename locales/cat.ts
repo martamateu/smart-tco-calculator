@@ -69,6 +69,37 @@ export const cat: Translations = {
     recommendations: "Recomanacions Estratègiques",
     comparative: "Anàlisi Comparativa",
     citations: "Fonts de Dades i Referències",
+    methodology: "Metodologia de Càlcul",
+    methodologyExplanation: `**Com s'ha calculat aquest TCO:**
+
+🤖 **Model Random Forest** → Estima el **TCO total agregat** capturant relacions complexes entre factors (material, regió, volum, anys, preus energia).
+
+📊 **Desglossament amb fórmules validades** → Cada component individual (cost energètic, manteniment, impost carboni, risc cadena subministrament, subvencions) es calcula amb **fórmules sectorials** validades per BCG (2023) i JRC:
+  • **Cost Energètic**: (consum_xip × hores_vida × volum × anys) × preu_kWh
+  • **Manteniment**: 9-15% del capex d'equips (segons categoria material)
+  • **Impost Carboni**: emissions_CO2 × preu_carboni_EU_ETS
+  • **Risc Cadena**: 3-10% segons TRL i concentració fabricants
+  • **Subvencions**: taxa_regió aplicada al TCO total (EU Chips Act, CHIPS Act USA)
+
+📈 **Dades actualitzades**:
+  • Preus energia: ENTSO-E (UE en temps real), EIA (USA), OECD (Àsia)
+  • Propietats materials: Materials Project API + JRC
+  • Subsidis: programes governamentals verificats (actualitzat trimestralment)
+
+Aquesta metodologia híbrida combina la **potència predictiva del ML** amb la **transparència de les fórmules tradicionals** per oferir resultats precisos i auditables.`,
+    energyDominance: "⚡ Dominància del Cost Energètic",
+    energyDominanceExplanation: `**És normal que l'energia sigui el {percentage}% del TCO?**
+
+✅ **SÍ, és completament normal per semiconductors d'alta potència**:
+
+• **Silicon/GaN/GaAs**: Consumeixen 5-7 mW per chip durant tota la vida útil (43,800 hores = 5 anys × 24h × 365d)
+• **Volums industrials**: Milers/milions de chips amplifiquen el consum total
+• **Realitat BCG/JRC**: Els estudis sectorials confirmen que energia = 85-98% del TCO en fabricació de semiconductors
+
+💡 **Prioritat d'optimització**: Amb energia dominant, les estratègies clau són:
+  1. Seleccionar regions amb electricitat més barata (Escòcia, Texas, Escandinàvia)
+  2. Negociar contractes PPA (Power Purchase Agreements) amb renovables
+  3. Aprofitar subvencions governamentals (EU Chips Act fins 30%)`,
     chatTitle: "Fes Preguntes de Seguiment",
     chatPlaceholder: "Pregunta sobre costs d'energia, subvencions, comparacions...",
     send: "Enviar",

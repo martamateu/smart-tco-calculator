@@ -67,6 +67,37 @@ export const en = {
     recommendations: "Strategic Recommendations",
     comparative: "Comparative Analysis",
     citations: "Data Sources & Citations",
+    methodology: "Calculation Methodology",
+    methodologyExplanation: `**How this TCO was calculated:**
+
+🤖 **Random Forest Model** → Estimates the **aggregate total TCO** by capturing complex relationships between factors (material, region, volume, years, energy prices).
+
+📊 **Breakdown with validated formulas** → Each individual component (energy cost, maintenance, carbon tax, supply chain risk, subsidies) is calculated using **industry-validated formulas** from BCG (2023) and JRC:
+  • **Energy Cost**: (chip_consumption × lifetime_hours × volume × years) × price_kWh
+  • **Maintenance**: 9-15% of equipment capex (by material category)
+  • **Carbon Tax**: CO2_emissions × EU_ETS_carbon_price
+  • **Supply Chain Risk**: 3-10% based on TRL and manufacturer concentration
+  • **Subsidies**: regional_rate applied to total TCO (EU Chips Act, US CHIPS Act)
+
+📈 **Up-to-date data**:
+  • Energy prices: ENTSO-E (EU real-time), EIA (USA), OECD (Asia)
+  • Material properties: Materials Project API + JRC
+  • Subsidies: verified government programs (updated quarterly)
+
+This hybrid methodology combines **ML predictive power** with **traditional formula transparency** to deliver accurate and auditable results.`,
+    energyDominance: "⚡ Energy Cost Dominance",
+    energyDominanceExplanation: `**Is it normal for energy to be {percentage}% of TCO?**
+
+✅ **YES, completely normal for high-power semiconductors**:
+
+• **Silicon/GaN/GaAs**: Consume 5-7 mW per chip over entire lifetime (43,800 hours = 5 years × 24h × 365d)
+• **Industrial volumes**: Thousands/millions of chips amplify total consumption
+• **BCG/JRC reality**: Industry studies confirm energy = 85-98% of TCO in semiconductor manufacturing
+
+💡 **Optimization priority**: With energy dominance, key strategies are:
+  1. Select regions with cheaper electricity (Scotland, Texas, Scandinavia)
+  2. Negotiate PPA (Power Purchase Agreements) with renewables
+  3. Leverage government subsidies (EU Chips Act up to 30%)`,
     chatTitle: "Ask Follow-up Questions",
     chatPlaceholder: "Ask about energy costs, subsidies, comparisons...",
     send: "Send",

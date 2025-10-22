@@ -69,6 +69,37 @@ export const es: Translations = {
     recommendations: "Recomendaciones Estratégicas",
     comparative: "Análisis Comparativo",
     citations: "Fuentes de Datos y Referencias",
+    methodology: "Metodología de Cálculo",
+    methodologyExplanation: `**Cómo se ha calculado este TCO:**
+
+🤖 **Modelo Random Forest** → Estima el **TCO total agregado** capturando relaciones complejas entre factores (material, región, volumen, años, precios energía).
+
+📊 **Desglose con fórmulas validadas** → Cada componente individual (coste energético, mantenimiento, impuesto carbono, riesgo cadena suministro, subsidios) se calcula con **fórmulas sectoriales** validadas por BCG (2023) y JRC:
+  • **Coste Energético**: (consumo_chip × horas_vida × volumen × años) × precio_kWh
+  • **Mantenimiento**: 9-15% del capex de equipos (según categoría material)
+  • **Impuesto Carbono**: emisiones_CO2 × precio_carbono_EU_ETS
+  • **Riesgo Cadena**: 3-10% según TRL y concentración fabricantes
+  • **Subsidios**: tasa_región aplicada al TCO total (EU Chips Act, CHIPS Act USA)
+
+📈 **Datos actualizados**:
+  • Precios energía: ENTSO-E (UE en tiempo real), EIA (USA), OECD (Asia)
+  • Propiedades materiales: Materials Project API + JRC
+  • Subsidios: programas gubernamentales verificados (actualizado trimestralmente)
+
+Esta metodología híbrida combina la **potencia predictiva del ML** con la **transparencia de las fórmulas tradicionales** para ofrecer resultados precisos y auditables.`,
+    energyDominance: "⚡ Dominancia del Coste Energético",
+    energyDominanceExplanation: `**¿Es normal que la energía sea el {percentage}% del TCO?**
+
+✅ **SÍ, es completamente normal para semiconductores de alta potencia**:
+
+• **Silicon/GaN/GaAs**: Consumen 5-7 mW por chip durante toda la vida útil (43,800 horas = 5 años × 24h × 365d)
+• **Volúmenes industriales**: Miles/millones de chips amplifican el consumo total
+• **Realidad BCG/JRC**: Los estudios sectoriales confirman que energía = 85-98% del TCO en fabricación de semiconductores
+
+💡 **Prioridad de optimización**: Con energía dominante, las estrategias clave son:
+  1. Seleccionar regiones con electricidad más barata (Escocia, Texas, Escandinavia)
+  2. Negociar contratos PPA (Power Purchase Agreements) con renovables
+  3. Aprovechar subsidios gubernamentales (EU Chips Act hasta 30%)`,
     chatTitle: "Haz Preguntas de Seguimiento",
     chatPlaceholder: "Pregunta sobre costes de energía, subsidios, comparaciones...",
     send: "Enviar",
