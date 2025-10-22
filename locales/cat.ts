@@ -37,6 +37,7 @@ export const cat: Translations = {
     costPerChip: "Cost per Xip",
     annualCost: "Cost Anual",
     breakdown: "Desglossament de Costos",
+    breakdownNote: "Nota: Les barres positives representen costos, la barra negativa (verda) representa subsidis aplicats.",
     chipCost: "Cost del Xip",
     energyCost: "Cost Energètic",
     carbonTax: "Impost de Carboni",

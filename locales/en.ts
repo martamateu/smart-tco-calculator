@@ -35,6 +35,7 @@ export const en = {
     costPerChip: "Cost per Chip",
     annualCost: "Annual Cost",
     breakdown: "Cost Breakdown",
+    breakdownNote: "Note: Positive bars represent costs, the negative bar (green) represents applied subsidies.",
     chipCost: "Chip Cost",
     energyCost: "Energy Cost",
     carbonTax: "Carbon Tax",

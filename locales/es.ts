@@ -37,6 +37,7 @@ export const es: Translations = {
     costPerChip: "Coste por Chip",
     annualCost: "Coste Anual",
     breakdown: "Desglose de Costes",
+    breakdownNote: "Nota: Las barras positivas representan costos, la barra negativa (verde) representa subsidios aplicados.",
     chipCost: "Coste del Chip",
     energyCost: "Coste Energético",
     carbonTax: "Impuesto de Carbono",

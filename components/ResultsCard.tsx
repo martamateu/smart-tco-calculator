@@ -148,7 +148,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({ result, isLoading }) => {
       <h3 className="text-lg font-semibold text-gray-700 mb-3">{t.results.breakdown}</h3>
       <div className="mb-2 px-3 py-2 bg-blue-50 rounded-md border-l-4 border-blue-400">
         <p className="text-xs text-blue-900">
-          <strong>ℹ️ Nota:</strong> Las barras positivas representan costos, la barra negativa (verde) representa subsidios aplicados.
+          <strong>ℹ️ {t.results.breakdownNote}</strong>
         </p>
       </div>
       <ResponsiveContainer width="100%" height={350}>
