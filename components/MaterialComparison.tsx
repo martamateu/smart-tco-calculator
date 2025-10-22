@@ -312,12 +312,12 @@ const MaterialComparison: React.FC<MaterialComparisonProps> = ({ onNavigate }) =
               🏭 {t.materialComparison?.volumeTitle || 'Alto Volumen (>100K/año)'}
             </h3>
             <p className="text-gray-700 mb-2">
-              <strong>Recomendado: Si</strong>
+              <strong>{t.materialComparison?.highVolume.recommended}</strong>
             </p>
             <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
-              <li>Menor TCO/chip (€5.03)</li>
-              <li>Cadena de suministro madura</li>
-              <li>Economías de escala</li>
+              <li>{t.materialComparison?.highVolume.bullet1}</li>
+              <li>{t.materialComparison?.highVolume.bullet2}</li>
+              <li>{t.materialComparison?.highVolume.bullet3}</li>
             </ul>
           </div>
 
@@ -326,12 +326,12 @@ const MaterialComparison: React.FC<MaterialComparisonProps> = ({ onNavigate }) =
               🌱 {t.materialComparison?.efficiencyTitle || 'Máxima Eficiencia Energética'}
             </h3>
             <p className="text-gray-700 mb-2">
-              <strong>Recomendado: GaN / Diamond</strong>
+              <strong>{t.materialComparison?.efficiency.recommended}</strong>
             </p>
             <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
-              <li>GaN: 0.18W (-64% vs Si)</li>
-              <li>Diamond: 0.08W (-84% vs Si)</li>
-              <li>Ideal para aplicaciones críticas</li>
+              <li>{t.materialComparison?.efficiency.bullet1}</li>
+              <li>{t.materialComparison?.efficiency.bullet2}</li>
+              <li>{t.materialComparison?.efficiency.bullet3}</li>
             </ul>
           </div>
 
@@ -340,12 +340,12 @@ const MaterialComparison: React.FC<MaterialComparisonProps> = ({ onNavigate }) =
               ⚡ {t.materialComparison?.powerTitle || 'Alta Potencia'}
             </h3>
             <p className="text-gray-700 mb-2">
-              <strong>Recomendado: SiC</strong>
+              <strong>{t.materialComparison?.power.recommended}</strong>
             </p>
             <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
-              <li>Opera {'>'}200°C</li>
-              <li>Voltajes de ruptura altos</li>
-              <li>Estándar en vehículos eléctricos</li>
+              <li>{t.materialComparison?.power.bullet1}</li>
+              <li>{t.materialComparison?.power.bullet2}</li>
+              <li>{t.materialComparison?.power.bullet3}</li>
             </ul>
           </div>
 
@@ -354,21 +354,20 @@ const MaterialComparison: React.FC<MaterialComparisonProps> = ({ onNavigate }) =
               📡 {t.materialComparison?.rfTitle || 'RF & Telecomunicaciones'}
             </h3>
             <p className="text-gray-700 mb-2">
-              <strong>Recomendado: GaAs / InP</strong>
+              <strong>{t.materialComparison?.rf.recommended}</strong>
             </p>
             <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
-              <li>GaAs: 5G, satélites</li>
-              <li>InP: Fibra óptica, láser</li>
-              <li>Alta frecuencia de operación</li>
+              <li>{t.materialComparison?.rf.bullet1}</li>
+              <li>{t.materialComparison?.rf.bullet2}</li>
+              <li>{t.materialComparison?.rf.bullet3}</li>
             </ul>
           </div>
         </div>
 
         <div className="mt-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
           <p className="text-sm text-gray-700">
-            <strong>💡 Conclusión:</strong> El material óptimo depende de tu aplicación específica, volumen de producción y 
-            requisitos técnicos. Para producción a gran escala con presupuesto limitado, Si sigue siendo la mejor opción. 
-            Para aplicaciones especializadas que justifiquen mayor inversión, GaN, SiC o GaAs ofrecen ventajas técnicas significativas.
+            <strong>💡 {t.materialComparison?.conclusionNote}</strong>{' '}
+            {t.materialComparison?.conclusionText}
           </p>
         </div>
       </div>

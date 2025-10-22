@@ -535,7 +535,34 @@ This hybrid methodology combines **ML predictive power** with **SEMI E35 formula
     volumeTitle: "High Volume (>100K/year)",
     efficiencyTitle: "Maximum Energy Efficiency",
     powerTitle: "High Power",
-    rfTitle: "RF & Telecommunications"
+    rfTitle: "RF & Telecommunications",
+    recommendedLabel: "Recommended:",
+    highVolume: {
+      recommended: "Recommended: Si",
+      bullet1: "Lowest TCO/chip (€5.03)",
+      bullet2: "Mature supply chain",
+      bullet3: "Economies of scale"
+    },
+    efficiency: {
+      recommended: "Recommended: GaN / Diamond",
+      bullet1: "GaN: 0.18W (-64% vs Si)",
+      bullet2: "Diamond: 0.08W (-84% vs Si)",
+      bullet3: "Ideal for critical applications"
+    },
+    power: {
+      recommended: "Recommended: SiC",
+      bullet1: "Operates >200°C",
+      bullet2: "High breakdown voltages",
+      bullet3: "Standard in electric vehicles"
+    },
+    rf: {
+      recommended: "Recommended: GaAs / InP",
+      bullet1: "GaAs: 5G, satellites",
+      bullet2: "InP: Optical fiber, lasers",
+      bullet3: "High frequency operation"
+    },
+    conclusionNote: "Conclusion:",
+    conclusionText: "The optimal material depends on your specific application, production volume, and technical requirements. For large-scale production with limited budget, Si remains the best option. For specialized applications that justify higher investment, GaN, SiC, or GaAs offer significant technical advantages."
   },
 
   sensitivityAnalysis: {
@@ -553,7 +580,36 @@ This hybrid methodology combines **ML predictive power** with **SEMI E35 formula
     positive: "Increase",
     negative: "Decrease",
     conclusion: "Key Insights",
-    conclusionText: "Energy price is the most sensitive parameter affecting TCO. A 10% increase in energy costs results in approximately ±6.8% TCO variation. Volume scaling offers significant economies, while subsidy optimization can reduce TCO by up to 10%."
+    conclusionText: "Energy price is the most sensitive parameter affecting TCO. A 10% increase in energy costs results in approximately ±6.8% TCO variation. Volume scaling offers significant economies, while subsidy optimization can reduce TCO by up to 10%.",
+    volumeNote: "Volume has a direct linear impact: ±20% volume = ±20% TCO (±€503K). Economies of scale activate significantly above 100K chips/year.",
+    criticalFactor: {
+      title: "Most Critical Factor",
+      label: "Energy Price",
+      bullet1: "Impact: ±6.8% TCO per ±10%",
+      bullet2: "Recommendation: Negotiate PPA contracts",
+      bullet3: "Select regions with cheap energy"
+    },
+    economies: {
+      title: "Economies of Scale",
+      label: "Production Volume",
+      bullet1: "Linear impact: ±20% = ±€503K",
+      bullet2: "Optimal point: >100K chips/year",
+      bullet3: "Cost/chip decreases with volume"
+    },
+    subsidies: {
+      title: "Subsidy Optimization",
+      label: "Government Incentives",
+      bullet1: "40% subsidy: €1.44M savings",
+      bullet2: "EU Chips Act: Up to €43B",
+      bullet3: "US CHIPS Act: $52B available"
+    },
+    strategy: {
+      title: "Combined Strategy",
+      label: "Holistic Optimization",
+      bullet1: "Cheap energy: -10% = -€172K",
+      bullet2: "High volume: +20% chip economies",
+      bullet3: "Maximum subsidies: -30% TCO"
+    }
   },
   
   citations: {

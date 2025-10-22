@@ -537,7 +537,34 @@ Aquesta metodologia híbrida combina la **potència predictiva del ML** amb la *
     volumeTitle: "Alt Volum (>100K/any)",
     efficiencyTitle: "Màxima Eficiència Energètica",
     powerTitle: "Alta Potència",
-    rfTitle: "RF i Telecomunicacions"
+    rfTitle: "RF i Telecomunicacions",
+    recommendedLabel: "Recomanat:",
+    highVolume: {
+      recommended: "Recomanat: Si",
+      bullet1: "Menor TCO/xip (€5.03)",
+      bullet2: "Cadena de subministrament madura",
+      bullet3: "Economies d'escala"
+    },
+    efficiency: {
+      recommended: "Recomanat: GaN / Diamond",
+      bullet1: "GaN: 0.18W (-64% vs Si)",
+      bullet2: "Diamond: 0.08W (-84% vs Si)",
+      bullet3: "Ideal per aplicacions crítiques"
+    },
+    power: {
+      recommended: "Recomanat: SiC",
+      bullet1: "Opera >200°C",
+      bullet2: "Voltatges de ruptura alts",
+      bullet3: "Estàndard en vehicles elèctrics"
+    },
+    rf: {
+      recommended: "Recomanat: GaAs / InP",
+      bullet1: "GaAs: 5G, satèl·lits",
+      bullet2: "InP: Fibra òptica, làser",
+      bullet3: "Alta freqüència d'operació"
+    },
+    conclusionNote: "Conclusió:",
+    conclusionText: "El material òptim depèn de la teva aplicació específica, volum de producció i requisits tècnics. Per producció a gran escala amb pressupost limitat, Si segueix sent la millor opció. Per aplicacions especialitzades que justifiquin major inversió, GaN, SiC o GaAs ofereixen avantatges tècnics significatius."
   },
 
   sensitivityAnalysis: {
@@ -555,7 +582,36 @@ Aquesta metodologia híbrida combina la **potència predictiva del ML** amb la *
     positive: "Augment",
     negative: "Disminució",
     conclusion: "Insights Clau",
-    conclusionText: "El preu de l'energia és el paràmetre més sensible que afecta el TCO. Un augment del 10% en costos energètics resulta en aproximadament ±6.8% de variació del TCO. L'escalat de volum ofereix economies significatives, mentre que l'optimització de subsidis pot reduir el TCO fins a un 10%."
+    conclusionText: "El preu de l'energia és el paràmetre més sensible que afecta el TCO. Un augment del 10% en costos energètics resulta en aproximadament ±6.8% de variació del TCO. L'escalat de volum ofereix economies significatives, mentre que l'optimització de subsidis pot reduir el TCO fins a un 10%.",
+    volumeNote: "El volum té un impacte lineal directe: ±20% de volum = ±20% de TCO (±€503K). Les economies d'escala s'activen significativament per sobre de 100K xips/any.",
+    criticalFactor: {
+      title: "Factor Més Crític",
+      label: "Preu d'Energia",
+      bullet1: "Impacte: ±6.8% TCO per cada ±10%",
+      bullet2: "Recomanació: Negociar contractes PPA",
+      bullet3: "Seleccionar regions amb energia barata"
+    },
+    economies: {
+      title: "Economies d'Escala",
+      label: "Volum de Producció",
+      bullet1: "Impacte lineal: ±20% = ±€503K",
+      bullet2: "Punt òptim: >100K xips/any",
+      bullet3: "Cost/xip decreix amb volum"
+    },
+    subsidies: {
+      title: "Optimització de Subsidis",
+      label: "Incentius Governamentals",
+      bullet1: "40% subsidi: Estalvi de €1.44M",
+      bullet2: "EU Chips Act: Fins a 43B€",
+      bullet3: "US CHIPS Act: $52B disponibles"
+    },
+    strategy: {
+      title: "Estratègia Combinada",
+      label: "Optimització Holística",
+      bullet1: "Energia barata: -10% = -€172K",
+      bullet2: "Volum alt: +20% xips economies",
+      bullet3: "Subsidis màxims: -30% TCO"
+    }
   },
   
   citations: {

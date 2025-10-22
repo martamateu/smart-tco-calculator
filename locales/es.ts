@@ -537,7 +537,34 @@ Esta metodología híbrida combina la **potencia predictiva del ML** con la **tr
     volumeTitle: "Alto Volumen (>100K/año)",
     efficiencyTitle: "Máxima Eficiencia Energética",
     powerTitle: "Alta Potencia",
-    rfTitle: "RF y Telecomunicaciones"
+    rfTitle: "RF y Telecomunicaciones",
+    recommendedLabel: "Recomendado:",
+    highVolume: {
+      recommended: "Recomendado: Si",
+      bullet1: "Menor TCO/chip (€5.03)",
+      bullet2: "Cadena de suministro madura",
+      bullet3: "Economías de escala"
+    },
+    efficiency: {
+      recommended: "Recomendado: GaN / Diamond",
+      bullet1: "GaN: 0.18W (-64% vs Si)",
+      bullet2: "Diamond: 0.08W (-84% vs Si)",
+      bullet3: "Ideal para aplicaciones críticas"
+    },
+    power: {
+      recommended: "Recomendado: SiC",
+      bullet1: "Opera >200°C",
+      bullet2: "Voltajes de ruptura altos",
+      bullet3: "Estándar en vehículos eléctricos"
+    },
+    rf: {
+      recommended: "Recomendado: GaAs / InP",
+      bullet1: "GaAs: 5G, satélites",
+      bullet2: "InP: Fibra óptica, láser",
+      bullet3: "Alta frecuencia de operación"
+    },
+    conclusionNote: "Conclusión:",
+    conclusionText: "El material óptimo depende de tu aplicación específica, volumen de producción y requisitos técnicos. Para producción a gran escala con presupuesto limitado, Si sigue siendo la mejor opción. Para aplicaciones especializadas que justifiquen mayor inversión, GaN, SiC o GaAs ofrecen ventajas técnicas significativas."
   },
 
   sensitivityAnalysis: {
@@ -555,7 +582,36 @@ Esta metodología híbrida combina la **potencia predictiva del ML** con la **tr
     positive: "Aumento",
     negative: "Disminución",
     conclusion: "Insights Clave",
-    conclusionText: "El precio de la energía es el parámetro más sensible que afecta el TCO. Un aumento del 10% en costes energéticos resulta en aproximadamente ±6.8% de variación del TCO. El escalado de volumen ofrece economías significativas, mientras que la optimización de subsidios puede reducir el TCO hasta un 10%."
+    conclusionText: "El precio de la energía es el parámetro más sensible que afecta el TCO. Un aumento del 10% en costes energéticos resulta en aproximadamente ±6.8% de variación del TCO. El escalado de volumen ofrece economías significativas, mientras que la optimización de subsidios puede reducir el TCO hasta un 10%.",
+    volumeNote: "El volumen tiene un impacto lineal directo: ±20% de volumen = ±20% de TCO (±€503K). Las economías de escala se activan significativamente por encima de 100K chips/año.",
+    criticalFactor: {
+      title: "Factor Más Crítico",
+      label: "Precio de Energía",
+      bullet1: "Impacto: ±6.8% TCO por cada ±10%",
+      bullet2: "Recomendación: Negociar contratos PPA",
+      bullet3: "Seleccionar regiones con energía barata"
+    },
+    economies: {
+      title: "Economías de Escala",
+      label: "Volumen de Producción",
+      bullet1: "Impacto lineal: ±20% = ±€503K",
+      bullet2: "Punto óptimo: >100K chips/año",
+      bullet3: "Costo/chip decrece con volumen"
+    },
+    subsidies: {
+      title: "Optimización de Subsidios",
+      label: "Incentivos Gubernamentales",
+      bullet1: "40% subsidio: Ahorro de €1.44M",
+      bullet2: "EU Chips Act: Hasta 43B€",
+      bullet3: "US CHIPS Act: $52B disponibles"
+    },
+    strategy: {
+      title: "Estrategia Combinada",
+      label: "Optimización Holística",
+      bullet1: "Energía barata: -10% = -€172K",
+      bullet2: "Volumen alto: +20% chips economías",
+      bullet3: "Subsidios máximos: -30% TCO"
+    }
   },
   
   citations: {

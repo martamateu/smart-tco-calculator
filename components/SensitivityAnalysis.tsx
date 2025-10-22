@@ -158,8 +158,7 @@ const SensitivityAnalysis: React.FC<SensitivityAnalysisProps> = ({ onNavigate })
         <div className="mt-4 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
           <p className="text-sm text-gray-700">
             <strong>📈 {t.sensitivityAnalysis?.volumeVariation || 'Volumen ±20%'}:</strong>{' '}
-            El volumen tiene un impacto lineal directo: ±20% de volumen = ±20% de TCO (±€503K). 
-            Las economías de escala se logran en volúmenes {'>'}100K chips/año.
+            {t.sensitivityAnalysis?.volumeNote}
           </p>
         </div>
       </div>
@@ -271,66 +270,65 @@ const SensitivityAnalysis: React.FC<SensitivityAnalysisProps> = ({ onNavigate })
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-white p-6 rounded-lg shadow-sm border border-yellow-100">
             <h3 className="text-lg font-semibold text-yellow-900 mb-3">
-              🔥 Factor Más Crítico
+              🔥 {t.sensitivityAnalysis?.criticalFactor.title}
             </h3>
             <p className="text-gray-700 text-sm mb-2">
-              <strong>Precio de Energía</strong>
+              <strong>{t.sensitivityAnalysis?.criticalFactor.label}</strong>
             </p>
             <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
-              <li>Impacto: ±6.8% TCO por cada ±10%</li>
-              <li>Recomendación: Negociar contratos PPA</li>
-              <li>Seleccionar regiones con energía barata</li>
+              <li>{t.sensitivityAnalysis?.criticalFactor.bullet1}</li>
+              <li>{t.sensitivityAnalysis?.criticalFactor.bullet2}</li>
+              <li>{t.sensitivityAnalysis?.criticalFactor.bullet3}</li>
             </ul>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-sm border border-blue-100">
             <h3 className="text-lg font-semibold text-blue-900 mb-3">
-              📈 Economías de Escala
+              📈 {t.sensitivityAnalysis?.economies.title}
             </h3>
             <p className="text-gray-700 text-sm mb-2">
-              <strong>Volumen de Producción</strong>
+              <strong>{t.sensitivityAnalysis?.economies.label}</strong>
             </p>
             <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
-              <li>Impacto lineal: ±20% = ±€503K</li>
-              <li>Punto óptimo: {'>'}100K chips/año</li>
-              <li>Costo/chip decrece con volumen</li>
+              <li>{t.sensitivityAnalysis?.economies.bullet1}</li>
+              <li>{t.sensitivityAnalysis?.economies.bullet2}</li>
+              <li>{t.sensitivityAnalysis?.economies.bullet3}</li>
             </ul>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-sm border border-purple-100">
             <h3 className="text-lg font-semibold text-purple-900 mb-3">
-              🎁 Optimización de Subsidios
+              🎁 {t.sensitivityAnalysis?.subsidies.title}
             </h3>
             <p className="text-gray-700 text-sm mb-2">
-              <strong>Incentivos Gubernamentales</strong>
+              <strong>{t.sensitivityAnalysis?.subsidies.label}</strong>
             </p>
             <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
-              <li>40% subsidio: Ahorro de €1.44M</li>
-              <li>EU Chips Act: Hasta 43B€</li>
-              <li>US CHIPS Act: $52B disponibles</li>
+              <li>{t.sensitivityAnalysis?.subsidies.bullet1}</li>
+              <li>{t.sensitivityAnalysis?.subsidies.bullet2}</li>
+              <li>{t.sensitivityAnalysis?.subsidies.bullet3}</li>
             </ul>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-sm border border-green-100">
             <h3 className="text-lg font-semibold text-green-900 mb-3">
-              🌱 Estrategia Combinada
+              🌱 {t.sensitivityAnalysis?.strategy.title}
             </h3>
             <p className="text-gray-700 text-sm mb-2">
-              <strong>Optimización Holística</strong>
+              <strong>{t.sensitivityAnalysis?.strategy.label}</strong>
             </p>
             <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
-              <li>Energía barata: -10% = -€172K</li>
-              <li>Volumen alto: +20% chips economías</li>
-              <li>Subsidios máximos: -30% TCO</li>
+              <li>{t.sensitivityAnalysis?.strategy.bullet1}</li>
+              <li>{t.sensitivityAnalysis?.strategy.bullet2}</li>
+              <li>{t.sensitivityAnalysis?.strategy.bullet3}</li>
             </ul>
           </div>
         </div>
 
         <div className="mt-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
           <p className="text-sm text-gray-700">
-            <strong>💡 Conclusión:</strong>{' '}
-            {t.sensitivityAnalysis?.conclusionText || 
-              'El precio de la energía es el parámetro más sensible que afecta el TCO. Un aumento del 10% en costos energéticos resulta en aproximadamente ±6.8% de variación del TCO. El escalado de volumen ofrece economías significativas, mientras que la optimización de subsidios puede reducir el TCO hasta un 10%.'}
+            <strong>💡 {t.materialComparison?.conclusionNote}</strong>{' '}
+            {t.sensitivityAnalysis?.conclusionText}
           </p>
         </div>
       </div>
