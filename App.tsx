@@ -88,7 +88,7 @@ function App() {
 
       // 2. Automatically get AI explanation from backend (Gemini + RAG)
       setIsGeneratingInsights(true);
-      toast.info("🤖 Generating AI insights...");
+      toast.info(t.home.generatingInsights);
       
       // Scroll to insights section
       setTimeout(() => {
@@ -219,9 +219,9 @@ function App() {
                         </div>
                       </div>
                       
-                      <h3 className="text-xl font-bold text-gray-800 mb-3">Generating AI Insights</h3>
-                      <p className="text-gray-600 mb-2">Analyzing your TCO data with Gemini AI...</p>
-                      <p className="text-sm text-gray-500">This may take a few seconds</p>
+                      <h3 className="text-xl font-bold text-gray-800 mb-3">{t.home.aiLoadingTitle}</h3>
+                      <p className="text-gray-600 mb-2">{t.home.aiLoadingSubtitle}</p>
+                      <p className="text-sm text-gray-500">{t.home.aiLoadingNote}</p>
                       
                       {/* Progress dots */}
                       <div className="flex items-center justify-center gap-2 mt-6">

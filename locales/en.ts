@@ -27,7 +27,11 @@ export const en = {
     volume: "Production Volume (chips)",
     years: "Time Horizon (years)",
     calculate: "Calculate TCO",
-    calculating: "Calculating..."
+    calculating: "Calculating...",
+    generatingInsights: "🤖 Generating AI insights...",
+    aiLoadingTitle: "Generating AI Insights",
+    aiLoadingSubtitle: "Analyzing your TCO data with Gemini AI...",
+    aiLoadingNote: "This may take a few seconds"
   },
 
   // Results Card

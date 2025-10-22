@@ -29,7 +29,11 @@ export const es: Translations = {
     volume: "Volumen de Producción (chips)",
     years: "Horizonte Temporal (años)",
     calculate: "Calcular TCO",
-    calculating: "Calculando..."
+    calculating: "Calculando...",
+    generatingInsights: "🤖 Generando insights de IA...",
+    aiLoadingTitle: "Generando Insights de IA",
+    aiLoadingSubtitle: "Analizando tus datos de TCO con Gemini AI...",
+    aiLoadingNote: "Esto puede tardar unos segundos"
   },
 
   // Results Card

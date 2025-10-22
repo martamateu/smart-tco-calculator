@@ -29,7 +29,11 @@ export const cat: Translations = {
     volume: "Volum de Producció (xips)",
     years: "Horitzó Temporal (anys)",
     calculate: "Calcular TCO",
-    calculating: "Calculant..."
+    calculating: "Calculant...",
+    generatingInsights: "🤖 Generant insights d'IA...",
+    aiLoadingTitle: "Generant Insights d'IA",
+    aiLoadingSubtitle: "Analitzant les teves dades de TCO amb Gemini AI...",
+    aiLoadingNote: "Això pot trigar uns segons"
   },
 
   // Results Card
