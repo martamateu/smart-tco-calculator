@@ -66,10 +66,6 @@ const ChatSection: React.FC<ChatSectionProps> = ({
     }
   };
 
-  if (!tcoResult) {
-    return null; // Don't show chat until we have a TCO result
-  }
-
   return (
     <div className="bg-white p-6 rounded-2xl shadow-lg mt-6">
       <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
@@ -113,14 +109,14 @@ const ChatSection: React.FC<ChatSectionProps> = ({
           type="text"
           value={userMessage}
           onChange={(e) => setUserMessage(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-          placeholder={t.explanation.chatPlaceholder}
-          className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-          disabled={chatLoading}
+          onKeyPress={(e) => e.key === 'Enter' && !chatLoading && tcoResult && handleSendMessage()}
+          placeholder={tcoResult ? t.explanation.chatPlaceholder : t.explanation.chatPlaceholder + " (Calcula TCO primero)"}
+          className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+          disabled={chatLoading || !tcoResult}
         />
         <button
           onClick={handleSendMessage}
-          disabled={chatLoading || !userMessage.trim()}
+          disabled={chatLoading || !userMessage.trim() || !tcoResult}
           className="px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
         >
           {chatLoading ? (
@@ -153,12 +149,24 @@ const ChatSection: React.FC<ChatSectionProps> = ({
                 onClick={() => {
                   setUserMessage(suggestion);
                 }}
-                className="px-3 py-1 text-sm bg-purple-50 text-purple-700 rounded-full hover:bg-purple-100 transition-colors"
+                disabled={!tcoResult}
+                className="px-3 py-1 text-sm bg-purple-50 text-purple-700 rounded-full hover:bg-purple-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {suggestion}
               </button>
             ))}
           </div>
+        </div>
+      )}
+
+      {/* Helper message when no TCO calculated yet */}
+      {!tcoResult && (
+        <div className="mt-4 p-3 bg-blue-50 border-l-4 border-blue-400 rounded">
+          <p className="text-sm text-blue-800">
+            💡 {language === 'es' ? 'Calcula primero el TCO para poder hacer preguntas' : 
+                language === 'cat' ? 'Calcula primer el TCO per poder fer preguntes' :
+                'Calculate TCO first to ask questions'}
+          </p>
         </div>
       )}
     </div>
