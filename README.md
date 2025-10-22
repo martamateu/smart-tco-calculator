@@ -530,5 +530,4 @@ For questions or issues:
 - ✅ Integrated chat into calculator card (no separate scrolling)
 - ✅ Consolidated AI insights into single accordion
 - ✅ Fixed GitHub Pages routing with language paths (/en, /es, /cat)
-- ✅ Removed API key exposure from frontend (security fix)
 - ✅ All data sources verified and documented
