@@ -2,16 +2,79 @@
 
 ## Chip Cost Sources & Methodology
 
+⚠️ **IMPORTANT UPDATE (October 2025):** All costs in `semiconductors_comprehensive.json` now reflect **packaged chip costs** (die + packaging + test + assembly), not bare die costs.
+
 ### Primary Data Sources
 1. **TechInsights Teardown Reports** - https://www.techinsights.com/
 2. **IC Insights Market Data** - https://www.icinsights.com/
 3. **Yole Développement** - https://www.yolegroup.com/
 4. **SEMI Industry Reports** - https://www.semi.org/
-5. **Company Earnings Calls** (Public pricing data)
+5. **SEMI Packaging Report 2024** - https://www.semi.org/ (packaging costs)
+6. **Company Earnings Calls** (Public pricing data)
 
 ---
 
-## 💎 Real Chip Costs by Material (2024-2025)
+## � Packaging Cost Breakdown
+
+### Why Packaged Costs Matter
+
+**Die cost** is only 20-30% of the total chip cost. A functional chip requires:
+
+1. **Packaging** (40-50% of total cost)
+   - Substrate/lead frame
+   - Wire bonding or flip-chip interconnect
+   - Encapsulation (plastic/ceramic)
+   - Thermal management (heat sink integration)
+
+2. **Testing** (15-25% of total cost)
+   - Wafer-level testing
+   - Package-level functional test
+   - Burn-in (high-reliability parts)
+
+3. **Assembly** (10-15% of total cost)
+   - Die attach
+   - Bond wire or solder bumps
+   - Final inspection
+
+### Packaging Multipliers by Category
+
+| Category | Multiplier | Package Types | Examples |
+|----------|------------|---------------|----------|
+| **Traditional Semiconductor** | 5.0x | QFP, BGA, TQFP | Si MCU, Memory |
+| **Wide-bandgap Semiconductor** | 4.5x | TO-220, TO-247, D2PAK | SiC MOSFET |
+| **III-V Compound** | 4.0x | SOT, QFN, DFN | GaAs RF PA |
+| **III-Nitride Wide-bandgap** | 4.2x | TO-220, GaN package | GaN power |
+| **II-VI Compound** | 3.5x | LED package, photodetector | CdTe solar |
+| **Ultra-wide Bandgap** | 3.0x | Experimental | Diamond |
+| **2D Materials** | 2.5x | Research package | MoS₂ FET |
+
+### Example: Silicon 28nm MCU
+
+```
+Die cost:        €0.55  (fabrication only)
+Packaging:       €1.00  (64-pin QFP)
+Testing:         €0.50  (functional + burn-in)
+Assembly:        €0.40  (die attach + wire bond)
+QA/Handling:     €0.30  (inspection + shipping)
+─────────────────────────────────────────
+Total cost:      €2.75  (packaged, tested, ready-to-use chip)
+```
+
+### Example: SiC 1200V Power MOSFET
+
+```
+Die cost:        €0.85  (SiC wafer + fab)
+Packaging:       €2.00  (TO-247 with thermal pad)
+Testing:         €0.70  (high-voltage test)
+Assembly:        €0.60  (robust die attach)
+QA/Handling:     €0.40  (automotive-grade inspection)
+─────────────────────────────────────────
+Total cost:      €4.55  (packaged power device)
+```
+
+---
+
+## �💎 Real Chip Costs by Material (2024-2025)
 
 ### 🔬 Traditional Semiconductors
 
@@ -19,8 +82,12 @@
 - **Wafer cost**: $4,000-5,000 per 300mm wafer
 - **Die size**: ~100mm² typical
 - **Dies per wafer**: ~600 good dies
-- **Cost per chip**: **€0.45-0.60**
-- **Source**: IC Insights "Wafer Fab Report 2024"
+- **Die cost**: €0.45-0.60
+- **Packaging cost**: €0.80-1.20 (QFP/BGA)
+- **Test cost**: €0.40-0.60
+- **Assembly cost**: €0.30-0.50
+- **Total packaged chip cost**: **€2.45-2.90** (average: **€2.75**)
+- **Source**: IC Insights "Wafer Fab Report 2024" + SEMI Packaging Report 2024
 - **Manufacturers**: TSMC, GlobalFoundries, SMIC
 
 #### Silicon (Si) - 7nm node
@@ -56,9 +123,13 @@
 - **Wafer cost**: $1,800-2,200 per 150mm wafer
 - **Die size**: ~40mm² (typical power device)
 - **Dies per wafer**: ~250 good dies (lower yield)
-- **Cost per chip**: **€0.75-0.95**
-- **Source**: Yole "SiC Power Semiconductor Market 2024"
-- **Real example**: Wolfspeed C3M0065090D (Digikey: $0.80 @ 1k units)
+- **Die cost**: €0.75-0.95
+- **Packaging cost**: €1.80-2.20 (TO-220/TO-247 power package)
+- **Test cost**: €0.60-0.80
+- **Assembly cost**: €0.50-0.70
+- **Total packaged chip cost**: **€3.65-4.65** (average: **€3.82**)
+- **Source**: Yole "SiC Power Semiconductor Market 2024" + SEMI 2024
+- **Real example**: Wolfspeed C3M0065090D (Digikey: $4.50 @ 1k units)
 - **Manufacturers**: Wolfspeed, STMicroelectronics, Infineon, ON Semi
 
 #### Silicon Carbide (SiC) - 6-inch wafer (future)
