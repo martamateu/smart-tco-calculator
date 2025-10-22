@@ -5,7 +5,7 @@ import CataloniaFlag from './icons/CataloniaFlag';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Language, languageNames } from '../locales';
 
-type Page = 'home' | 'docs' | 'about' | 'citations' | 'dashboard-outlook' | 'dashboard-energy-comparison' | 'dashboard-energy-prices' | 'dashboard-ml-model' | 'dashboard-rag-system';
+type Page = 'home' | 'docs' | 'about' | 'citations' | 'dashboard-outlook' | 'dashboard-energy-comparison' | 'dashboard-energy-prices' | 'dashboard-material-comparison' | 'dashboard-sensitivity' | 'dashboard-ml-model' | 'dashboard-rag-system';
 
 interface NavBarProps {
   currentPage: Page;

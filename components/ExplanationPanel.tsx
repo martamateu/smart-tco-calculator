@@ -216,6 +216,100 @@ const ExplanationPanel: React.FC<ExplanationPanelProps> = ({
         </div>
       )}
 
+      {/* Interactive Charts Navigation Section */}
+      <div className="mt-6 bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg border border-blue-200">
+        <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+          <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
+          📊 Explora Análisis Interactivos
+        </h3>
+        <p className="text-sm text-gray-600 mb-4">
+          Haz clic en cualquier gráfico para ver análisis detallados y comparativas interactivas:
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {/* Regional Comparison */}
+          <button
+            onClick={() => {
+              const event = new CustomEvent('navigate', { detail: 'dashboard-energy-prices' });
+              window.dispatchEvent(event);
+            }}
+            className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all border border-blue-200 hover:border-blue-400 text-left group"
+          >
+            <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+              <span className="text-xl">🌍</span>
+            </div>
+            <div className="flex-1">
+              <h4 className="font-semibold text-gray-800 text-sm">Comparativa Regional</h4>
+              <p className="text-xs text-gray-600">18 regiones · Precios energía · Subsidios</p>
+            </div>
+            <svg className="w-5 h-5 text-blue-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Material Comparison */}
+          <button
+            onClick={() => {
+              const event = new CustomEvent('navigate', { detail: 'dashboard-material-comparison' });
+              window.dispatchEvent(event);
+            }}
+            className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all border border-purple-200 hover:border-purple-400 text-left group"
+          >
+            <div className="flex-shrink-0 w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center group-hover:bg-purple-200 transition-colors">
+              <span className="text-xl">💎</span>
+            </div>
+            <div className="flex-1">
+              <h4 className="font-semibold text-gray-800 text-sm">Comparativa de Materiales</h4>
+              <p className="text-xs text-gray-600">Si · GaN · SiC · GaAs · Diamond</p>
+            </div>
+            <svg className="w-5 h-5 text-purple-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Sensitivity Analysis */}
+          <button
+            onClick={() => {
+              const event = new CustomEvent('navigate', { detail: 'dashboard-sensitivity' });
+              window.dispatchEvent(event);
+            }}
+            className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all border border-green-200 hover:border-green-400 text-left group"
+          >
+            <div className="flex-shrink-0 w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-200 transition-colors">
+              <span className="text-xl">📈</span>
+            </div>
+            <div className="flex-1">
+              <h4 className="font-semibold text-gray-800 text-sm">Análisis de Sensibilidad</h4>
+              <p className="text-xs text-gray-600">Energía · Volumen · Subsidios</p>
+            </div>
+            <svg className="w-5 h-5 text-green-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* 5-Year Outlook */}
+          <button
+            onClick={() => {
+              const event = new CustomEvent('navigate', { detail: 'dashboard-outlook' });
+              window.dispatchEvent(event);
+            }}
+            className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all border border-yellow-200 hover:border-yellow-400 text-left group"
+          >
+            <div className="flex-shrink-0 w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center group-hover:bg-yellow-200 transition-colors">
+              <span className="text-xl">🔮</span>
+            </div>
+            <div className="flex-1">
+              <h4 className="font-semibold text-gray-800 text-sm">Proyección 2025-2030</h4>
+              <p className="text-xs text-gray-600">Tendencias · Costos futuros</p>
+            </div>
+            <svg className="w-5 h-5 text-yellow-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
       {/* Data Sources Disclaimer - rendered with custom styling from backend content */}
 <div className="mt-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
         <div className="prose prose-sm max-w-none">

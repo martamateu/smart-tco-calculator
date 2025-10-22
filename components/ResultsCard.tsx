@@ -41,11 +41,13 @@ const ResultsCard: React.FC<ResultsCardProps> = ({ result, isLoading }) => {
     notation: 'compact' 
   }).format(value);
 
+  // Chart data with subsidies as negative bar
   const chartData = [
-    { name: t.results.chipCost, cost: result.breakdown.chip_cost },
-    { name: t.results.energyCost, cost: result.breakdown.energy_cost },
-    { name: t.results.carbonTax, cost: result.breakdown.carbon_tax },
-    { name: t.results.maintenance, cost: result.breakdown.maintenance },
+    { name: t.results.chipCost, cost: result.breakdown.chip_cost, type: 'cost' },
+    { name: t.results.energyCost, cost: result.breakdown.energy_cost, type: 'cost' },
+    { name: t.results.carbonTax, cost: result.breakdown.carbon_tax, type: 'cost' },
+    { name: t.results.maintenance, cost: result.breakdown.maintenance, type: 'cost' },
+    { name: t.results.subsidyAmount, cost: -result.breakdown.subsidy_amount, type: 'subsidy' },
   ];
 
   return (
@@ -144,21 +146,39 @@ const ResultsCard: React.FC<ResultsCardProps> = ({ result, isLoading }) => {
       </div>
 
       <h3 className="text-lg font-semibold text-gray-700 mb-3">{t.results.breakdown}</h3>
-      <ResponsiveContainer width="100%" height={300}>
-        <BarChart data={chartData} margin={{ top: 5, right: 20, left: 20, bottom: 35 }}>
+      <div className="mb-2 px-3 py-2 bg-blue-50 rounded-md border-l-4 border-blue-400">
+        <p className="text-xs text-blue-900">
+          <strong>ℹ️ Nota:</strong> Las barras positivas representan costos, la barra negativa (verde) representa subsidios aplicados.
+        </p>
+      </div>
+      <ResponsiveContainer width="100%" height={350}>
+        <BarChart data={chartData} margin={{ top: 5, right: 20, left: 20, bottom: 70 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis 
             dataKey="name" 
-            angle={-15}
+            angle={-20}
             textAnchor="end"
-            height={60}
+            height={80}
+            style={{ fontSize: '12px' }}
           />
-          <YAxis width={80} />
-          <Tooltip formatter={(value) => formatCurrency(Number(value))} />
-          <Bar dataKey="cost">
+          <YAxis 
+            width={90}
+            tickFormatter={(value) => `€${(value / 1000).toFixed(0)}K`}
+          />
+          <Tooltip 
+            formatter={(value: number) => [
+              formatCurrency(Math.abs(value)), 
+              value < 0 ? 'Subsidio' : 'Costo'
+            ]}
+            contentStyle={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderRadius: '8px' }}
+          />
+          <Bar dataKey="cost" radius={[8, 8, 0, 0]}>
             {chartData.map((entry, index) => {
-              const colors = ['#E11D48', '#3B82F6', '#10B981', '#F59E0B'];
-              return <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />;
+              // Costs: different colors, Subsidy: green (negative)
+              const costColors = ['#E11D48', '#3B82F6', '#F59E0B', '#8B5CF6'];
+              const subsidyColor = '#10B981';
+              const color = entry.type === 'subsidy' ? subsidyColor : costColors[index % costColors.length];
+              return <Cell key={`cell-${index}`} fill={color} />;
             })}
           </Bar>
         </BarChart>

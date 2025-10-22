@@ -460,6 +460,7 @@ Esta metodología híbrida combina la **potencia predictiva del ML** con la **tr
   },
   
   dashboard: {
+    backHome: "Volver al Inicio",
     outlook: {
       title: "Panel de Comparación Regional de TCO",
       description: "Análisis exhaustivo de TCO en 18 regiones con integración de datos en tiempo real. Este panel compara el coste total de propiedad para fabricación de semiconductores utilizando precios de electricidad validados de Mendeley Data (DOI: 10.17632/s54n4tyyz4.3), intensidad de carbono de IEA Global Grid Carbon Intensity, y benchmarks industriales validados por BCG (2023). Los costes energéticos pueden variar hasta 10x entre regiones, mientras que los subsidios impactan el TCO en un 25-50%.",
@@ -490,6 +491,41 @@ Esta metodología híbrida combina la **potencia predictiva del ML** con la **tr
       cheapest: "Más Barato",
       mostExpensive: "Más Caro"
     }
+  },
+
+  materialComparison: {
+    title: "Comparativa de Materiales",
+    subtitle: "Compara el TCO, consumo energético y características técnicas de diferentes materiales semiconductores",
+    tcoTitle: "TCO por Chip (€)",
+    tcoNote: "Nota",
+    tcoDescription: "El Si es óptimo para volúmenes >50K chips/año en aplicaciones estándar debido a su bajo coste y madurez tecnológica.",
+    energyTitle: "Consumo Energético (W)",
+    energyNote: "Ventaja",
+    energyDescription: "GaN y Diamond ofrecen el menor consumo energético, ideal para aplicaciones de alta eficiencia y reducción de huella de carbono.",
+    tableTitle: "Características Técnicas Detalladas",
+    recommendationsTitle: "Recomendaciones",
+    volumeTitle: "Alto Volumen (>100K/año)",
+    efficiencyTitle: "Máxima Eficiencia Energética",
+    powerTitle: "Alta Potencia",
+    rfTitle: "RF y Telecomunicaciones"
+  },
+
+  sensitivityAnalysis: {
+    title: "Análisis de Sensibilidad",
+    subtitle: "Comprende cómo los cambios de parámetros impactan tus cálculos de TCO",
+    energyPriceTitle: "Impacto del Precio de Energía",
+    volumeTitle: "Impacto del Volumen",
+    subsidyTitle: "Impacto de los Subsidios",
+    parameterVariation: "Variación de Parámetro",
+    tcoImpact: "Impacto en TCO",
+    energyVariation: "Precio energía ±10%",
+    volumeVariation: "Volumen ±20%",
+    subsidyVariation: "Subsidio 40% (vs 30%)",
+    baseline: "Línea Base",
+    positive: "Aumento",
+    negative: "Disminución",
+    conclusion: "Insights Clave",
+    conclusionText: "El precio de la energía es el parámetro más sensible que afecta el TCO. Un aumento del 10% en costes energéticos resulta en aproximadamente ±6.8% de variación del TCO. El escalado de volumen ofrece economías significativas, mientras que la optimización de subsidios puede reducir el TCO hasta un 10%."
   },
   
   citations: {

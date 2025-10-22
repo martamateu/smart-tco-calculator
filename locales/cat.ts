@@ -460,6 +460,7 @@ Aquesta metodologia híbrida combina la **potència predictiva del ML** amb la *
   },
   
   dashboard: {
+    backHome: "Tornar a l'Inici",
     outlook: {
       title: "Panell de Comparació Regional de TCO",
       description: "Anàlisi exhaustiva de TCO en 18 regions amb integració de dades en temps real. Aquest panell compara el cost total de propietat per a fabricació de semiconductors utilitzant preus d'electricitat validats de Mendeley Data (DOI: 10.17632/s54n4tyyz4.3), intensitat de carboni de IEA Global Grid Carbon Intensity, i benchmarks industrials validats per BCG (2023). Els costos energètics poden variar fins a 10x entre regions, mentre que els subsidis impacten el TCO en un 25-50%.",
@@ -490,6 +491,41 @@ Aquesta metodologia híbrida combina la **potència predictiva del ML** amb la *
       cheapest: "Més Barat",
       mostExpensive: "Més Car"
     }
+  },
+
+  materialComparison: {
+    title: "Comparativa de Materials",
+    subtitle: "Compara el TCO, consum energètic i característiques tècniques de diferents materials semiconductors",
+    tcoTitle: "TCO per Xip (€)",
+    tcoNote: "Nota",
+    tcoDescription: "El Si és òptim per volums >50K xips/any en aplicacions estàndard degut al seu baix cost i maduresa tecnològica.",
+    energyTitle: "Consum Energètic (W)",
+    energyNote: "Avantatge",
+    energyDescription: "GaN i Diamond ofereixen el menor consum energètic, ideal per aplicacions d'alta eficiència i reducció de petjada de carboni.",
+    tableTitle: "Característiques Tècniques Detallades",
+    recommendationsTitle: "Recomanacions",
+    volumeTitle: "Alt Volum (>100K/any)",
+    efficiencyTitle: "Màxima Eficiència Energètica",
+    powerTitle: "Alta Potència",
+    rfTitle: "RF i Telecomunicacions"
+  },
+
+  sensitivityAnalysis: {
+    title: "Anàlisi de Sensibilitat",
+    subtitle: "Comprèn com els canvis de paràmetres impacten els teus càlculs de TCO",
+    energyPriceTitle: "Impacte del Preu d'Energia",
+    volumeTitle: "Impacte del Volum",
+    subsidyTitle: "Impacte dels Subsidis",
+    parameterVariation: "Variació de Paràmetre",
+    tcoImpact: "Impacte en TCO",
+    energyVariation: "Preu energia ±10%",
+    volumeVariation: "Volum ±20%",
+    subsidyVariation: "Subsidi 40% (vs 30%)",
+    baseline: "Línia Base",
+    positive: "Augment",
+    negative: "Disminució",
+    conclusion: "Insights Clau",
+    conclusionText: "El preu de l'energia és el paràmetre més sensible que afecta el TCO. Un augment del 10% en costos energètics resulta en aproximadament ±6.8% de variació del TCO. L'escalat de volum ofereix economies significatives, mentre que l'optimització de subsidis pot reduir el TCO fins a un 10%."
   },
   
   citations: {

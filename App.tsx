@@ -7,6 +7,8 @@ import ExplanationPanel from './components/ExplanationPanel';
 import ScenarioChart from './components/ScenarioChart';
 import EnhancedScenarioChart from './components/EnhancedScenarioChart';
 import RegionalPriceComparison from './components/RegionalPriceComparison';
+import MaterialComparison from './components/MaterialComparison';
+import SensitivityAnalysis from './components/SensitivityAnalysis';
 import RandomForestVisualization from './components/RandomForestVisualization';
 import RAGVisualization from './components/RAGVisualization';
 import DocsPage from './components/DocsPage';
@@ -16,7 +18,7 @@ import { TcoInput, TcoResult, Explanation } from './types';
 import { useLanguage } from './contexts/LanguageContext';
 import api from './services/api';
 
-type Page = 'home' | 'docs' | 'about' | 'citations' | 'dashboard-outlook' | 'dashboard-energy-comparison' | 'dashboard-energy-prices' | 'dashboard-ml-model' | 'dashboard-rag-system';
+type Page = 'home' | 'docs' | 'about' | 'citations' | 'dashboard-outlook' | 'dashboard-energy-comparison' | 'dashboard-energy-prices' | 'dashboard-material-comparison' | 'dashboard-sensitivity' | 'dashboard-ml-model' | 'dashboard-rag-system';
 
 function App() {
   const { language, t } = useLanguage();
@@ -26,6 +28,19 @@ function App() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [lastInputs, setLastInputs] = useState<TcoInput | null>(null);
+
+  // Listen for navigation events from ExplanationPanel
+  React.useEffect(() => {
+    const handleNavigateEvent = (event: Event) => {
+      const customEvent = event as CustomEvent;
+      const page = customEvent.detail as Page;
+      setCurrentPage(page);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    window.addEventListener('navigate', handleNavigateEvent);
+    return () => window.removeEventListener('navigate', handleNavigateEvent);
+  }, []);
 
   const handleCalculate = useCallback(async (inputs: TcoInput) => {
     setIsLoading(true);
@@ -77,6 +92,18 @@ function App() {
       {currentPage === 'dashboard-energy-prices' && (
         <main className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
           <RegionalPriceComparison onNavigate={setCurrentPage} />
+        </main>
+      )}
+      
+      {currentPage === 'dashboard-material-comparison' && (
+        <main className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+          <MaterialComparison onNavigate={setCurrentPage} />
+        </main>
+      )}
+      
+      {currentPage === 'dashboard-sensitivity' && (
+        <main className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+          <SensitivityAnalysis onNavigate={setCurrentPage} />
         </main>
       )}
       

@@ -143,6 +143,15 @@ const EnhancedScenarioChart: React.FC<EnhancedScenarioChartProps> = ({ onNavigat
       <h2 className="text-2xl font-bold text-gray-800 mb-4">
         📈 Multi-Region TCO Trend Analysis
       </h2>
+      
+      {/* Clarification Banner */}
+      <div className="mb-4 px-4 py-3 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+        <p className="text-sm text-blue-900">
+          <strong>ℹ️ Qué muestra este gráfico:</strong> Proyección de <strong>evolución temporal (2025-2029)</strong> de costos por región. 
+          Selecciona la métrica: <strong>Costo Energético</strong> (solo energía), <strong>Tasa de Subsidio</strong> (%), o <strong>Costo Total</strong> (TCO completo después de subsidios).
+        </p>
+      </div>
+      
       <p className="text-gray-600 text-sm mb-2">
         5-year projection comparing TCO trends across multiple manufacturing regions. Uses validated electricity pricing from <strong>Mendeley Data</strong> (DOI: 10.17632/s54n4tyyz4.3) covering 32 countries, carbon intensity from <strong>IEA Global Grid Carbon Intensity</strong>, and subsidy data from government sources. Predictions incorporate Random Forest ML model trained on 10,000+ real-world scenarios, validated against <strong>BCG (2023)</strong> industry benchmarks.
       </p>

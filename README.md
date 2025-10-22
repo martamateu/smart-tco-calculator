@@ -16,8 +16,14 @@ Real-time TCO analysis for semiconductor manufacturing across 27 materials and 1
 |----------|-------------|
 | [TCO_DISAMBIGUATION.md](backend/data/TCO_DISAMBIGUATION.md) | **Clarifies the two different TCO concepts** in semiconductors (material vs economic) |
 | [TCO_FORMULAS.md](backend/data/TCO_FORMULAS.md) | Detailed mathematical formulas and SEMI E35 mapping |
+| [MANUAL_DATA_SOURCES.md](backend/data/MANUAL_DATA_SOURCES.md) | ⚠️ **Manual data sources & update guidelines** (chip costs, energy consumption, carbon footprint) |
 | [TABLES_DOCUMENTATION.md](backend/data/TABLES_DOCUMENTATION.md) | Data schema and table structures |
 | [VERIFICATION_REPORT.md](VERIFICATION_REPORT.md) | Calculation accuracy audit and test results |
+
+### Data Source Details
+- [CHIP_COST_SOURCES.md](backend/data/CHIP_COST_SOURCES.md) - IC Insights, Yole, TechInsights pricing data
+- [CARBON_FOOTPRINT_SOURCES.md](backend/data/CARBON_FOOTPRINT_SOURCES.md) - GlobalFoundries, Yole LCA studies
+- [SUBSIDY_SOURCES.md](backend/data/SUBSIDY_SOURCES.md) - EU Chips Act, US CHIPS Act, national programs
 
 ---
 
@@ -46,18 +52,20 @@ Real-time TCO analysis for semiconductor manufacturing across 27 materials and 1
 
 ### 📁 Static Data (Manual Updates)
 
-| Data Type | Source | Update Method | Last Updated |
-|-----------|--------|---------------|--------------|
-| **Chip Costs** | IC Insights, Yole, TSMC reports | Manual quarterly | 2024 Q4 |
-| **Subsidies** | EU Chips Act, USA CHIPS Act, national programs | Manual annually | 2025 Jan |
-| **Carbon Taxes** | EU ETS, national carbon pricing schemes | Manual quarterly | 2025 Jan |
-| **TRL Levels** | Industry reports, academic publications | Manual annually | 2024 |
-| **Material Costs** | Industry pricing, wafer costs | Manual quarterly | 2024 Q4 |
+| Data Type | Source | Update Method | Last Updated | Status |
+|-----------|--------|---------------|--------------|--------|
+| **Chip Costs** | IC Insights, Yole, TechInsights | Manual quarterly | 2024 Q4 | ✅ Verified |
+| **Energy Consumption** | ⚠️ **NOT DOCUMENTED** | **Needs verification** | Unknown | ❌ **Placeholder** |
+| **Subsidies** | EU Chips Act, USA CHIPS Act, national programs | Manual annually | 2025 Jan | ✅ Verified |
+| **Carbon Footprint** | GlobalFoundries, Yole LCA | Manual annually | 2024 Q4 | ⚠️ Estimated |
+| **TRL Levels** | Industry maturity analysis | Manual annually | 2024 | ✅ Verified |
 
 **Why Static?**
 - No public APIs available for semiconductor pricing or government subsidy programs
 - Data changes infrequently (quarterly/annually)
 - Requires manual verification from official sources
+
+⚠️ **Data Quality Notice**: Energy consumption values currently lack documented sources. See [MANUAL_DATA_SOURCES.md](backend/data/MANUAL_DATA_SOURCES.md) for details and recommended sources.
 
 ---
 

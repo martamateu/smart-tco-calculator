@@ -90,10 +90,10 @@ const ScenarioChart: React.FC<ScenarioChartProps> = ({ onNavigate }) => {
 
   const getMetricLabel = () => {
     switch (selectedMetric) {
-      case 'total': return 'TCO Total (€)';
-      case 'energy': return 'Energy Cost (€)';
-      case 'subsidy': return 'Subsidy Amount (€)';
-      default: return 'TCO Total (€)';
+      case 'total': return 'TCO Total (5 años, después de subsidios) €';
+      case 'energy': return 'Solo Costo Energético (€)';
+      case 'subsidy': return 'Subsidios Aplicados (€)';
+      default: return 'TCO Total (5 años, después de subsidios) €';
     }
   };
   
@@ -102,13 +102,21 @@ const ScenarioChart: React.FC<ScenarioChartProps> = ({ onNavigate }) => {
       <h2 className="text-2xl font-bold text-gray-800 mb-4">
         {t.dashboard.outlook.title}
       </h2>
-      <p className="text-gray-600 text-sm mb-6">
+      <p className="text-gray-600 text-sm mb-4">
         {t.dashboard.outlook.description}
         <br />
         <span className="text-xs text-blue-700 mt-2 block">
           📊 {t.dashboard.outlook.dataSources}
         </span>
       </p>
+      
+      {/* Clarification Note */}
+      <div className="mb-4 px-4 py-3 bg-yellow-50 rounded-lg border-l-4 border-yellow-400">
+        <p className="text-sm text-yellow-900">
+          <strong>⚠️ Importante:</strong> Los valores mostrados por defecto son <strong>TCO Total después de aplicar subsidios</strong>. 
+          Usa los botones abajo para ver solo costos de energía o subsidios aplicados.
+        </p>
+      </div>
       
       {/* Material Selector */}
       <div className="mb-4">

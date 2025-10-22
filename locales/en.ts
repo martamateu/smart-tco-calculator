@@ -458,6 +458,7 @@ This hybrid methodology combines **ML predictive power** with **SEMI E35 formula
   },
   
   dashboard: {
+    backHome: "Back to Home",
     outlook: {
       title: "Regional TCO Comparison Dashboard",
       description: "Comprehensive TCO analysis across 18 regions with real-time data integration. This dashboard compares total cost of ownership for semiconductor manufacturing using validated electricity prices from Mendeley Data (DOI: 10.17632/s54n4tyyz4.3), carbon intensity from IEA Global Grid Carbon Intensity, and industry benchmarks validated by BCG (2023). Energy costs can vary up to 10x between regions, while subsidies impact TCO by 25-50%.",
@@ -488,6 +489,41 @@ This hybrid methodology combines **ML predictive power** with **SEMI E35 formula
       cheapest: "Cheapest",
       mostExpensive: "Most Expensive"
     }
+  },
+
+  materialComparison: {
+    title: "Material Comparison",
+    subtitle: "Compare TCO, energy consumption, and technical characteristics of different semiconductor materials",
+    tcoTitle: "TCO per Chip (€)",
+    tcoNote: "Note",
+    tcoDescription: "Si is optimal for volumes >50K chips/year in standard applications due to its low cost and technological maturity.",
+    energyTitle: "Energy Consumption (W)",
+    energyNote: "Advantage",
+    energyDescription: "GaN and Diamond offer the lowest energy consumption, ideal for high-efficiency applications and carbon footprint reduction.",
+    tableTitle: "Detailed Technical Characteristics",
+    recommendationsTitle: "Recommendations",
+    volumeTitle: "High Volume (>100K/year)",
+    efficiencyTitle: "Maximum Energy Efficiency",
+    powerTitle: "High Power",
+    rfTitle: "RF & Telecommunications"
+  },
+
+  sensitivityAnalysis: {
+    title: "Sensitivity Analysis",
+    subtitle: "Understand how parameter changes impact your TCO calculations",
+    energyPriceTitle: "Energy Price Impact",
+    volumeTitle: "Volume Impact",
+    subsidyTitle: "Subsidy Impact",
+    parameterVariation: "Parameter Variation",
+    tcoImpact: "TCO Impact",
+    energyVariation: "Energy price ±10%",
+    volumeVariation: "Volume ±20%",
+    subsidyVariation: "Subsidy 40% (vs 30%)",
+    baseline: "Baseline",
+    positive: "Increase",
+    negative: "Decrease",
+    conclusion: "Key Insights",
+    conclusionText: "Energy price is the most sensitive parameter affecting TCO. A 10% increase in energy costs results in approximately ±6.8% TCO variation. Volume scaling offers significant economies, while subsidy optimization can reduce TCO by up to 10%."
   },
   
   citations: {
