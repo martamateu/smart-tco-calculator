@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { TcoInput, Material, Region } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
 import api from '../services/api';
@@ -14,6 +14,10 @@ const InputForm: React.FC<InputFormProps> = ({ onSubmit, isLoading }) => {
   const [materials, setMaterials] = useState<Material[]>([]);
   const [regions, setRegions] = useState<Region[]>([]);
   const [isLoadingData, setIsLoadingData] = useState<boolean>(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState<number>(0);
+  const isMountedRef = useRef<boolean>(true);
+  
   const [inputs, setInputs] = useState<TcoInput>({
     material: '',
     region: '',
@@ -22,21 +26,68 @@ const InputForm: React.FC<InputFormProps> = ({ onSubmit, isLoading }) => {
   });
 
   useEffect(() => {
-    const fetchData = async () => {
+    isMountedRef.current = true;
+    
+    const fetchDataWithRetry = async (attempt: number = 1, maxAttempts: number = 3): Promise<void> => {
+      if (!isMountedRef.current) return;
+      
       try {
         setIsLoadingData(true);
-        const [mats, regs] = await Promise.all([api.getMaterials(), api.getRegions()]);
+        setLoadError(null);
+        setRetryCount(attempt);
+        
+        // Fetch data with timeout and retry logic
+        const [mats, regs] = await Promise.all([
+          api.getMaterials(),
+          api.getRegions()
+        ]);
+        
+        // Check if component is still mounted before setting state
+        if (!isMountedRef.current) return;
+        
+        // Validate data
+        if (!mats || mats.length === 0) {
+          throw new Error('No materials data received');
+        }
+        if (!regs || regs.length === 0) {
+          throw new Error('No regions data received');
+        }
+        
+        // Set data and default values
         setMaterials(mats);
         setRegions(regs);
-        if (mats.length > 0) setInputs(prev => ({ ...prev, material: mats[0].id }));
-        if (regs.length > 0) setInputs(prev => ({ ...prev, region: regs[0].code }));
-      } catch (error) {
-        console.error('Error loading data:', error);
-      } finally {
+        setInputs(prev => ({
+          ...prev,
+          material: mats[0]?.id || '',
+          region: regs[0]?.code || ''
+        }));
         setIsLoadingData(false);
+        setLoadError(null);
+        
+      } catch (error) {
+        console.error(`Error loading data (attempt ${attempt}/${maxAttempts}):`, error);
+        
+        if (!isMountedRef.current) return;
+        
+        // Retry if we haven't exceeded max attempts
+        if (attempt < maxAttempts) {
+          console.log(`Retrying in ${attempt * 1000}ms...`);
+          setTimeout(() => {
+            fetchDataWithRetry(attempt + 1, maxAttempts);
+          }, attempt * 1000); // Exponential backoff: 1s, 2s, 3s
+        } else {
+          setIsLoadingData(false);
+          setLoadError(error instanceof Error ? error.message : 'Failed to load data. Please refresh the page.');
+        }
       }
     };
-    fetchData();
+    
+    fetchDataWithRetry();
+    
+    // Cleanup function
+    return () => {
+      isMountedRef.current = false;
+    };
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
@@ -50,6 +101,14 @@ const InputForm: React.FC<InputFormProps> = ({ onSubmit, isLoading }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(inputs);
+  };
+
+  // Manual retry function
+  const handleRetry = () => {
+    setIsLoadingData(true);
+    setLoadError(null);
+    setRetryCount(0);
+    window.location.reload();
   };
 
   if (isLoadingData) {
@@ -102,14 +161,46 @@ const InputForm: React.FC<InputFormProps> = ({ onSubmit, isLoading }) => {
             </div>
           </div>
 
-          {/* Loading Text */}
+          {/* Loading Text with retry count */}
           <div className="flex items-center justify-center mt-8 gap-2">
             <svg className="animate-spin h-5 w-5 text-roseRed" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
-            <span className="text-gray-600 text-sm font-medium">Loading materials and regions...</span>
+            <span className="text-gray-600 text-sm font-medium">
+              Loading materials and regions...
+              {retryCount > 1 && <span className="text-xs ml-2">(attempt {retryCount}/3)</span>}
+            </span>
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Error state with retry button
+  if (loadError) {
+    return (
+      <div className="bg-white p-8 rounded-2xl shadow-lg h-full flex flex-col justify-center items-center">
+        <div className="w-full text-center">
+          <div className="mx-auto mb-6 w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
+            <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 className="text-xl font-semibold text-gray-800 mb-3">Failed to Load Data</h3>
+          <p className="text-gray-600 mb-6 text-sm">{loadError}</p>
+          <button
+            onClick={handleRetry}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-roseRed text-white rounded-xl hover:bg-opacity-90 transition-all shadow-md hover:shadow-lg"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            Retry
+          </button>
+          <p className="text-xs text-gray-500 mt-4">
+            If the problem persists, please check your internet connection or try refreshing the page.
+          </p>
         </div>
       </div>
     );
