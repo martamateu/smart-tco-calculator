@@ -53,23 +53,34 @@ TCO = C_acquisition + C_operation + C_maintenance + C_depreciation + C_downtime
 
 ### Two Contexts in Semiconductors
 
-#### **Context A: FAB Equipment TCO** (NOT our focus)
-Calculating TCO for **fabrication tools** (lithography, etching, deposition):
+#### **Context A: FAB Manufacturing TCO** (NOT our focus)
+This is the **BCG/SIA framework** for calculating TCO to **build and operate a semiconductor fabrication plant**:
 
-| Component | Example |
-|-----------|---------|
-| C_acquisition | ASML EUV lithography system: €150M |
-| C_operation | Utilities, gases, cleanroom: €5M/year |
-| C_maintenance | Service contracts, calibration: €2M/year |
-| C_depreciation | Equipment amortization: €10M/year (15-year life) |
-| C_downtime | Yield loss, throughput impact: €3M/year |
+**BCG Formula (2021-2023):**
+```
+TCO_FAB = CAPEX + (OPEX × N) - Incentives
+```
 
-**Total FAB Tool TCO**: €320M over 15 years
+Where:
+- **CAPEX (70%)**: Fab construction, ASML EUV tools (€150M each), cleanrooms, automation
+- **OPEX (30%)**: Utilities, gases, wafers, labor, maintenance (€1.5-2.5B/year)
+- **N**: 10-15 years operational lifespan
+- **Incentives**: CHIPS Act subsidies (20-40% offset)
+
+**Example - Next-gen 2nm FAB:**
+| Component | Amount |
+|-----------|--------|
+| CAPEX | €25 billion (equipment + construction) |
+| OPEX | €2B/year × 10 years = €20 billion |
+| Incentives | -€13.5 billion (30% US CHIPS Act) |
+| **Total TCO** | **€31.5 billion** over 10 years |
+
+This is what **Intel, TSMC, Samsung** calculate when deciding where to build fabs.[1]
 
 ---
 
 #### **Context B: Chip Procurement TCO** ✅ **(THIS CALCULATOR)**
-Calculating TCO for **buying and operating semiconductor chips**:
+This is what **chip buyers** (Apple, Tesla, Bosch, Siemens) calculate when deciding which chips to purchase:
 
 | Component | Example | Our Implementation |
 |-----------|---------|-------------------|
@@ -123,18 +134,59 @@ Chips are **expensed immediately** when used in production, following standard a
 3. ScienceDirect - "Optical and Electrical Properties of TCO Materials"
 
 ### Total Cost of Ownership (Economics)
+
+#### FAB Manufacturing TCO (BCG Framework):
+1. BCG × SIA (2021) - "Strengthening the Global Semiconductor Value Chain" - **Primary TCO formula**: TCO = CAPEX + (OPEX × N) - Incentives
+2. BCG (2023) - "Navigating the Costly Economics of Chip Making" - Updated TCO estimates for sub-2nm fabs (€35-43B)
+3. BCG (2024) - "Industry Recommendations to Attract Chips Investments"
+
+#### Chip Procurement TCO (Our Focus):
 1. SEMI E35 - "Guide to Calculate Cost of Ownership Metrics for Semiconductor Manufacturing Equipment"
 2. Chetan Patil - "The Total Cost of Ownership in Semiconductor Business"
-3. BCG (2023) - "Semiconductor Manufacturing TCO Analysis"
-4. JRC European Commission - "Economics of Semiconductor Production"
+3. JRC European Commission (2023) - "Economics of Semiconductor Production"
+4. IEEE Semiconductor Manufacturing - "Total Cost of Ownership in HPC and AI Systems"
 
 ---
 
-## 🚨 Common Confusion Points
+## � How BCG TCO and Our TCO Relate
+
+The semiconductor value chain has **two economic perspectives**:
+
+```
+┌─────────────────────────────────────────────┐
+│  UPSTREAM: BCG TCO (FAB Manufacturing)      │
+│                                              │
+│  TCO_FAB = CAPEX + (OPEX × N) - Incentives │
+│           €35-43 billion (10-15 years)      │
+│                                              │
+│  Who uses this: Intel, TSMC, Samsung        │
+│  Decision: Where to build fabs?             │
+└──────────────────┬──────────────────────────┘
+                   │
+                   │ Produces chips
+                   ▼
+┌─────────────────────────────────────────────┐
+│  DOWNSTREAM: Our TCO (Chip Procurement)     │
+│                                              │
+│  TCO_Chips = Acquisition + Operation - Sub  │
+│             €3-20 million (5 years)         │
+│                                              │
+│  Who uses this: Apple, Tesla, Bosch         │
+│  Decision: Which chips to buy?              │
+└─────────────────────────────────────────────┘
+```
+
+**Both are correct TCO formulas** - they simply address different questions in the semiconductor ecosystem:
+- **BCG answers**: "Should I invest €40B to build a fab in Arizona or Taiwan?"
+- **We answer**: "Should I buy SiC chips from Germany or GaN chips from USA?"
+
+## �🚨 Common Confusion Points
 
 | Question | Answer |
 |----------|--------|
-| "Why no transparency/conductivity formulas?" | We calculate **economic TCO**, not **material TCO** |
+| "Why don't you use BCG's TCO formula?" | BCG calculates **FAB construction TCO** (€35-43B), we calculate **chip procurement TCO** (€3-20M) |
+| "Why no CAPEX in your formula?" | CAPEX applies to **building fabs**, not **buying chips** |
+| "Why no transparency/conductivity formulas?" | We calculate **economic TCO**, not **material TCO** (Transparent Conductive Oxide) |
 | "Why no depreciation in your TCO?" | We analyze **chip procurement**, not **FAB equipment** |
 | "Is ITO in your materials list?" | Only if used as a **semiconductor chip**, not as a **TCO material** |
 | "What about σ = μ × n × e?" | That's for **material conductivity**, not **cost ownership** |
@@ -143,16 +195,19 @@ Chips are **expensed immediately** when used in production, following standard a
 
 ## ✅ Summary
 
-| Aspect | Material TCO | Economic TCO (Our Focus) |
-|--------|-------------|--------------------------|
-| **Field** | Materials Science | Business/Finance |
-| **Formula** | σ = μ × n × e | TCO = C_acq + C_op + C_maint + C_down |
-| **Units** | S/cm, Ω·cm | EUR, USD |
-| **Application** | Optoelectronics design | Procurement decisions |
-| **Examples** | ITO, ZnO:Al, SnO₂:F | SiC, GaN, Si chips |
-| **Depreciation** | N/A | Only for FAB equipment, not chips |
+| Aspect | Material TCO | Economic TCO (FAB) | Economic TCO (Our Focus) |
+|--------|-------------|-------------------|--------------------------|
+| **Field** | Materials Science | Fab Economics | Chip Procurement |
+| **Formula** | σ = μ × n × e | CAPEX + OPEX×N - Incentives | C_acq + C_op + C_maint + C_down - Sub |
+| **Units** | S/cm, Ω·cm | EUR billions | EUR millions |
+| **Application** | Optoelectronics design | Fab location decisions | Chip sourcing decisions |
+| **Examples** | ITO, ZnO:Al, SnO₂:F | Intel Arizona fab | SiC, GaN, Si chips |
+| **Reference** | Materials science papers | BCG/SIA (2021-2024) | SEMI E35 + JRC |
+| **Typical Value** | 10⁴ S/cm | €35-43 billion | €3-20 million |
+| **Decision Maker** | Device engineers | Intel, TSMC, Samsung | Apple, Tesla, Bosch |
+| **Depreciation** | N/A | Yes (equipment) | No (consumables) |
 
-**This calculator addresses Economic TCO for chip procurement, following SEMI E35 adapted for consumable semiconductor goods.**
+**This calculator addresses Economic TCO for chip procurement (downstream), not FAB manufacturing TCO (upstream - BCG framework).**
 
 ---
 
