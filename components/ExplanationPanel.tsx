@@ -93,39 +93,136 @@ const ExplanationPanel: React.FC<ExplanationPanelProps> = ({
       </div>
 
       <div className="prose prose-sm max-w-none">
-        <ReactMarkdown
-          components={{
-            h2: ({ children }) => (
-              <h2 className="text-xl font-bold text-gray-900 mt-6 mb-3 first:mt-0">
-                {children}
-              </h2>
-            ),
-            h3: ({ children }) => (
-              <h3 className="text-lg font-semibold text-gray-800 mt-5 mb-2">
-                {children}
-              </h3>
-            ),
-            p: ({ children }) => (
-              <p className="text-gray-700 mb-3 leading-relaxed">{children}</p>
-            ),
-            ul: ({ children }) => (
-              <ul className="list-disc list-inside space-y-1 mb-3 text-gray-700">
-                {children}
-              </ul>
-            ),
-            li: ({ children }) => (
-              <li className="ml-4 text-gray-700">{children}</li>
-            ),
-            strong: ({ children }) => (
-              <strong className="font-semibold text-gray-900">
-                {children}
-              </strong>
-            ),
-          }}
-        >
-          {/* Show only the explanation WITHOUT the sources note */}
-          {explanation.explanation.split(/\*Analysis based on|\*Análisis basado en|\*Anàlisi basada en|📚/)[0]}
-        </ReactMarkdown>
+        {/* Collapsible Accordion Sections */}
+        <div className="space-y-3">
+          
+          {/* Executive Summary - Open by default */}
+          <details className="group" open>
+            <summary className="cursor-pointer p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200 hover:bg-blue-100 transition-colors list-none">
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-semibold text-blue-900 flex items-center gap-2 m-0">
+                  {t.explanation.accordionSummary}
+                </h3>
+                <svg className="w-5 h-5 text-blue-600 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </summary>
+            <div className="mt-3 px-4 pb-2">
+              <ReactMarkdown
+                components={{
+                  h2: ({ children }) => (
+                    <h2 className="text-xl font-bold text-gray-800 mt-4 mb-2 m-0">
+                      {children}
+                    </h2>
+                  ),
+                  h3: ({ children }) => (
+                    <h3 className="text-lg font-semibold text-gray-800 mt-3 mb-2 m-0">
+                      {children}
+                    </h3>
+                  ),
+                  p: ({ children }) => (
+                    <p className="text-gray-700 mb-2 leading-relaxed">{children}</p>
+                  ),
+                  ul: ({ children }) => (
+                    <ul className="list-disc list-inside space-y-1 mb-2 text-gray-700">
+                      {children}
+                    </ul>
+                  ),
+                  li: ({ children }) => (
+                    <li className="ml-4 text-gray-700 text-sm">{children}</li>
+                  ),
+                  strong: ({ children }) => (
+                    <strong className="font-semibold text-gray-900">
+                      {children}
+                    </strong>
+                  ),
+                }}
+              >
+                {(() => {
+                  const fullText = explanation.explanation;
+                  // Extract summary section (everything before first ## heading or first detailed section)
+                  const summaryMatch = fullText.match(/^([\s\S]*?)(?=\n##|\n\*\*)/);
+                  return summaryMatch ? summaryMatch[1].trim() : fullText.split('\n').slice(0, 5).join('\n');
+                })()}
+              </ReactMarkdown>
+            </div>
+          </details>
+
+          {/* Calculation Method - Collapsed by default */}
+          <details className="group">
+            <summary className="cursor-pointer p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg border border-purple-200 hover:bg-purple-100 transition-colors list-none">
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-semibold text-purple-900 flex items-center gap-2 m-0">
+                  {t.explanation.accordionMethod}
+                </h3>
+                <svg className="w-5 h-5 text-purple-600 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </summary>
+            <div className="mt-3 px-4 pb-2">
+              <div className="text-sm text-gray-700 prose prose-sm max-w-none">
+                <ReactMarkdown>{t.explanation.methodologyExplanation}</ReactMarkdown>
+              </div>
+            </div>
+          </details>
+
+          {/* Key Factors - Collapsed by default */}
+          <details className="group">
+            <summary className="cursor-pointer p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200 hover:bg-green-100 transition-colors list-none">
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-semibold text-green-900 flex items-center gap-2 m-0">
+                  {t.explanation.accordionFactors}
+                </h3>
+                <svg className="w-5 h-5 text-green-600 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </summary>
+            <div className="mt-3 px-4 pb-2">
+              <ReactMarkdown
+                components={{
+                  h2: ({ children }) => (
+                    <h2 className="text-lg font-bold text-gray-800 mt-3 mb-2 m-0">
+                      {children}
+                    </h2>
+                  ),
+                  h3: ({ children }) => (
+                    <h3 className="text-base font-semibold text-gray-800 mt-2 mb-1 m-0">
+                      {children}
+                    </h3>
+                  ),
+                  p: ({ children }) => (
+                    <p className="text-gray-700 mb-2 text-sm leading-relaxed">{children}</p>
+                  ),
+                  ul: ({ children }) => (
+                    <ul className="list-disc list-inside space-y-1 mb-2 text-gray-700">
+                      {children}
+                    </ul>
+                  ),
+                  li: ({ children }) => (
+                    <li className="ml-4 text-gray-700 text-sm">{children}</li>
+                  ),
+                  strong: ({ children }) => (
+                    <strong className="font-semibold text-gray-900">
+                      {children}
+                    </strong>
+                  ),
+                }}
+              >
+                {(() => {
+                  const fullText = explanation.explanation;
+                  // Extract detailed analysis sections (after summary, before sources)
+                  const sections = fullText.split(/\*Analysis based on|\*Análisis basado en|\*Anàlisi basada en|📚/)[0];
+                  const afterSummary = sections.split(/\n##/).slice(1).join('\n##');
+                  return afterSummary || sections;
+                })()}
+              </ReactMarkdown>
+            </div>
+          </details>
+
+        </div>
       </div>
 
       {/* Methodology Section - Collapsible for less clutter */}

@@ -86,6 +86,10 @@ export const cat: Translations = {
     comparative: "Anàlisi Comparativa",
     citations: "Fonts de Dades i Referències",
     methodology: "Metodologia de Càlcul",
+    accordionSummary: "📊 Resum Executiu",
+    accordionMethod: "⚙️ Mètode de Càlcul",
+    accordionValidation: "✅ Validació de la Indústria",
+    accordionFactors: "🔍 Factors Clau del TCO",
     methodologyExplanation: `**Com s'ha calculat aquest TCO:**
 
 🎯 **Àmbit**: Cost Total de Propietat per **adquisició i operació de semiconductors** (no equips de fabricació).

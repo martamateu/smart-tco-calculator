@@ -86,6 +86,10 @@ export const es: Translations = {
     comparative: "Análisis Comparativo",
     citations: "Fuentes de Datos y Referencias",
     methodology: "Metodología de Cálculo",
+    accordionSummary: "📊 Resumen Ejecutivo",
+    accordionMethod: "⚙️ Método de Cálculo",
+    accordionValidation: "✅ Validación de la Industria",
+    accordionFactors: "🔍 Factores Clave del TCO",
     methodologyExplanation: `**Cómo se ha calculado este TCO:**
 
 🎯 **Alcance**: Coste Total de Propiedad para **adquisición y operación de semiconductores** (no equipos de fabricación).

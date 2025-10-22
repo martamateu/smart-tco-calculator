@@ -84,6 +84,10 @@ export const en = {
     comparative: "Comparative Analysis",
     citations: "Data Sources & Citations",
     methodology: "Calculation Methodology",
+    accordionSummary: "📊 Executive Summary",
+    accordionMethod: "⚙️ Calculation Method",
+    accordionValidation: "✅ Industry Validation",
+    accordionFactors: "🔍 Key TCO Factors",
     methodologyExplanation: `**How this TCO was calculated:**
 
 🎯 **Scope**: Total Cost of Ownership for **semiconductor procurement and operation** (not fabrication equipment).
