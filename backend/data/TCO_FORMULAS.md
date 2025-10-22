@@ -7,8 +7,25 @@ This document provides the **exact mathematical formulas** used in the Smart TCO
 2. **5-Year Scenario Projections** (baseline, optimistic, pessimistic)
 3. **Data Sources** for each variable
 
-**Last Updated**: October 14, 2025  
+**Last Updated**: October 22, 2025  
 **Maintained By**: Smart TCO Calculator Team
+
+---
+
+## ⚠️ Important Clarification: TCO Scope
+
+**This calculator computes TCO for SEMICONDUCTOR PROCUREMENT & OPERATION**, not fabrication equipment.
+
+There are two different TCO concepts in semiconductors:
+1. **TCO for FAB Equipment** (lithography, etching, deposition tools) → includes depreciation
+2. **TCO for Chip Procurement** (buying and operating chips) → this calculator
+
+Our formulas follow **SEMI E35 standard** adapted for chip procurement:
+- ✅ C_acquisition (chip cost)
+- ✅ C_operation (energy + carbon tax)
+- ✅ C_maintenance (ongoing support)
+- ✅ C_downtime (supply chain risk)
+- ❌ C_depreciation (N/A - chips are consumed, not depreciated as capital assets)
 
 ---
 

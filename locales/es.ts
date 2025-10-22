@@ -72,21 +72,26 @@ export const es: Translations = {
     methodology: "Metodología de Cálculo",
     methodologyExplanation: `**Cómo se ha calculado este TCO:**
 
+🎯 **Alcance**: Coste Total de Propiedad para **adquisición y operación de semiconductores** (no equipos de fabricación).
+
 🤖 **Modelo Random Forest** → Estima el **TCO total agregado** capturando relaciones complejas entre factores (material, región, volumen, años, precios energía).
 
-📊 **Desglose con fórmulas validadas** → Cada componente individual (coste energético, mantenimiento, impuesto carbono, riesgo cadena suministro, subsidios) se calcula con **fórmulas sectoriales** validadas por BCG (2023) y JRC:
-  • **Coste Energético**: (consumo_chip × horas_vida × volumen × años) × precio_kWh
-  • **Mantenimiento**: 9-15% del capex de equipos (según categoría material)
-  • **Impuesto Carbono**: emisiones_CO2 × precio_carbono_EU_ETS
-  • **Riesgo Cadena**: 3-10% según TRL y concentración fabricantes
+📊 **Desglose con fórmulas validadas** → Siguiendo el estándar SEMI E35 para Coste de Propiedad:
+  • **Coste Chip (C_acquisition)**: coste_unitario × volumen × años
+  • **Coste Energético (C_operation)**: (consumo_chip × horas_vida × volumen × años) × precio_kWh
+  • **Impuesto Carbono (C_operation)**: emisiones_CO2 × precio_carbono_EU_ETS
+  • **Mantenimiento (C_maintenance)**: 9-15% del coste chip (según categoría material)
+  • **Riesgo Cadena (C_downtime)**: 3-10% según TRL y concentración fabricantes
   • **Subsidios**: tasa_región aplicada al TCO total (EU Chips Act, CHIPS Act USA)
+
+**Nota**: La depreciación (C_depreciation) se aplica al TCO de equipos de fabricación, no al TCO de adquisición de chips analizado aquí.
 
 📈 **Datos actualizados**:
   • Precios energía: ENTSO-E (UE en tiempo real), EIA (USA), OECD (Asia)
   • Propiedades materiales: Materials Project API + JRC
   • Subsidios: programas gubernamentales verificados (actualizado trimestralmente)
 
-Esta metodología híbrida combina la **potencia predictiva del ML** con la **transparencia de las fórmulas tradicionales** para ofrecer resultados precisos y auditables.`,
+Esta metodología híbrida combina la **potencia predictiva del ML** con la **transparencia del estándar SEMI E35** para ofrecer resultados precisos y auditables.`,
     energyDominance: "⚡ Dominancia del Coste Energético",
     energyDominanceExplanation: `**¿Es normal que la energía sea el {percentage}% del TCO?**
 

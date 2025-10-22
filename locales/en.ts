@@ -70,21 +70,26 @@ export const en = {
     methodology: "Calculation Methodology",
     methodologyExplanation: `**How this TCO was calculated:**
 
+🎯 **Scope**: Total Cost of Ownership for **semiconductor procurement and operation** (not fabrication equipment).
+
 🤖 **Random Forest Model** → Estimates the **aggregate total TCO** by capturing complex relationships between factors (material, region, volume, years, energy prices).
 
-📊 **Breakdown with validated formulas** → Each individual component (energy cost, maintenance, carbon tax, supply chain risk, subsidies) is calculated using **industry-validated formulas** from BCG (2023) and JRC:
-  • **Energy Cost**: (chip_consumption × lifetime_hours × volume × years) × price_kWh
-  • **Maintenance**: 9-15% of equipment capex (by material category)
-  • **Carbon Tax**: CO2_emissions × EU_ETS_carbon_price
-  • **Supply Chain Risk**: 3-10% based on TRL and manufacturer concentration
+📊 **Breakdown with validated formulas** → Following SEMI E35 industry standard for Cost of Ownership:
+  • **Chip Cost (C_acquisition)**: unit_cost × volume × years
+  • **Energy Cost (C_operation)**: (chip_consumption × lifetime_hours × volume × years) × price_kWh
+  • **Carbon Tax (C_operation)**: CO2_emissions × EU_ETS_carbon_price
+  • **Maintenance (C_maintenance)**: 9-15% of chip cost (by material category)
+  • **Supply Chain Risk (C_downtime)**: 3-10% based on TRL and manufacturer concentration
   • **Subsidies**: regional_rate applied to total TCO (EU Chips Act, US CHIPS Act)
+
+**Note**: Depreciation (C_depreciation) applies to fabrication equipment TCO, not chip procurement TCO analyzed here.
 
 📈 **Up-to-date data**:
   • Energy prices: ENTSO-E (EU real-time), EIA (USA), OECD (Asia)
   • Material properties: Materials Project API + JRC
   • Subsidies: verified government programs (updated quarterly)
 
-This hybrid methodology combines **ML predictive power** with **traditional formula transparency** to deliver accurate and auditable results.`,
+This hybrid methodology combines **ML predictive power** with **SEMI E35 formula transparency** to deliver accurate and auditable results.`,
     energyDominance: "⚡ Energy Cost Dominance",
     energyDominanceExplanation: `**Is it normal for energy to be {percentage}% of TCO?**
 

@@ -72,21 +72,26 @@ export const cat: Translations = {
     methodology: "Metodologia de Càlcul",
     methodologyExplanation: `**Com s'ha calculat aquest TCO:**
 
+🎯 **Àmbit**: Cost Total de Propietat per **adquisició i operació de semiconductors** (no equips de fabricació).
+
 🤖 **Model Random Forest** → Estima el **TCO total agregat** capturant relacions complexes entre factors (material, regió, volum, anys, preus energia).
 
-📊 **Desglossament amb fórmules validades** → Cada component individual (cost energètic, manteniment, impost carboni, risc cadena subministrament, subvencions) es calcula amb **fórmules sectorials** validades per BCG (2023) i JRC:
-  • **Cost Energètic**: (consum_xip × hores_vida × volum × anys) × preu_kWh
-  • **Manteniment**: 9-15% del capex d'equips (segons categoria material)
-  • **Impost Carboni**: emissions_CO2 × preu_carboni_EU_ETS
-  • **Risc Cadena**: 3-10% segons TRL i concentració fabricants
+📊 **Desglossament amb fórmules validades** → Seguint l'estàndard SEMI E35 per Cost de Propietat:
+  • **Cost Xip (C_acquisition)**: cost_unitari × volum × anys
+  • **Cost Energètic (C_operation)**: (consum_xip × hores_vida × volum × anys) × preu_kWh
+  • **Impost Carboni (C_operation)**: emissions_CO2 × preu_carboni_EU_ETS
+  • **Manteniment (C_maintenance)**: 9-15% del cost xip (segons categoria material)
+  • **Risc Cadena (C_downtime)**: 3-10% segons TRL i concentració fabricants
   • **Subvencions**: taxa_regió aplicada al TCO total (EU Chips Act, CHIPS Act USA)
+
+**Nota**: La depreciació (C_depreciation) s'aplica al TCO d'equips de fabricació, no al TCO d'adquisició de xips analitzat aquí.
 
 📈 **Dades actualitzades**:
   • Preus energia: ENTSO-E (UE en temps real), EIA (USA), OECD (Àsia)
   • Propietats materials: Materials Project API + JRC
   • Subsidis: programes governamentals verificats (actualitzat trimestralment)
 
-Aquesta metodologia híbrida combina la **potència predictiva del ML** amb la **transparència de les fórmules tradicionals** per oferir resultats precisos i auditables.`,
+Aquesta metodologia híbrida combina la **potència predictiva del ML** amb la **transparència de l'estàndard SEMI E35** per oferir resultats precisos i auditables.`,
     energyDominance: "⚡ Dominància del Cost Energètic",
     energyDominanceExplanation: `**És normal que l'energia sigui el {percentage}% del TCO?**
 
