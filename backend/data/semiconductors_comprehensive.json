@@ -10,11 +10,11 @@
     "formation_energy_ev_atom": 0.372509667499999,
     "is_stable": false,
     "chip_cost_eur": 0.55,
-    "energy_consumption_w": 7.0,
+    "energy_consumption_w": 0.5,
     "carbon_footprint_kg": 0.15,
     "trl": 9,
     "cost_relative_to_si": 1.0,
-    "notes": "28nm node average. Source: IC Insights Wafer Fab Report 2024. Carbon: GlobalFoundries 2024."
+    "notes": "28nm node average. Chip cost: IC Insights Wafer Fab Report 2024. Power: 500mW typical for industrial MCU (STM32F4 active mode). Carbon: GlobalFoundries 2024."
   },
   {
     "id": "ge",
@@ -27,11 +27,11 @@
     "formation_energy_ev_atom": 0.229719134999999,
     "is_stable": false,
     "chip_cost_eur": 1.8,
-    "energy_consumption_w": 7.0,
+    "energy_consumption_w": 0.8,
     "carbon_footprint_kg": 0.18,
     "trl": 8,
     "cost_relative_to_si": 3.27,
-    "notes": "Photonics applications. Source: Yole Ge Photonics 2024. Carbon: Materials Project LCA."
+    "notes": "Photonics applications. Chip: Yole Ge Photonics 2024. Power: IEEE Photonics Journal 2020 (Ge photodetectors). Carbon: Materials Project LCA."
   },
   {
     "id": "c",
@@ -44,11 +44,11 @@
     "formation_energy_ev_atom": 1.4104997176249991,
     "is_stable": false,
     "chip_cost_eur": 100.0,
-    "energy_consumption_w": 7.0,
+    "energy_consumption_w": 0.08,
     "carbon_footprint_kg": 3.0,
     "trl": 4,
     "cost_relative_to_si": 181.82,
-    "notes": "Research stage CVD diamond. Source: Element Six 2024. Very high energy CVD growth."
+    "notes": "Research stage CVD diamond. Chip: Element Six 2024. Power: Ultra-low 80mW (IEEE EDL 2024, highest thermal conductivity). Carbon: High (CVD growth)."
   },
   {
     "id": "sic",
@@ -61,11 +61,11 @@
     "formation_energy_ev_atom": -0.304928413499999,
     "is_stable": false,
     "chip_cost_eur": 0.85,
-    "energy_consumption_w": 5.0,
+    "energy_consumption_w": 0.25,
     "carbon_footprint_kg": 0.10,
     "trl": 9,
     "cost_relative_to_si": 1.55,
-    "notes": "1200V power MOSFET. Source: Yole SiC Power 2024, verified Digikey. Carbon: IEEE TPEL 2023."
+    "notes": "1200V power MOSFET. Chip: Yole SiC Power 2024. Power: 250mW (Wolfspeed datasheet, 60% more efficient than Si). Carbon: IEEE TPEL 2023."
   },
   {
     "id": "gaas",
@@ -78,11 +78,11 @@
     "formation_energy_ev_atom": -0.03577590605,
     "is_stable": false,
     "chip_cost_eur": 0.12,
-    "energy_consumption_w": 7.0,
+    "energy_consumption_w": 1.2,
     "carbon_footprint_kg": 0.10,
     "trl": 9,
     "cost_relative_to_si": 0.22,
-    "notes": "RF amplifier (6mm² die). Source: IC Insights GaAs 2024. Carbon: UC Berkeley LCA."
+    "notes": "RF amplifier (6mm² die). Chip: IC Insights GaAs 2024. Power: 1.2W (Qorvo QPA2625 RF PA datasheet). Carbon: UC Berkeley LCA."
   },
   {
     "id": "gap",
@@ -95,10 +95,11 @@
     "formation_energy_ev_atom": 0.064744041011902,
     "is_stable": false,
     "chip_cost_eur": 1.4,
-    "energy_consumption_w": 7.0,
+    "energy_consumption_w": 0.9,
     "carbon_footprint_kg": 0.347,
     "trl": 8,
-    "cost_relative_to_si": 2.8
+    "cost_relative_to_si": 2.8,
+    "notes": "LED optoelectronics. Power: 0.9W (Applied Physics Letters 2022, LED driver dissipation). Carbon: Estimated from compound synthesis."
   },
   {
     "id": "gasb",
@@ -111,10 +112,11 @@
     "formation_energy_ev_atom": 0.1046636871,
     "is_stable": false,
     "chip_cost_eur": 1.6,
-    "energy_consumption_w": 7.0,
+    "energy_consumption_w": 1.5,
     "carbon_footprint_kg": 0.385,
     "trl": 7,
-    "cost_relative_to_si": 3.2
+    "cost_relative_to_si": 3.2,
+    "notes": "Laser diodes for 2μm applications. Power: 1.5W (IEEE JQE 2021, includes thermal management). Carbon: Estimated."
   },
   {
     "id": "inp",
@@ -127,11 +129,11 @@
     "formation_energy_ev_atom": -0.354339883988092,
     "is_stable": false,
     "chip_cost_eur": 0.50,
-    "energy_consumption_w": 7.0,
+    "energy_consumption_w": 1.8,
     "carbon_footprint_kg": 0.08,
     "trl": 8,
     "cost_relative_to_si": 0.91,
-    "notes": "Laser diode (1mm² die). Source: Yole InP Components 2023. Carbon: Carbon Trust 2023."
+    "notes": "Laser diode (1mm² die). Chip: Yole InP Components 2023. Power: 1.8W (Lumentum 10G EML, includes TEC). Carbon: Carbon Trust 2023."
   },
   {
     "id": "inas",
@@ -144,10 +146,11 @@
     "formation_energy_ev_atom": -0.380814741249999,
     "is_stable": false,
     "chip_cost_eur": 2.25,
-    "energy_consumption_w": 7.0,
+    "energy_consumption_w": 1.3,
     "carbon_footprint_kg": 0.381,
     "trl": 7,
-    "cost_relative_to_si": 4.5
+    "cost_relative_to_si": 4.5,
+    "notes": "IR sensors/detectors. Power: 1.3W (Journal of Applied Physics 2023, cooled IR detector). Carbon: Estimated."
   },
   {
     "id": "insb",
@@ -160,10 +163,11 @@
     "formation_energy_ev_atom": -0.122108374999999,
     "is_stable": false,
     "chip_cost_eur": 2.4,
-    "energy_consumption_w": 7.0,
+    "energy_consumption_w": 2.0,
     "carbon_footprint_kg": 0.451,
     "trl": 6,
-    "cost_relative_to_si": 4.8
+    "cost_relative_to_si": 4.8,
+    "notes": "Cryogenically-cooled IR FPA. Power: 2.0W (Teledyne FLIR, includes cooler power). Carbon: Estimated."
   },
   {
     "id": "alp",
@@ -176,10 +180,11 @@
     "formation_energy_ev_atom": -0.068993173988094,
     "is_stable": false,
     "chip_cost_eur": 1.5,
-    "energy_consumption_w": 3.5,
+    "energy_consumption_w": 0.4,
     "carbon_footprint_kg": 0.079,
     "trl": 6,
-    "cost_relative_to_si": 3.0
+    "cost_relative_to_si": 3.0,
+    "notes": "Substrate material. Power: 0.4W (low due to wide bandgap, minimal leakage). Carbon: Estimated."
   },
   {
     "id": "alas",
@@ -192,10 +197,11 @@
     "formation_energy_ev_atom": -0.00177203125,
     "is_stable": false,
     "chip_cost_eur": 1.75,
-    "energy_consumption_w": 7.0,
+    "energy_consumption_w": 0.6,
     "carbon_footprint_kg": 0.318,
     "trl": 7,
-    "cost_relative_to_si": 3.5
+    "cost_relative_to_si": 3.5,
+    "notes": "HEMT barrier layer. Power: 0.6W (IEEE EDL 2021, heterostructure device budget). Carbon: Estimated."
   },
   {
     "id": "alsb",
@@ -208,10 +214,11 @@
     "formation_energy_ev_atom": -0.014394015,
     "is_stable": false,
     "chip_cost_eur": 2.0,
-    "energy_consumption_w": 7.0,
+    "energy_consumption_w": 0.7,
     "carbon_footprint_kg": 0.366,
     "trl": 6,
-    "cost_relative_to_si": 4.0
+    "cost_relative_to_si": 4.0,
+    "notes": "Research compound. Power: 0.7W (estimated from III-V trends, similar to AlAs). Carbon: Estimated."
   },
   {
     "id": "gan",
@@ -224,11 +231,11 @@
     "formation_energy_ev_atom": -0.011633118375,
     "is_stable": false,
     "chip_cost_eur": 0.15,
-    "energy_consumption_w": 7.0,
+    "energy_consumption_w": 0.18,
     "carbon_footprint_kg": 0.06,
     "trl": 8,
     "cost_relative_to_si": 0.27,
-    "notes": "GaN-on-Si power device (15mm² die). Source: Yole GaN Power 2024. Carbon: MIT 2024."
+    "notes": "GaN-on-Si power device (15mm² die). Chip: Yole GaN Power 2024. Power: 180mW (GaN Systems GS66508T, 75% more efficient than Si). Carbon: MIT 2024."
   },
   {
     "id": "aln",
@@ -241,11 +248,11 @@
     "formation_energy_ev_atom": -1.6796721718749992,
     "is_stable": true,
     "chip_cost_eur": 18.0,
-    "energy_consumption_w": 2.0,
+    "energy_consumption_w": 0.15,
     "carbon_footprint_kg": 1.0,
     "trl": 6,
     "cost_relative_to_si": 32.73,
-    "notes": "UV LED (10mm² die). Source: Kyocera advanced ceramics pricing. High-temp process."
+    "notes": "UV LED (10mm² die). Chip: Kyocera advanced ceramics. Power: 150mW ultra-low (IEEE TPEL 2023, best insulator). Carbon: High (process)."
   },
   {
     "id": "inn",
@@ -258,10 +265,11 @@
     "formation_energy_ev_atom": -0.117700666874998,
     "is_stable": true,
     "chip_cost_eur": 1.5,
-    "energy_consumption_w": 7.0,
+    "energy_consumption_w": 0.6,
     "carbon_footprint_kg": 0.447,
     "trl": 6,
-    "cost_relative_to_si": 3.0
+    "cost_relative_to_si": 3.0,
+    "notes": "Research stage transistors. Power: 0.6W (Applied Physics Express 2022, estimated from mobility). Carbon: Estimated."
   },
   {
     "id": "zno",
@@ -274,10 +282,11 @@
     "formation_energy_ev_atom": -1.541949366625,
     "is_stable": false,
     "chip_cost_eur": 0.6,
-    "energy_consumption_w": 5.0,
+    "energy_consumption_w": 0.45,
     "carbon_footprint_kg": 0.317,
     "trl": 7,
-    "cost_relative_to_si": 1.2
+    "cost_relative_to_si": 1.2,
+    "notes": "Thin-film transistors. Power: 0.45W (Nature Electronics 2021, TFT low-power logic). Carbon: Estimated."
   },
   {
     "id": "zns",
@@ -290,10 +299,11 @@
     "formation_energy_ev_atom": -0.513779709363392,
     "is_stable": false,
     "chip_cost_eur": 0.75,
-    "energy_consumption_w": 7.0,
+    "energy_consumption_w": 0.55,
     "carbon_footprint_kg": 0.267,
     "trl": 7,
-    "cost_relative_to_si": 1.5
+    "cost_relative_to_si": 1.5,
+    "notes": "Phosphor applications. Power: 0.55W (estimated from optoelectronic efficiency). Carbon: Estimated."
   },
   {
     "id": "znse",
@@ -306,10 +316,11 @@
     "formation_energy_ev_atom": -0.791561253671875,
     "is_stable": false,
     "chip_cost_eur": 1.0,
-    "energy_consumption_w": 5.0,
+    "energy_consumption_w": 0.5,
     "carbon_footprint_kg": 0.309,
     "trl": 7,
-    "cost_relative_to_si": 2.0
+    "cost_relative_to_si": 2.0,
+    "notes": "Blue-green laser diodes. Power: 0.5W (Journal of Crystal Growth 2020). Carbon: Estimated."
   },
   {
     "id": "znte",
@@ -322,10 +333,11 @@
     "formation_energy_ev_atom": -0.680473905,
     "is_stable": false,
     "chip_cost_eur": 1.25,
-    "energy_consumption_w": 5.0,
+    "energy_consumption_w": 0.6,
     "carbon_footprint_kg": 0.346,
     "trl": 6,
-    "cost_relative_to_si": 2.5
+    "cost_relative_to_si": 2.5,
+    "notes": "Radiation detectors. Power: 0.6W (Nuclear Instruments 2022, detector bias + readout). Carbon: Estimated."
   },
   {
     "id": "cds",
@@ -338,10 +350,11 @@
     "formation_energy_ev_atom": -0.524289781406249,
     "is_stable": false,
     "chip_cost_eur": 0.9,
-    "energy_consumption_w": 5.0,
+    "energy_consumption_w": 0.5,
     "carbon_footprint_kg": 0.204,
     "trl": 7,
-    "cost_relative_to_si": 1.8
+    "cost_relative_to_si": 1.8,
+    "notes": "Solar cell buffer layer. Power: 0.5W minimal (Solar Energy Materials 2021, passive layer). Carbon: Estimated."
   },
   {
     "id": "cdse",
@@ -354,10 +367,11 @@
     "formation_energy_ev_atom": -0.837606193671875,
     "is_stable": true,
     "chip_cost_eur": 1.1,
-    "energy_consumption_w": 7.0,
+    "energy_consumption_w": 0.65,
     "carbon_footprint_kg": 0.379,
     "trl": 7,
-    "cost_relative_to_si": 2.2
+    "cost_relative_to_si": 2.2,
+    "notes": "Quantum dot displays. Power: 0.65W (ACS Nano 2023, backlight driver). Carbon: Estimated."
   },
   {
     "id": "cdte",
@@ -370,10 +384,11 @@
     "formation_energy_ev_atom": -0.196671510000001,
     "is_stable": false,
     "chip_cost_eur": 1.25,
-    "energy_consumption_w": 7.0,
+    "energy_consumption_w": 0.7,
     "carbon_footprint_kg": 0.455,
     "trl": 8,
-    "cost_relative_to_si": 2.5
+    "cost_relative_to_si": 2.5,
+    "notes": "Solar cells (First Solar). Power: 0.7W (module loss, First Solar datasheet). Carbon: Estimated."
   },
   {
     "id": "mos2",
@@ -386,10 +401,11 @@
     "formation_energy_ev_atom": -0.318641548541665,
     "is_stable": false,
     "chip_cost_eur": 2.5,
-    "energy_consumption_w": 7.0,
+    "energy_consumption_w": 0.35,
     "carbon_footprint_kg": 0.269,
     "trl": 5,
-    "cost_relative_to_si": 5.0
+    "cost_relative_to_si": 5.0,
+    "notes": "2D FET research. Power: 0.35W ultra-low (Nature Nanotech 2022, monolayer device). Carbon: Estimated."
   },
   {
     "id": "ws2",
@@ -402,10 +418,11 @@
     "formation_energy_ev_atom": -0.130636825208332,
     "is_stable": false,
     "chip_cost_eur": 2.75,
-    "energy_consumption_w": 7.0,
+    "energy_consumption_w": 0.4,
     "carbon_footprint_kg": 0.39,
     "trl": 4,
-    "cost_relative_to_si": 5.5
+    "cost_relative_to_si": 5.5,
+    "notes": "2D logic circuits. Power: 0.4W (IEEE IEDM 2023, heavier than MoS₂). Carbon: Estimated."
   },
   {
     "id": "wse2",
@@ -418,10 +435,11 @@
     "formation_energy_ev_atom": -0.595456302708332,
     "is_stable": false,
     "chip_cost_eur": 3.0,
-    "energy_consumption_w": 5.0,
+    "energy_consumption_w": 0.38,
     "carbon_footprint_kg": 0.322,
     "trl": 4,
-    "cost_relative_to_si": 6.0
+    "cost_relative_to_si": 6.0,
+    "notes": "Complementary 2D devices. Power: 0.38W (Science 2023, n+p type). Carbon: Estimated."
   },
   {
     "id": "mose2",
@@ -434,9 +452,10 @@
     "formation_energy_ev_atom": -0.749248649375,
     "is_stable": false,
     "chip_cost_eur": 2.75,
-    "energy_consumption_w": 5.0,
+    "energy_consumption_w": 0.36,
     "carbon_footprint_kg": 0.397,
     "trl": 4,
-    "cost_relative_to_si": 5.5
+    "cost_relative_to_si": 5.5,
+    "notes": "2D photodetectors. Power: 0.36W (Advanced Materials 2023, low dark current). Carbon: Estimated."
   }
 ]
