@@ -2,10 +2,8 @@
 import React, { useState, useCallback, useRef } from 'react';
 import NavBar from './components/NavBar';
 import InputForm from './components/InputForm';
-import ChatSection from './components/ChatSection';
 import ResultsCard from './components/ResultsCard';
 import ExplanationPanel from './components/ExplanationPanel';
-import FloatingChatButton from './components/FloatingChatButton';
 import { useToast } from './components/Toast';
 import ScenarioChart from './components/ScenarioChart';
 import EnhancedScenarioChart from './components/EnhancedScenarioChart';
@@ -33,8 +31,6 @@ function App() {
   const [isGeneratingInsights, setIsGeneratingInsights] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [lastInputs, setLastInputs] = useState<TcoInput | null>(null);
-  const [showChatButton, setShowChatButton] = useState<boolean>(false);
-  const chatSectionRef = useRef<HTMLDivElement>(null);
   const insightsRef = useRef<HTMLDivElement>(null);
 
   // Listen for navigation events from ExplanationPanel
@@ -49,30 +45,6 @@ function App() {
     window.addEventListener('navigate', handleNavigateEvent);
     return () => window.removeEventListener('navigate', handleNavigateEvent);
   }, []);
-
-  // Scroll to chat section
-  const scrollToChat = useCallback(() => {
-    chatSectionRef.current?.scrollIntoView({ 
-      behavior: 'smooth', 
-      block: 'start' 
-    });
-  }, []);
-
-  // Show/hide floating chat button based on scroll position
-  React.useEffect(() => {
-    const handleScroll = () => {
-      if (chatSectionRef.current) {
-        const chatPosition = chatSectionRef.current.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        // Show button if chat is not visible (below viewport)
-        setShowChatButton(chatPosition > windowHeight);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [tcoResult]);
 
   const handleCalculate = useCallback(async (inputs: TcoInput) => {
     setIsLoading(true);
@@ -189,13 +161,12 @@ function App() {
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
             <div className="lg:col-span-2">
-              <InputForm onSubmit={handleCalculate} isLoading={isLoading} />
-              <div ref={chatSectionRef}>
-                <ChatSection 
-                  tcoResult={tcoResult}
-                  tcoInput={lastInputs}
-                />
-              </div>
+              <InputForm 
+                onSubmit={handleCalculate} 
+                isLoading={isLoading}
+                tcoResult={tcoResult}
+                tcoInput={lastInputs}
+              />
             </div>
             <div className="lg:col-span-3">
               <ResultsCard result={tcoResult} isLoading={isLoading && !tcoResult} />
@@ -242,14 +213,6 @@ function App() {
               </div>
             </div>
           </div>
-
-          {/* Floating Chat Button - Only show when chat is below viewport */}
-          {showChatButton && tcoResult && (
-            <FloatingChatButton 
-              onClick={scrollToChat} 
-              hasNewInsights={!!explanation}
-            />
-          )}
         </main>
       )}
     </div>

@@ -3,13 +3,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import { TcoInput, Material, Region } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
 import api from '../services/api';
+import ChatSection from './ChatSection';
 
 interface InputFormProps {
   onSubmit: (inputs: TcoInput) => void;
   isLoading: boolean;
+  tcoResult?: any;
+  tcoInput?: TcoInput;
 }
 
-const InputForm: React.FC<InputFormProps> = ({ onSubmit, isLoading }) => {
+const InputForm: React.FC<InputFormProps> = ({ onSubmit, isLoading, tcoResult, tcoInput }) => {
   const { t } = useLanguage();
   const [materials, setMaterials] = useState<Material[]>([]);
   const [regions, setRegions] = useState<Region[]>([]);
@@ -361,6 +364,17 @@ const InputForm: React.FC<InputFormProps> = ({ onSubmit, isLoading }) => {
           ) : t.home.calculate}
         </button>
       </form>
+
+      {/* Separator */}
+      <div className="my-6 border-t border-gray-200"></div>
+
+      {/* Integrated ChatSection */}
+      <div className="mt-6">
+        <ChatSection 
+          tcoResult={tcoResult}
+          tcoInput={tcoInput}
+        />
+      </div>
     </div>
   );
 };
