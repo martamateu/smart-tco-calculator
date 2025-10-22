@@ -16,7 +16,7 @@ Real-time TCO analysis for semiconductor manufacturing across 27 materials and 1
 |----------|-------------|
 | [TCO_DISAMBIGUATION.md](backend/data/TCO_DISAMBIGUATION.md) | **Clarifies the two different TCO concepts** in semiconductors (material vs economic) |
 | [TCO_FORMULAS.md](backend/data/TCO_FORMULAS.md) | Detailed mathematical formulas and SEMI E35 mapping |
-| [MANUAL_DATA_SOURCES.md](backend/data/MANUAL_DATA_SOURCES.md) | ⚠️ **Manual data sources & update guidelines** (chip costs, energy consumption, carbon footprint) |
+| [MANUAL_DATA_SOURCES.md](backend/data/MANUAL_DATA_SOURCES.md) |  **Manual data sources & update guidelines** (chip costs, energy consumption, carbon footprint) |
 | [TABLES_DOCUMENTATION.md](backend/data/TABLES_DOCUMENTATION.md) | Data schema and table structures |
 | [VERIFICATION_REPORT.md](VERIFICATION_REPORT.md) | Calculation accuracy audit and test results |
 

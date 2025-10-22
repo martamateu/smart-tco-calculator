@@ -23,12 +23,15 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  // Detect language from URL path: /en, /es, /cat
+  // Detect language from URL path: /en, /es, /cat (or /smart-tco-calculator/en, etc for GitHub Pages)
   const getInitialLanguage = (): Language => {
     const path = window.location.pathname;
-    if (path.startsWith('/en')) return 'en';
-    if (path.startsWith('/es')) return 'es';
-    if (path.startsWith('/cat')) return 'cat';
+    // Remove /smart-tco-calculator prefix if present
+    const cleanPath = path.replace('/smart-tco-calculator', '');
+    
+    if (cleanPath.startsWith('/en') || cleanPath.includes('/en/')) return 'en';
+    if (cleanPath.startsWith('/es') || cleanPath.includes('/es/')) return 'es';
+    if (cleanPath.startsWith('/cat') || cleanPath.includes('/cat/')) return 'cat';
     
     // Always default to Catalan when no language is specified in URL
     return 'cat';
@@ -41,8 +44,10 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     
     // Update URL without page reload
     const currentPath = window.location.pathname;
-    const pathWithoutLang = currentPath.replace(/^\/(en|es|cat)/, '');
-    const newPath = `/${lang}${pathWithoutLang}`;
+    // Handle both local and GitHub Pages paths
+    const basePath = currentPath.includes('/smart-tco-calculator') ? '/smart-tco-calculator' : '';
+    const pathWithoutLang = currentPath.replace(/^\/(en|es|cat)/, '').replace(basePath, '').replace(/^\/(en|es|cat)/, '');
+    const newPath = `${basePath}/${lang}${pathWithoutLang || ''}`;
     window.history.pushState({}, '', newPath);
   };
 

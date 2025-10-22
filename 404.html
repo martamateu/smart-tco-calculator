@@ -6,11 +6,11 @@
     <title>Redirecting...</title>
     <script>
       // GitHub Pages SPA redirect fix
-      // This script takes the current path and redirects to the index.html
-      // with the path as a query parameter that the app can parse
-      sessionStorage.redirect = location.href;
+      // Store the full path and redirect to the base URL
+      // The index.html will restore the correct path
+      sessionStorage.redirect = location.pathname + location.search + location.hash;
     </script>
-    <meta http-equiv="refresh" content="0;URL='/'" />
+    <meta http-equiv="refresh" content="0;URL='/smart-tco-calculator/'" />
   </head>
   <body>
     Redirecting...
