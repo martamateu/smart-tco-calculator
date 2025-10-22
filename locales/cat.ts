@@ -58,7 +58,16 @@ export const cat: Translations = {
     source: "Font",
     otherSources: "Altres Dades",
     subsidyUnknown: "⚠️ Taxa de subvenció estimada (5%) - no hi ha programa governamental verificat documentat",
-    subsidyEstimate: "Estimat (dades en investigació)"
+    subsidyEstimate: "Estimat (dades en investigació)",
+    waterfallTitle: "Flux de Costos (Waterfall)",
+    waterfallSubtitle: "💡 Visualització de com els subsidis redueixen el TCO des dels costos base fins al total final",
+    tcoBase: "TCO Base",
+    totalCosts: "Costos Totals",
+    subsidies: "Subsidis",
+    tcoFinal: "TCO Final",
+    afterSubsidies: "Després de Subsidis",
+    totalSavings: "Estalvi Total amb Subsidis",
+    ofBaseCost: "del cost base"
   },
 
   // Explanation Panel

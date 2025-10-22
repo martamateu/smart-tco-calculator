@@ -56,7 +56,16 @@ export const en = {
     dataAge: "Data Age",
     justUpdated: "Just Updated",
     source: "Source",
-    otherSources: "Other Data"
+    otherSources: "Other Data",
+    waterfallTitle: "Cost Flow (Waterfall)",
+    waterfallSubtitle: "💡 Visualization of how subsidies reduce TCO from base costs to final total",
+    tcoBase: "Base TCO",
+    totalCosts: "Total Costs",
+    subsidies: "Subsidies",
+    tcoFinal: "Final TCO",
+    afterSubsidies: "After Subsidies",
+    totalSavings: "Total Savings with Subsidies",
+    ofBaseCost: "of base cost"
   },
 
   // Explanation Panel

@@ -190,10 +190,10 @@ const ResultsCard: React.FC<ResultsCardProps> = ({ result, isLoading }) => {
           <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
           </svg>
-          Flujo de Costos (Waterfall)
+          {t.results.waterfallTitle}
         </h3>
         <p className="text-xs text-gray-500 mb-4 italic">
-          💡 Visualización de cómo los subsidios reducen el TCO desde los costos base hasta el total final
+          {t.results.waterfallSubtitle}
         </p>
         
         {/* Manual Waterfall Visualization */}
@@ -201,14 +201,14 @@ const ResultsCard: React.FC<ResultsCardProps> = ({ result, isLoading }) => {
           {/* Base TCO */}
           <div className="flex items-center gap-3">
             <div className="w-32 text-right text-sm font-medium text-gray-700">
-              TCO Base
+              {t.results.tcoBase}
             </div>
             <div className="flex-1 relative">
               <div 
                 className="h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-lg shadow-md flex items-center justify-between px-4 text-white font-semibold"
                 style={{ width: `${(result.breakdown.total_before_subsidy / result.breakdown.total_before_subsidy) * 100}%` }}
               >
-                <span className="text-sm">Costos Totales</span>
+                <span className="text-sm">{t.results.totalCosts}</span>
                 <span>{formatCurrency(result.breakdown.total_before_subsidy)}</span>
               </div>
             </div>
@@ -224,7 +224,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({ result, isLoading }) => {
           {/* Subsidy Reduction */}
           <div className="flex items-center gap-3">
             <div className="w-32 text-right text-sm font-medium text-gray-700">
-              Subsidios
+              {t.results.subsidies}
             </div>
             <div className="flex-1 relative">
               <div 
@@ -249,14 +249,14 @@ const ResultsCard: React.FC<ResultsCardProps> = ({ result, isLoading }) => {
           {/* Final TCO */}
           <div className="flex items-center gap-3">
             <div className="w-32 text-right text-sm font-medium text-gray-700">
-              TCO Final
+              {t.results.tcoFinal}
             </div>
             <div className="flex-1 relative">
               <div 
                 className="h-14 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg shadow-lg flex items-center justify-between px-4 text-white font-bold border-2 border-blue-700"
                 style={{ width: `${(result.breakdown.total_after_subsidy / result.breakdown.total_before_subsidy) * 100}%` }}
               >
-                <span className="text-sm">Después de Subsidios</span>
+                <span className="text-sm">{t.results.afterSubsidies}</span>
                 <span className="text-lg">{formatCurrency(result.breakdown.total_after_subsidy)}</span>
               </div>
             </div>
@@ -270,7 +270,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({ result, isLoading }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <span className="text-sm font-semibold text-green-900">
-                  Ahorro Total con Subsidios
+                  {t.results.totalSavings}
                 </span>
               </div>
               <div className="text-right">
@@ -278,7 +278,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({ result, isLoading }) => {
                   {formatCurrency(result.breakdown.subsidy_amount)}
                 </div>
                 <div className="text-xs text-green-700">
-                  ({((result.breakdown.subsidy_amount / result.breakdown.total_before_subsidy) * 100).toFixed(1)}% del costo base)
+                  ({((result.breakdown.subsidy_amount / result.breakdown.total_before_subsidy) * 100).toFixed(1)}% {t.results.ofBaseCost})
                 </div>
               </div>
             </div>

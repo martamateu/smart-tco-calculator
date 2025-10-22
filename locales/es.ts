@@ -58,7 +58,16 @@ export const es: Translations = {
     source: "Fuente",
     otherSources: "Otros Datos",
     subsidyUnknown: "⚠️ Tasa de subsidio estimada (5%) - no hay programa gubernamental verificado documentado",
-    subsidyEstimate: "Estimado (datos en investigación)"
+    subsidyEstimate: "Estimado (datos en investigación)",
+    waterfallTitle: "Flujo de Costos (Waterfall)",
+    waterfallSubtitle: "💡 Visualización de cómo los subsidios reducen el TCO desde los costos base hasta el total final",
+    tcoBase: "TCO Base",
+    totalCosts: "Costos Totales",
+    subsidies: "Subsidios",
+    tcoFinal: "TCO Final",
+    afterSubsidies: "Después de Subsidios",
+    totalSavings: "Ahorro Total con Subsidios",
+    ofBaseCost: "del costo base"
   },
 
   // Explanation Panel
