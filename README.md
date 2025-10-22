@@ -8,6 +8,17 @@ Real-time TCO analysis for semiconductor manufacturing across 27 materials and 1
 
 🌐 **Live Demo:** [https://martamateu.github.io/smart-tco-calculator/](https://martamateu.github.io/smart-tco-calculator/)
 
+> 🔍 **Important:** This calculator analyzes **Total Cost of Ownership for chip procurement** (not Transparent Conductive Oxides). See [TCO Disambiguation Guide](backend/data/TCO_DISAMBIGUATION.md) for clarification.
+
+## 📚 Documentation
+
+| Document | Description |
+|----------|-------------|
+| [TCO_DISAMBIGUATION.md](backend/data/TCO_DISAMBIGUATION.md) | **Clarifies the two different TCO concepts** in semiconductors (material vs economic) |
+| [TCO_FORMULAS.md](backend/data/TCO_FORMULAS.md) | Detailed mathematical formulas and SEMI E35 mapping |
+| [TABLES_DOCUMENTATION.md](backend/data/TABLES_DOCUMENTATION.md) | Data schema and table structures |
+| [VERIFICATION_REPORT.md](VERIFICATION_REPORT.md) | Calculation accuracy audit and test results |
+
 ---
 
 ## 📊 Data Sources & Update Frequency
@@ -337,6 +348,8 @@ smart-tco-calculator/
 │   ├── data/
 │   │   ├── semiconductors_comprehensive.json  # 27 materials
 │   │   ├── global_electricity_data_2025.json  # Subsidies/carbon
+│   │   ├── TCO_FORMULAS.md          # Detailed formula documentation
+│   │   ├── TCO_DISAMBIGUATION.md    # TCO concept clarification ⚠️
 │   │   └── *.pdf                    # RAG knowledge base docs
 │   └── models/
 │       └── tco_random_forest.pkl    # Trained ML model
