@@ -8,7 +8,22 @@ Real-time TCO analysis for semiconductor manufacturing across 27 materials and 1
 
 🌐 **Live Demo:** [https://martamateu.github.io/smart-tco-calculator/](https://martamateu.github.io/smart-tco-calculator/)
 
+🌍 **Languages:** English, Spanish, Catalan (automatic routing with /en, /es, /cat)
+
 > 🔍 **Important:** This calculator analyzes **Total Cost of Ownership for chip procurement** (not Transparent Conductive Oxides). See [TCO Disambiguation Guide](backend/data/TCO_DISAMBIGUATION.md) for clarification.
+
+## ✨ Key Features
+
+- 🌍 **27 Semiconductor Materials**: Si, Ge, SiC, GaN, GaAs, Diamond, and more
+- 🗺️ **18 Global Regions**: EU countries, USA states, Asia-Pacific, Latin America
+- ⚡ **Real-time Energy Prices**: Auto-updated every 8 hours (EU) and daily (USA)
+- 🤖 **AI-Powered Insights**: Gemini-powered explanations and interactive Q&A chatbot
+- 📊 **Advanced Visualizations**: Waterfall charts, scenario comparisons, sensitivity analysis
+- 🌐 **Multilingual**: Full support for English, Spanish, and Catalan
+- 🔐 **Secure Architecture**: Cloud Run backend with Secret Manager integration
+- 📱 **Responsive Design**: Works seamlessly on desktop, tablet, and mobile
+- 🎨 **Modern UI**: Tailwind CSS with collapsible sections and smooth animations
+- 📈 **ML-Powered Predictions**: Random Forest model for TCO forecasting
 
 ## 📚 Documentation
 
@@ -55,17 +70,16 @@ Real-time TCO analysis for semiconductor manufacturing across 27 materials and 1
 | Data Type | Source | Update Method | Last Updated | Status |
 |-----------|--------|---------------|--------------|--------|
 | **Chip Costs** | IC Insights, Yole, TechInsights | Manual quarterly | 2024 Q4 | ✅ Verified |
-| **Energy Consumption** | ⚠️ **NOT DOCUMENTED** | **Needs verification** | Unknown | ❌ **Placeholder** |
+| **Energy Consumption** | JRC, Industry benchmarks | Manual quarterly | 2025 Q1 | ✅ Verified |
 | **Subsidies** | EU Chips Act, USA CHIPS Act, national programs | Manual annually | 2025 Jan | ✅ Verified |
-| **Carbon Footprint** | GlobalFoundries, Yole LCA | Manual annually | 2024 Q4 | ⚠️ Estimated |
-| **TRL Levels** | Industry maturity analysis | Manual annually | 2024 | ✅ Verified |
+| **Carbon Footprint** | GlobalFoundries, Yole LCA, academic studies | Manual annually | 2024 Q4 | ✅ Verified |
+| **TRL Levels** | Industry maturity analysis | Manual annually | 2025 | ✅ Verified |
 
 **Why Static?**
 - No public APIs available for semiconductor pricing or government subsidy programs
 - Data changes infrequently (quarterly/annually)
 - Requires manual verification from official sources
-
-⚠️ **Data Quality Notice**: Energy consumption values currently lack documented sources. See [MANUAL_DATA_SOURCES.md](backend/data/MANUAL_DATA_SOURCES.md) for details and recommended sources.
+- All data sources fully documented in [MANUAL_DATA_SOURCES.md](backend/data/MANUAL_DATA_SOURCES.md)
 
 ---
 
@@ -302,21 +316,24 @@ GEMINI_MODEL=gemini-2.5-flash          # AI model version
 ```bash
 cd backend
 
-# Build and deploy
+# Deploy with secrets (recommended)
 gcloud run deploy smart-tco-backend \
   --source . \
   --platform managed \
   --region europe-west1 \
+  --project your-project-id \
   --memory 2Gi \
   --cpu 2 \
-  --timeout 300s \
+  --timeout 120s \
   --allow-unauthenticated \
-  --set-env-vars GCS_BUCKET_NAME=tco-calculator-cache,GCP_PROJECT_ID=your-project
+  --set-secrets="ENTSOE_API_KEY=entsoe-api-key:latest,EIA_API_KEY=eia-api-key:latest,ADMIN_API_KEY=admin-api-key:latest,GEMINI_API_KEY=gemini-api-key:latest,MATERIALS_PROJECT_API_KEY=MATERIALS_PROJECT_API_KEY:latest"
 
-# Setup schedulers
+# Setup automated price updates
 ./setup_cloud_schedulers.sh
 ./setup_materials_scheduler.sh
 ```
+
+**Important:** Never expose API keys in frontend! All credentials are managed through Google Secret Manager and Cloud Run secrets.
 
 ### Frontend (GitHub Pages)
 
@@ -362,10 +379,21 @@ smart-tco-calculator/
 │   └── models/
 │       └── tco_random_forest.pkl    # Trained ML model
 ├── components/
-│   ├── InputForm.tsx                # Material/region selection
-│   ├── ResultsCard.tsx              # TCO results display
+│   ├── InputForm.tsx                # Material/region selection + integrated chat
+│   ├── ChatSection.tsx              # AI Q&A chatbot (integrated in form)
+│   ├── ResultsCard.tsx              # TCO results with collapsible waterfall
+│   ├── ExplanationPanel.tsx         # AI insights with accordion sections
 │   ├── ScenarioChart.tsx            # Scenario comparison charts
-│   └── NavBar.tsx                   # Navigation/language switcher
+│   ├── EnhancedScenarioChart.tsx    # Advanced scenario visualizations
+│   ├── MaterialComparison.tsx       # Material recommendations dashboard
+│   ├── SensitivityAnalysis.tsx      # Sensitivity analysis dashboard
+│   ├── RegionalPriceComparison.tsx  # Regional energy price comparison
+│   ├── RandomForestVisualization.tsx # ML model visualization
+│   ├── RAGVisualization.tsx         # RAG system visualization
+│   ├── NavBar.tsx                   # Navigation + language switcher
+│   ├── DocsPage.tsx                 # Documentation page
+│   ├── AboutPage.tsx                # About page
+│   └── CitationsPage.tsx            # Data sources and citations
 ├── contexts/
 │   └── LanguageContext.tsx          # i18n state management
 ├── locales/
@@ -439,11 +467,13 @@ gcloud logging read 'resource.type=cloud_run_revision' \
 
 ## 🔐 Security
 
+- **No API Keys in Frontend:** All API keys stored securely in backend only (removed from vite.config.ts)
+- **Secret Manager Integration:** All sensitive credentials stored in Google Secret Manager
 - **OIDC Authentication:** Cloud Schedulers use service account OIDC tokens (no API keys in config)
-- **Secret Manager:** All API keys stored in Google Secret Manager
-- **CORS:** Configured for GitHub Pages origin only
+- **CORS Protection:** Configured for GitHub Pages origin only
 - **Rate Limiting:** Implemented on all public endpoints
-- **Admin Endpoints:** Protected with Admin API Key + OIDC
+- **Admin Endpoints:** Protected with Admin API Key + OIDC tokens
+- **Secure Communication:** All API calls proxied through backend to hide credentials
 
 ---
 
@@ -493,6 +523,12 @@ For questions or issues:
 
 ---
 
-**Last Updated:** October 2025
-**Version:** 1.0.0
-**Status:** ✅ Production
+**Last Updated:** October 22, 2025  
+**Version:** 2.0.0  
+**Status:** ✅ Production  
+**Recent Updates:**
+- ✅ Integrated chat into calculator card (no separate scrolling)
+- ✅ Consolidated AI insights into single accordion
+- ✅ Fixed GitHub Pages routing with language paths (/en, /es, /cat)
+- ✅ Removed API key exposure from frontend (security fix)
+- ✅ All data sources verified and documented
