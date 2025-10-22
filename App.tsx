@@ -2,6 +2,7 @@
 import React, { useState, useCallback, useRef } from 'react';
 import NavBar from './components/NavBar';
 import InputForm from './components/InputForm';
+import ChatSection from './components/ChatSection';
 import ResultsCard from './components/ResultsCard';
 import ExplanationPanel from './components/ExplanationPanel';
 import FloatingChatButton from './components/FloatingChatButton';
@@ -189,10 +190,16 @@ function App() {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
             <div className="lg:col-span-2">
               <InputForm onSubmit={handleCalculate} isLoading={isLoading} />
+              <div ref={chatSectionRef}>
+                <ChatSection 
+                  tcoResult={tcoResult}
+                  tcoInput={lastInputs}
+                />
+              </div>
             </div>
             <div className="lg:col-span-3">
               <ResultsCard result={tcoResult} isLoading={isLoading && !tcoResult} />
-              <div ref={chatSectionRef} className="relative">
+              <div className="relative">
                 {/* Loading Overlay for AI Insights */}
                 {isGeneratingInsights && (
                   <div 

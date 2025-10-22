@@ -184,20 +184,27 @@ const ResultsCard: React.FC<ResultsCardProps> = ({ result, isLoading }) => {
         </BarChart>
       </ResponsiveContainer>
 
-      {/* Waterfall Chart - TCO Flow Visualization */}
-      <div className="mt-8 pt-6 border-t border-gray-200">
-        <h3 className="text-lg font-semibold text-gray-700 mb-3 flex items-center gap-2">
-          <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
-          </svg>
-          {t.results.waterfallTitle}
-        </h3>
-        <p className="text-xs text-gray-500 mb-4 italic">
-          {t.results.waterfallSubtitle}
-        </p>
+      {/* Waterfall Chart - TCO Flow Visualization - Collapsible */}
+      <details className="mt-8 pt-6 border-t border-gray-200 group">
+        <summary className="cursor-pointer list-none hover:bg-gray-50 p-3 -mx-3 rounded-lg transition-colors">
+          <div className="flex items-center justify-between">
+            <h3 className="text-lg font-semibold text-gray-700 flex items-center gap-2">
+              <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+              </svg>
+              {t.results.waterfallTitle}
+            </h3>
+            <svg className="w-5 h-5 text-gray-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+          <p className="text-xs text-gray-500 mt-1 italic">
+            {t.results.waterfallSubtitle}
+          </p>
+        </summary>
         
         {/* Manual Waterfall Visualization */}
-        <div className="space-y-3">
+        <div className="space-y-3 mt-4">
           {/* Base TCO */}
           <div className="flex items-center gap-3">
             <div className="w-32 text-right text-sm font-medium text-gray-700">
@@ -284,7 +291,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({ result, isLoading }) => {
             </div>
           </div>
         </div>
-      </div>
+      </details>
 
       <div className="mt-6 pt-6 border-t border-gray-200 space-y-2 text-sm">
         <div className="flex justify-between">
