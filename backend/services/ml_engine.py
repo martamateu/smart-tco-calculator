@@ -95,6 +95,12 @@ class TcoEngine:
         material = get_material_by_id(request.material)
         region = get_region_by_code(request.region)
         
+        # Validate that material and region exist
+        if not material:
+            raise ValueError(f"Material '{request.material}' not found in catalog")
+        if not region:
+            raise ValueError(f"Region '{request.region}' not found in catalog")
+        
         # Override parameters if provided
         energy_cost = request.energy_cost if request.energy_cost else region.energy_cost
         subsidy_rate = request.subsidy if request.subsidy is not None else region.subsidy_rate
@@ -167,6 +173,15 @@ class TcoEngine:
             data_availability_msg = "🟢 Live Data"
         
         # Build response with data availability status
+        # Calculate cost_per_chip and annual_cost with division by zero safety
+        total_chips = request.volume * request.years
+        cost_per_chip = (
+            round(total_after / total_chips, 2) if total_chips > 0 else 0.0
+        )
+        annual_cost = (
+            round(total_after / request.years, 2) if request.years > 0 else 0.0
+        )
+        
         response = TcoPredictResponse(
             total_cost=round(total_after, 2),
             breakdown=breakdown,
@@ -175,8 +190,8 @@ class TcoEngine:
             region_name=region.name,
             years=request.years,
             volume=request.volume,
-            cost_per_chip=round(total_after / (request.volume * request.years), 2),
-            annual_cost=round(total_after / request.years, 2),
+            cost_per_chip=cost_per_chip,
+            annual_cost=annual_cost,
             subsidy_source=region.subsidy_source,
             data_availability={
                 "energy_prices": {

@@ -13,6 +13,7 @@ import logging
 from dotenv import load_dotenv
 import os
 from pathlib import Path
+from datetime import datetime
 
 # Load environment variables from backend/.env
 backend_dir = Path(__file__).parent
@@ -192,7 +193,7 @@ async def readiness_check():
         content={
             "status": "ready" if all_ready else "not_ready",
             "checks": checks,
-            "timestamp": "2025-10-09T00:00:00Z"
+            "timestamp": datetime.utcnow().isoformat() + "Z"
         }
     )
 

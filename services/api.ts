@@ -6,10 +6,39 @@ const API_BASE_URL = window.location.hostname === 'martamateu.github.io'
   ? 'https://smart-tco-backend-859997094469.europe-west1.run.app/api'
   : 'http://localhost:8000/api';
 
+// Default timeout: 30 seconds
+const DEFAULT_TIMEOUT = 30000;
+
+/**
+ * Fetch with timeout support
+ * @param url - URL to fetch
+ * @param options - Fetch options
+ * @param timeoutMs - Timeout in milliseconds (default: 30s)
+ */
+async function fetchWithTimeout(url: string, options: RequestInit = {}, timeoutMs: number = DEFAULT_TIMEOUT): Promise<Response> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal
+    });
+    return response;
+  } catch (error) {
+    if (error instanceof Error && error.name === 'AbortError') {
+      throw new Error(`Request timeout after ${timeoutMs}ms`);
+    }
+    throw error;
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
 const api = {
   getMaterials: async (): Promise<Material[]> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/materials`);
+      const response = await fetchWithTimeout(`${API_BASE_URL}/materials`);
       if (!response.ok) throw new Error('Failed to fetch materials');
       return await response.json();
     } catch (error) {
@@ -20,7 +49,7 @@ const api = {
 
   getRegions: async (): Promise<Region[]> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/regions`);
+      const response = await fetchWithTimeout(`${API_BASE_URL}/regions`);
       if (!response.ok) throw new Error('Failed to fetch regions');
       return await response.json();
     } catch (error) {
@@ -31,7 +60,7 @@ const api = {
 
   getScenarios: async (material: string, region: string, volume: number, years: number): Promise<Scenario[]> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/scenarios?material=${material}&region=${region}&volume=${volume}&years=${years}`);
+      const response = await fetchWithTimeout(`${API_BASE_URL}/scenarios?material=${material}&region=${region}&volume=${volume}&years=${years}`);
       if (!response.ok) throw new Error('Failed to fetch scenarios');
       const data = await response.json();
       return data.baseline || [];
@@ -43,7 +72,7 @@ const api = {
 
   predictTco: async (inputs: TcoInput): Promise<TcoResult> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/predict`, {
+      const response = await fetchWithTimeout(`${API_BASE_URL}/predict`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -65,7 +94,7 @@ const api = {
 
   explainTco: async (inputs: TcoInput, result: TcoResult, language: string = 'en'): Promise<Explanation> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/explain`, {
+      const response = await fetchWithTimeout(`${API_BASE_URL}/explain`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -90,13 +119,13 @@ const api = {
 
   chat: async (request: ChatRequest): Promise<ChatResponse> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/chat`, {
+      const response = await fetchWithTimeout(`${API_BASE_URL}/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(request),
-      });
+      }, 60000); // 60s timeout for chat (longer because it may take more time)
 
       if (!response.ok) {
         throw new Error('Failed to get chat response');
