@@ -88,10 +88,18 @@ interface ToastMessage {
 
 export const useToast = () => {
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
+  const MAX_TOASTS = 3; // Maximum number of toasts visible at once
 
   const addToast = (message: string, type: ToastType = 'info') => {
     const id = Date.now();
-    setToasts(prev => [...prev, { id, message, type }]);
+    setToasts(prev => {
+      const newToasts = [...prev, { id, message, type }];
+      // If we exceed max toasts, remove the oldest one
+      if (newToasts.length > MAX_TOASTS) {
+        return newToasts.slice(newToasts.length - MAX_TOASTS);
+      }
+      return newToasts;
+    });
   };
 
   const removeToast = (id: number) => {

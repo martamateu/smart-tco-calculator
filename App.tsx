@@ -82,10 +82,8 @@ function App() {
 
     try {
       // 1. Get TCO prediction from backend API
-      toast.info("⏳ Calculating TCO...");
       const prediction = await api.predictTco(inputs);
       setTcoResult(prediction);
-      toast.success("✅ TCO calculated successfully!");
 
       // 2. Automatically get AI explanation from backend (Gemini + RAG)
       setIsGeneratingInsights(true);
@@ -98,7 +96,6 @@ function App() {
 
       const aiExplanation = await api.explainTco(inputs, prediction, language);
       setExplanation(aiExplanation);
-      toast.success("✨ AI insights generated!");
       setIsGeneratingInsights(false);
 
       // 3. Auto-scroll to results after a brief delay

@@ -182,39 +182,25 @@ const ExplanationPanel: React.FC<ExplanationPanelProps> = ({
         </ReactMarkdown>
       </div>
 
-      {/* Methodology Section */}
-      <div className="mt-6 p-5 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg border border-indigo-200">
-        <h3 className="text-lg font-semibold text-indigo-900 mb-3 flex items-center gap-2">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-          </svg>
-          {t.explanation.methodology}
-        </h3>
-        <div className="text-sm text-gray-700 prose prose-sm max-w-none">
+      {/* Methodology Section - Collapsible for less clutter */}
+      <details className="mt-6 group">
+        <summary className="cursor-pointer p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg border border-indigo-200 hover:bg-indigo-100 transition-colors list-none">
+          <div className="flex items-center justify-between">
+            <h3 className="text-base font-semibold text-indigo-900 flex items-center gap-2">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+              {t.explanation.methodology}
+            </h3>
+            <svg className="w-5 h-5 text-indigo-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </summary>
+        <div className="mt-3 px-4 pb-4 text-sm text-gray-700 prose prose-sm max-w-none">
           <ReactMarkdown>{t.explanation.methodologyExplanation}</ReactMarkdown>
         </div>
-      </div>
-
-      {/* Energy Dominance Explanation (only show if energy cost > 80%) */}
-      {tcoResult && tcoResult.breakdown && 
-       ((tcoResult.breakdown.energy_cost / tcoResult.breakdown.total_after_subsidy * 100) > 80) && (
-        <div className="mt-4 p-5 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-300">
-          <h3 className="text-lg font-semibold text-orange-900 mb-3 flex items-center gap-2">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-            {t.explanation.energyDominance}
-          </h3>
-          <div className="text-sm text-gray-700 prose prose-sm max-w-none">
-            <ReactMarkdown>
-              {t.explanation.energyDominanceExplanation.replace(
-                '{percentage}',
-                ((tcoResult.breakdown.energy_cost / tcoResult.breakdown.total_after_subsidy * 100).toFixed(1))
-              )}
-            </ReactMarkdown>
-          </div>
-        </div>
-      )}
+      </details>
 
       {/* Interactive Charts Navigation Section */}
       <div className="mt-6 bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg border border-blue-200">
@@ -310,9 +296,22 @@ const ExplanationPanel: React.FC<ExplanationPanelProps> = ({
         </div>
       </div>
 
-      {/* Data Sources Disclaimer - rendered with custom styling from backend content */}
-<div className="mt-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
-        <div className="prose prose-sm max-w-none">
+      {/* Data Sources Disclaimer - Collapsible */}
+      <details className="mt-6 group">
+        <summary className="cursor-pointer p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg hover:bg-blue-100 transition-colors list-none">
+          <div className="flex items-center justify-between">
+            <h3 className="text-base font-semibold text-blue-900 flex items-center gap-2">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              📚 {t.explanation.citations}
+            </h3>
+            <svg className="w-5 h-5 text-blue-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </summary>
+        <div className="mt-3 px-4 pb-4 prose prose-sm max-w-none">
           <ReactMarkdown
             components={{
               p: ({ children }) => (
@@ -350,17 +349,7 @@ const ExplanationPanel: React.FC<ExplanationPanelProps> = ({
             })()}
           </ReactMarkdown>
         </div>
-      </div>
-
-      {/* Animated Arrow - Scroll Down Indicator */}
-      <div className="flex justify-center mt-6 mb-4">
-        <div className="flex flex-col items-center gap-1">
-          <p className="text-xs text-gray-500 font-medium">💬 Aquí tienes un chatbot</p>
-          <svg className="w-6 h-6 text-purple-500 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </div>
-      </div>
+      </details>
 
       {/* Chat Section */}
       <div className="mt-8 pt-6 border-t border-purple-200">
