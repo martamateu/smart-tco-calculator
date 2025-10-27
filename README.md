@@ -19,6 +19,7 @@ Real-time TCO analysis for semiconductor manufacturing across 27 materials and 1
 - ⚡ **Real-time Energy Prices**: Auto-updated every 8 hours (EU) and daily (USA)
 - 🤖 **AI-Powered Insights**: Gemini-powered explanations and interactive Q&A chatbot
 - 📊 **Advanced Visualizations**: Waterfall charts, scenario comparisons, sensitivity analysis
+- 🔍 **RAG System Visualization**: Interactive dashboard showing embeddings, retrieval examples, and knowledge base statistics (may take a moment to load)
 - 🌐 **Multilingual**: Full support for English, Spanish, and Catalan
 - 🔐 **Secure Architecture**: Cloud Run backend with Secret Manager integration
 - 📱 **Responsive Design**: Works seamlessly on desktop, tablet, and mobile
