@@ -62,22 +62,37 @@ const RAGVisualization: React.FC<RAGVisualizationProps> = ({ onNavigate }) => {
     const fetchRAGData = async () => {
       try {
         setLoading(true);
-        
+        // First, probe the knowledge base to give a helpful error if RAG isn't ready
+        const kbResponse = await fetch(`${API_BASE_URL}/rag/knowledge-base`);
+        if (!kbResponse.ok) {
+          // If knowledge-base returns non-OK, bubble a helpful message
+          const txt = await kbResponse.text();
+          throw new Error(`RAG knowledge-base probe failed: ${txt}`);
+        }
+
+        const kbData = await kbResponse.json();
+        if (!kbData.initialized) {
+          // Surface the backend message (it may contain useful hints)
+          setError(`RAG knowledge base not initialized: ${kbData.message || 'initializing'}`);
+          setLoading(false);
+          return;
+        }
+
         // Fetch embedding visualization data
         const embeddingResponse = await fetch(`${API_BASE_URL}/rag/embeddings-viz`);
         if (!embeddingResponse.ok) throw new Error('Failed to fetch RAG embeddings');
         const embeddingData = await embeddingResponse.json();
-        
+
         // Fetch retrieval example
         const retrievalResponse = await fetch(`${API_BASE_URL}/rag/retrieval-demo?query=${encodeURIComponent(selectedQuery)}`);
         if (!retrievalResponse.ok) throw new Error('Failed to fetch retrieval example');
         const retrievalData = await retrievalResponse.json();
-        
+
         // Fetch RAG statistics
         const statsResponse = await fetch(`${API_BASE_URL}/rag/stats`);
         if (!statsResponse.ok) throw new Error('Failed to fetch RAG stats');
         const statsData = await statsResponse.json();
-        
+
         setEmbeddingData(embeddingData.embeddings);
         setRetrievalExample(retrievalData);
         setRagStats(statsData);
